@@ -20,6 +20,10 @@
         "dist/layout/layout",
         "dist/layout"
       ],
+      "navbar": [
+        "dist/navbar/navbar",
+        "dist/navbar"
+      ],
       "npm-packages": [
         "dist/npm-packages/npm-packages",
         "dist/npm-packages"

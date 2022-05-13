@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LayoutModule } from 'projects/layout/src/public-api';
+import { NavbarModule } from 'projects/navbar/src/public-api';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { LayoutModule } from 'projects/layout/src/public-api';
   ],
   imports: [
     BrowserModule,
-    LayoutModule
+    NavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
