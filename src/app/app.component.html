@@ -1,6 +1,8 @@
-<lib-navbar [jsonData]="menuData"></lib-navbar>
+<S7Navbar [jsonData]="menuData"></S7Navbar>
+
+
 <div class="container">
-    <div class="row">
+    <div class="row" *ngFor="let a of ['s','s','s','s','s','s']">
         <div class="col-sm-4">
             <h3>Column 1</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
@@ -18,3 +20,6 @@
         </div>
     </div>
 </div>
+
+
+<S7Footer></S7Footer>

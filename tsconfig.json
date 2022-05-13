@@ -16,6 +16,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
+      "footer": [
+        "dist/footer/footer",
+        "dist/footer"
+      ],
       "layout": [
         "dist/layout/layout",
         "dist/layout"
