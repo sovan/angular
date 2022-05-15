@@ -7,12 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Input() jsonData = {};
-  constructor() {
-
-  }
+  containerWidth: any = {};
+  containerHeight: any = {};
+  constructor() { }
 
   ngOnInit(): void {
     console.log(this.jsonData)
   }
 
+
+  findWidth(e: any, levels: string) {
+    this.containerWidth[levels] = e.target.clientWidth;
+    this.containerHeight[levels] = e.target.clientHeight;
+  }
 }
