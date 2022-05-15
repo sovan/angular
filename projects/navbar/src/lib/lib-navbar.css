@@ -1,5 +1,36 @@
-.positioning{
-    position: fixed; 
-    width: 100%; 
+.positioning {
+    position: fixed;
+    width: 100%;
     z-index: 1;
+}
+.dropdown{
+    width: 100%;
+}
+
+
+
+.dp1:hover .dp1-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dp2-menu,
+.dp3-menu {
+    margin-left: 174px;
+    margin-top: -20px !important;
+}
+.dp2:hover .dp2-menu,
+.dp3:hover .dp3-menu {
+    display: block;
+    margin-top: 0;
+}
+
+
+.fa-chevron-right {
+    float: right;
+    margin-top: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: #ddd;
 }
