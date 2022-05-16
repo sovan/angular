@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'S7Footer',
-  templateUrl: 'lib-footer.html',
-  styleUrls: ['./lib-footer.css']
+  templateUrl: 'footer.html',
+  styleUrls: ['./footer.css']
 })
 export class FooterComponent implements OnInit {
 
