@@ -16,6 +16,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
+      "dropdown": [
+        "dist/dropdown/dropdown",
+        "dist/dropdown"
+      ],
       "footer": [
         "dist/footer/footer",
         "dist/footer"
