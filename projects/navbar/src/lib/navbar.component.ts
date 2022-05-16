@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'S7Navbar',
-  templateUrl: 'lib-navbar.html',
-  styleUrls: ['./lib-navbar.css']
+  templateUrl: 'navbar.html',
+  styleUrls: ['./navbar.css']
 })
 export class NavbarComponent implements OnInit {
   @Input() jsonData = {};

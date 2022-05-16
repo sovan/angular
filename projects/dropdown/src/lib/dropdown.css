@@ -1,9 +1,3 @@
-.positioning {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-}
-
 .dropdown {
     width: 100%;
 }
