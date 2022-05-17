@@ -11,8 +11,10 @@
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <ng-container *ngFor="let eachMenu of jsonData['menu']">
                             <li class="nav-item" *ngIf="eachMenu['menu']==undefined">
-                                <a class="nav-link" href="#">{{eachMenu['menuText']}}</a>
+                                <a class="nav-link" href="#"
+                                    (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
                             </li>
+                            <!--multi level dropdown menu-->
                             <li class="nav-item dropdown" *ngIf="eachMenu['menu']!=undefined">
                                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
@@ -21,12 +23,15 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <ng-container *ngFor="let eachMenu of eachMenu['menu']">
-                                        <a class="dropdown-item" href="#"
-                                            *ngIf="eachMenu['menu']==undefined">{{eachMenu['menuText']}}</a>
-                                            <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"></S7DropDown>
+                                        <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined"
+                                            (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
+                                        <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
+                                            (redirectTo)="redirectURL($event)">
+                                        </S7DropDown>
                                     </ng-container>
                                 </div>
                             </li>
+                            <!--multi level dropdown menu-->
                         </ng-container>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" *ngIf="jsonData['searcBox']">

@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'expirement';
+
+	redirectURL(URL: string){
+		console.log(URL)
+	}
+
+
 	menuData = {
 		"logoText": "S7even",
 		"searchText": "Searchs",
@@ -29,10 +35,10 @@ export class AppComponent {
 				"menuText": "BB2",
 				"menu": [{
 					"menuText": "CC1",
-					"URL": "bb"
+					"URL": "cc1"
 				}, {
 					"menuText": "CC2",
-					"URL": "bb1"
+					"URL": "cc2"
 				}, {
 					"menuText": "CC3",
 					"menu": [{
