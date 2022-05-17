@@ -51,7 +51,19 @@ export class AppComponent {
 							"URL": "dd2"
 						}, {
 							"menuText": "dd3",
-							"URL": "dd3"
+							"menu": [{
+								"menuText": "ee",
+								"URL": "ee"
+							}, {
+								"menuText": "ee1",
+								"URL": "ee1"
+							}, {
+								"menuText": "ee3",
+								"URL": "ee3"
+							}]
+						}, {
+							"menuText": "dd44",
+							"URL": "dd244"
 						}]
 					}]
 				}]

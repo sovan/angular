@@ -6,13 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./dropdown.css']
 })
 export class DropdownComponent implements OnInit {
-  @Input() jsonData: any;
+  @Input() eachMenu: any;
   containerWidth: any = {};
   containerHeight: any = {};
   constructor() { }
 
   ngOnInit(): void {
-    console.log(JSON.stringify(this.jsonData))
+    console.log(JSON.stringify(this.eachMenu))
   }
   findWidth(e: any, levels: string) {
     this.containerWidth[levels] = e.target.clientWidth;
