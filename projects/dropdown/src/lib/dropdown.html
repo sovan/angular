@@ -6,10 +6,11 @@
             <i class="fa fa-chevron-right"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-            [ngStyle]="{'margin-left': containerWidth+'px', 'margin-top': '-'+containerHeight+'px'}">
+            [ngStyle]="{'margin-left': containerWidth+'px', 'margin-top': '-'+containerHeight+'px'}"
+            >
             <ng-container *ngFor="let eachMenu of eachMenu['menu']">
                 <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined" (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
-                <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu" (redirectTo)="redirectURL($event)"></S7DropDown>
+                <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu" (redirectTo)="redirectURL($event)" [place]="place"></S7DropDown>
             </ng-container>
         </div>
     </li>

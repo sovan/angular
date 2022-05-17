@@ -8,15 +8,35 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	title = 'expirement';
 
-	redirectURL(URL: string){
-		console.log(URL)
+	redirectURL(URL: string) {
+		console.log("Redirect To: " + URL)
 	}
 
 
 	menuData = {
 		"logoText": "S7even",
-		"searchText": "Searchs",
+		"searchText": "Search",
 		"searcBox": true,
+		"profile": {
+			"icon": "fa fa-user",
+			"align": "left",
+			"menu": [{
+				"menuText": "My profile",
+				"URL": "my-profile"
+			}, {
+				"menuText": "Logout",
+				"URL": "logout"
+			}, {
+				"menuText": "ssss",
+				"menu": [{
+					"menuText": "My profile",
+					"URL": "my-profile"
+				}, {
+					"menuText": "Logout",
+					"URL": "logout"
+				}]
+			}]
+		},
 		"menu": [{
 			"menuText": "Hom1e",
 			"URL": "home"

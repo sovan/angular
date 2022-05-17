@@ -26,7 +26,7 @@
                                         <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined"
                                             (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
                                         <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
-                                            (redirectTo)="redirectURL($event)">
+                                            (redirectTo)="redirectURL($event)" [place]="'right'">
                                         </S7DropDown>
                                     </ng-container>
                                 </div>
@@ -39,6 +39,29 @@
                         <button class="btn btn-outline-success my-2 my-sm-0"
                             type="submit">{{jsonData["searchText"]}}</button>
                     </form>
+                    &nbsp;
+                    <div style="float:right!important">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="{{jsonData['profile']['icon']}}"></i>
+                                &nbsp;
+                                <i class="fa fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                [ngClass]="{'dropdown-menu-right': jsonData['profile']['align']=='left'}">
+                                <ng-container *ngFor="let eachMenu of jsonData['profile']['menu']">
+                                    <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined"
+                                        (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
+                                    <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
+                                        [place]="jsonData['profile']['align']" (redirectTo)="redirectURL($event)">
+                                    </S7DropDown>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </nav>
         </div>

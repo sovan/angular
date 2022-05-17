@@ -12,10 +12,7 @@ export class NavbarComponent {
   containerHeight: any = {};
   constructor() { }
 
-  findWidth(e: any, levels: string) {
-    this.containerWidth[levels] = e.target.clientWidth;
-    this.containerHeight[levels] = e.target.clientHeight;
-  }
+  
 
   redirectURL(URL: string) {
     this.redirectTo.emit(URL)
