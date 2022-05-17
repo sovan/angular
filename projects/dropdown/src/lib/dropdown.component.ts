@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'S7DropDown',
@@ -6,14 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dropdown.css']
 })
 export class DropdownComponent implements OnInit {
+  @Input() jsonData: any;
   containerWidth: any = {};
   containerHeight: any = {};
   constructor() { }
 
   ngOnInit(): void {
+    console.log(JSON.stringify(this.jsonData))
   }
   findWidth(e: any, levels: string) {
     this.containerWidth[levels] = e.target.clientWidth;
     this.containerHeight[levels] = e.target.clientHeight;
+    //console.log(e.target.setAttribute('class','ddddd'))
   }
 }

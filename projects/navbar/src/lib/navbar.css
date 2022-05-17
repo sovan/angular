@@ -4,3 +4,23 @@
     z-index: 1;
 }
 
+.dropdown {
+    width: 100%;
+}
+
+.fa-chevron-right {
+    float: right;
+    margin-top: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    animation: fadeIn 0.5s;
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 2px solid #aaa;
+}
+

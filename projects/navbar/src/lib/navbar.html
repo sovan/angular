@@ -7,22 +7,95 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="#">Hidden brand</a>
+                    <a class="navbar-brand" href="#">{{jsonData["logoText"]}}</a>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
-                        </li>
-                        <S7DropDown></S7DropDown>
+                        <ng-container *ngFor="let eachMenu of jsonData['menu']">
+                            <li class="nav-item" *ngIf="eachMenu['menu']==undefined">
+                                <a class="nav-link" href="#">{{eachMenu['menuText']}}</a>
+                            </li>
+                            <li class="nav-item dropdown" *ngIf="eachMenu['menu']!=undefined">
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    {{eachMenu['menuText']}}
+                                    <i class="fa fa-chevron-down"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <ng-container *ngFor="let eachMenu of eachMenu['menu']">
+                                        <a class="dropdown-item" href="#"
+                                            *ngIf="eachMenu['menu']==undefined">{{eachMenu['menuText']}}</a>
+                                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="eachMenu['menu']!=undefined">
+                                            <li class="nav-item dropdown" (mouseenter)="findWidth($event,'level1')">
+                                                <a class="dropdown-item" href="#" id="navbarDropdown" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                    style="color: #000;">
+                                                    {{eachMenu['menuText']}}
+                                                    <i class="fa fa-chevron-right"></i>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                                    [ngStyle]="{'margin-left': containerWidth['level1']+'px', 'margin-top': '-'+containerHeight['level1']+'px'}">
+                                                    <ng-container *ngFor="let eachMenu of eachMenu['menu']">
+                                                        <a class="dropdown-item" href="#"
+                                                            *ngIf="eachMenu['menu']==undefined">{{eachMenu['menuText']}}</a>
+                                                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0"
+                                                            *ngIf="eachMenu['menu']!=undefined">
+                                                            <li class="nav-item dropdown"
+                                                                (mouseenter)="findWidth($event,'level2')">
+                                                                <a class="dropdown-item" href="#" id="navbarDropdown"
+                                                                    role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"
+                                                                    style="color: #000;">
+                                                                    {{eachMenu['menuText']}}
+                                                                    <i class="fa fa-chevron-right"></i>
+                                                                </a>
+                                                                <div class="dropdown-menu"
+                                                                    aria-labelledby="navbarDropdown"
+                                                                    [ngStyle]="{'margin-left': containerWidth['level2']+'px', 'margin-top': '-'+containerHeight['level2']+'px'}">
+                                                                    <ng-container
+                                                                        *ngFor="let eachMenu of eachMenu['menu']">
+                                                                        <a class="dropdown-item" href="#"
+                                                                            *ngIf="eachMenu['menu']==undefined">{{eachMenu['menuText']}}</a>
+                                                                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0"
+                                                                            *ngIf="eachMenu['menu']!=undefined">
+                                                                            <li class="nav-item dropdown"
+                                                                                (mouseenter)="findWidth($event,'level2')">
+                                                                                <a class="dropdown-item" href="#"
+                                                                                    id="navbarDropdown" role="button"
+                                                                                    data-toggle="dropdown"
+                                                                                    aria-haspopup="true"
+                                                                                    aria-expanded="false"
+                                                                                    style="color: #000;">
+                                                                                    {{eachMenu['menuText']}}
+                                                                                    <i class="fa fa-chevron-right"></i>
+                                                                                </a>
+                                                                                <div class="dropdown-menu"
+                                                                                    aria-labelledby="navbarDropdown"
+                                                                                    [ngStyle]="{'margin-left': containerWidth['level2']+'px', 'margin-top': '-'+containerHeight['level2']+'px'}">
+                                                                                    <ng-container
+                                                                                        *ngFor="let eachMenu of eachMenu['menu']">
+                                                                                        <a class="dropdown-item"
+                                                                                            href="#"
+                                                                                            *ngIf="eachMenu['menu']==undefined">{{eachMenu['menuText']}}</a>
+                                                                                    </ng-container>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </ng-container>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </ng-container>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </ng-container>
+                                </div>
+                            </li>
+                        </ng-container>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 my-lg-0" *ngIf="jsonData['searcBox']">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0"
+                            type="submit">{{jsonData["searchText"]}}</button>
                     </form>
                 </div>
             </nav>

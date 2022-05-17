@@ -6,13 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./navbar.css']
 })
 export class NavbarComponent implements OnInit {
-  @Input() jsonData = {};
+  @Input() jsonData: any;
   containerWidth: any = {};
   containerHeight: any = {};
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.jsonData)
+    //console.log(this.jsonData)
   }
 
 
