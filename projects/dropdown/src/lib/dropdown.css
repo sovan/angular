@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-.fa-chevron-right {
+.fa-chevron-right, .fa-chevron-left {
     float: right;
     margin-top: 5px;
 }

@@ -33,7 +33,13 @@ export class AppComponent {
 					"URL": "my-profile"
 				}, {
 					"menuText": "Logout",
-					"URL": "logout"
+					"menu": [{
+						"menuText": "My profile",
+						"URL": "my-profile"
+					}, {
+						"menuText": "Logout",
+						"URL": "logout"
+					}]
 				}]
 			}]
 		},
