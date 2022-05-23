@@ -13,6 +13,7 @@ export class AppComponent {
 	}
 
 	callParent(sendJSON: any) {
+		
 		switch (sendJSON['tag']) {
 			case "button-popup": {
 				this.popupStructure[sendJSON['id']] = sendJSON;
@@ -187,10 +188,43 @@ export class AppComponent {
 					"URL": "my-profile"
 				}, {
 					"menuText": "Logout",
-					"URL": "logout"
+					"tag": "button-popup",
+					"id": "1",
+					"headerText": "Are you sure you want to logout?",
+					"content": [{
+						"column": "6",
+						"body": [{
+							"tag": "h3",
+							"content": "UM"
+						}, {
+							"tag": "p",
+							"content": "UM p1"
+						}, {
+							"tag": "p",
+							"content": "UM p2"
+						}]
+					}]
 				}, {
 					"menuText": "ssss",
 					"menu": [{
+						"menuText": "My profile",
+						"tag": "button-popup",
+						"id": "1",
+						"headerText": "Are you sure you want to logout?",
+						"content": [{
+							"column": "6",
+							"body": [{
+								"tag": "h3",
+								"content": "UM"
+							}, {
+								"tag": "p",
+								"content": "UM p1"
+							}, {
+								"tag": "p",
+								"content": "UM p2"
+							}]
+						}]
+					}, {
 						"menuText": "My profile",
 						"URL": "my-profile"
 					}, {
@@ -200,7 +234,22 @@ export class AppComponent {
 							"URL": "my-profile"
 						}, {
 							"menuText": "Logout",
-							"URL": "logout"
+							"tag": "button-popup",
+							"id": "1",
+							"headerText": "Are you sure you want to logout?",
+							"content": [{
+								"column": "6",
+								"body": [{
+									"tag": "h3",
+									"content": "UM"
+								}, {
+									"tag": "p",
+									"content": "UM p1"
+								}, {
+									"tag": "p",
+									"content": "UM p2"
+								}]
+							}]
 						}]
 					}]
 				}]
@@ -217,13 +266,43 @@ export class AppComponent {
 					"menuText": "BB",
 					"URL": "bb"
 				}, {
-					"menuText": "BB1 BB1 BB1 BB1BB1 BB1 BB1 ",
-					"URL": "bb1"
+					"menuText": "POPUP",
+					"tag": "button-popup",
+					"id": "1",
+					"headerText": "Are you sure you want to logout?",
+					"content": [{
+						"column": "6",
+						"body": [{
+							"tag": "h3",
+							"content": "UM"
+						}, {
+							"tag": "p",
+							"content": "UM p1"
+						}, {
+							"tag": "p",
+							"content": "UM p2"
+						}]
+					}]
 				}, {
 					"menuText": "BB2",
 					"menu": [{
-						"menuText": "CC1",
-						"URL": "cc1"
+						"menuText": "POPUP",
+						"tag": "button-popup",
+						"id": "1",
+						"headerText": "Are you sure you want to logout?",
+						"content": [{
+							"column": "6",
+							"body": [{
+								"tag": "h3",
+								"content": "UM"
+							}, {
+								"tag": "p",
+								"content": "UM p1"
+							}, {
+								"tag": "p",
+								"content": "UM p2"
+							}]
+						}]
 					}, {
 						"menuText": "CC2",
 						"URL": "cc2"
