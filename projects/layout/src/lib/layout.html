@@ -4,10 +4,10 @@
             <ng-container *ngFor="let eachBody of eachBlock['body']">
                 <h3 *ngIf="eachBody['tag']=='h3'">{{eachBody['content']}}</h3>
                 <p *ngIf="eachBody['tag']=='p'">{{eachBody['content']}}</p>
-                <S7Layout [jsonData]="eachBody['content']" *ngIf="eachBody['tag']=='card'" (formChild)="callParent($event)"></S7Layout>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" *ngIf="eachBody['tag']=='button-popup'" (click)="callParent(eachBody)">
+                <S7Layout [jsonData]="eachBody['content']" *ngIf="eachBody['tag']=='card'" (formChild)="callParent($event)"></S7Layout>        
+                <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'" [attr.data-target]="'#modal'+eachBody['id']"  *ngIf="eachBody['tag']=='button-popup'" (click)="callParent(eachBody)">
                     {{eachBody['buttonText']}}
-                </button>
+                </button>      
             </ng-container>
         </div>
     </ng-container>

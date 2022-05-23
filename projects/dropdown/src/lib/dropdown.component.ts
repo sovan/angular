@@ -14,9 +14,9 @@ export class DropdownComponent {
   containerHeight: any = {};
   constructor() { }
 
-  
+
   findWidth(e: any) {
-    if (this.place=='left') {
+    if (this.place == 'left') {
       this.containerWidth = -160;
     } else {
       this.containerWidth = e.target.clientWidth;
@@ -24,7 +24,7 @@ export class DropdownComponent {
     this.containerHeight = e.target.clientHeight;
   }
 
- callParent(sendJSON: any){
+  callParent(sendJSON: any) {
     this.formChild.emit(sendJSON);
   }
 

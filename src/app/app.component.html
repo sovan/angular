@@ -1,16 +1,9 @@
 <S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)"></S7Navbar>
-
-
 <div class="container containerPlacing">
     <S7Layout [jsonData]="pageStructure['pageData']['content']" (formChild)="callParent($event)"></S7Layout>
-    <br /><br /><br />
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
-        s
-    </button>
-
 </div>
 
 
-<S7Modal [jsonData]="popupStructure"></S7Modal>
-
+<S7Modal [jsonData]="popupStructure['1']" (formChild)="callParent($event)" [targetFrom]="'modal1'"></S7Modal>
+<S7Modal [jsonData]="popupStructure['2']" (formChild)="callParent($event)" [targetFrom]="'modal2'"></S7Modal>
 <S7Footer></S7Footer>
