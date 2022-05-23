@@ -1,24 +1,21 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'S7DropDown',
   templateUrl: 'dropdown.html',
   styleUrls: ['./dropdown.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent {
   @Input() eachMenu: any;
   @Input() place: any;
 
-  @Output() redirectTo = new EventEmitter<string>();
+  @Output() formChild = new EventEmitter<string>();
   containerWidth: any = {};
   containerHeight: any = {};
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(JSON.stringify(this.eachMenu))
-  }
+  
   findWidth(e: any) {
-    //
     if (this.place=='left') {
       this.containerWidth = -160;
     } else {
@@ -26,7 +23,9 @@ export class DropdownComponent implements OnInit {
     }
     this.containerHeight = e.target.clientHeight;
   }
-  redirectURL(URL: string) {
-    this.redirectTo.emit(URL);
+
+ callParent(sendJSON: any){
+    this.formChild.emit(sendJSON);
   }
+
 }

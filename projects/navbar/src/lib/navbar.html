@@ -12,8 +12,9 @@
                         <ng-container *ngFor="let eachMenu of jsonData['menu']">
                             <li class="nav-item" *ngIf="eachMenu['menu']==undefined">
                                 <a class="nav-link" href="#"
-                                    (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
+                                    (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
                             </li>
+                           <!-- (formChild)="callParent($event)"-->
                             <!--multi level dropdown menu-->
                             <li class="nav-item dropdown" *ngIf="eachMenu['menu']!=undefined">
                                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -24,9 +25,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <ng-container *ngFor="let eachMenu of eachMenu['menu']">
                                         <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined"
-                                            (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
+                                            (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
                                         <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
-                                            (redirectTo)="redirectURL($event)" [place]="'right'">
+                                            (formChild)="callParent($event)" [place]="'right'">
                                         </S7DropDown>
                                     </ng-container>
                                 </div>
@@ -48,14 +49,12 @@
                                 &nbsp;
                                 <i class="fa fa-chevron-down"></i>
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                [ngClass]="{'dropdown-menu-right': jsonData['profile']['align']=='left'}">
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [ngClass]="{'dropdown-menu-right': jsonData['profile']['align']=='left'}">
                                 <ng-container *ngFor="let eachMenu of jsonData['profile']['menu']">
                                     <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined"
-                                        (click)="redirectURL(eachMenu['URL'])">{{eachMenu['menuText']}}</a>
-                                    <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
-                                        [place]="jsonData['profile']['align']" (redirectTo)="redirectURL($event)">
-                                    </S7DropDown>
+                                        (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
+                                    <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu" [place]="jsonData['profile']['align']"
+                                        (formChild)="callParent($event)" ></S7DropDown>
                                 </ng-container>
                             </div>
                         </div>

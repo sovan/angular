@@ -7,14 +7,16 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent {
   @Input() jsonData: any;
-  @Output() redirectTo = new EventEmitter<string>();
+  @Output() formChild = new EventEmitter<string>();
   containerWidth: any = {};
   containerHeight: any = {};
   constructor() { }
 
   
 
-  redirectURL(URL: string) {
-    this.redirectTo.emit(URL)
+  callParent(sendJSON: any){
+    this.formChild.emit(sendJSON);
   }
+
+ 
 }

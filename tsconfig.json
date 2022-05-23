@@ -26,7 +26,13 @@
       ],
       "layout": [
         "dist/layout/layout",
+        "dist/layout",
+        "dist/layout/layout",
         "dist/layout"
+      ],
+      "modal": [
+        "dist/modal/modal",
+        "dist/modal"
       ],
       "navbar": [
         "dist/navbar/navbar",
