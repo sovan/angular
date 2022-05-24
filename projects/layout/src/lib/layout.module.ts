@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { LayoutComponent } from './layout.component';
 
 import { CommonModule } from '@angular/common';
+import { GridModule } from 'projects/grid/src/public-api';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
     LayoutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    GridModule
   ],
   exports: [
     LayoutComponent

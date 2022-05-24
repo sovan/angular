@@ -8,19 +8,23 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	title = 'expirement';
 	popupStructure: any = {};
-	redirectURL(URL: string) {
-		console.log("Redirect To: " + URL)
+	
+	constructor() {
 	}
-
 	callParent(sendJSON: any) {
-		
+
 		switch (sendJSON['tag']) {
 			case "button-popup": {
 				this.popupStructure[sendJSON['id']] = sendJSON;
+				//console.log(JSON.stringify(sendJSON))
+				break;
+			}
+			case "action-popup": {
+				this.popupStructure[1] = sendJSON;
 				break;
 			}
 			default: {
-				console.log(sendJSON)
+				console.log(JSON.stringify(sendJSON));
 				break;
 			}
 		}
@@ -39,8 +43,25 @@ export class AppComponent {
 					"tag": "p",
 					"content": "UM p1"
 				}, {
-					"tag": "p",
-					"content": "UM p2"
+					"tag": "grid",
+					"content": "UM p2",
+					"header": ["col1", "col2", "col3"],
+					"operation": [{
+						"do": "edit",
+						"icon": "fa fa-pencil",
+						"tooltips": "Click here to edit"
+					}, {
+						"do": "view",
+						"icon": "fa fa-eye",
+						"tooltips": "Click here to view"
+					}],
+					"records": [
+						["1", "2", "3"],
+						["11", "22", "33"],
+						["111", "222", "333"],
+						["111", "222", "332223"],
+						["1111", "2222", "3333"]
+					]
 				}]
 			}, {
 				"column": "6",

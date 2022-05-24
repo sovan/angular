@@ -24,6 +24,10 @@
         "dist/footer/footer",
         "dist/footer"
       ],
+      "grid": [
+        "dist/grid/grid",
+        "dist/grid"
+      ],
       "layout": [
         "dist/layout/layout",
         "dist/layout",
