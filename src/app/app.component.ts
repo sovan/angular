@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -9,7 +10,12 @@ export class AppComponent {
 	title = 'expirement';
 	popupStructure: any = {};
 
-	constructor(private route: Router) {
+	constructor(private router: Router, private route1: ActivatedRoute) {
+		this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd)
+		).subscribe(event => {
+			console.log(this.router.url);
+		});
 	}
 	callParent(sendJSON: any) {
 
@@ -24,7 +30,7 @@ export class AppComponent {
 				break;
 			}
 			default: {
-				this.route.navigate([sendJSON['URL']]);
+				this.router.navigate([sendJSON['URL']]);
 				break;
 			}
 		}
@@ -68,6 +74,7 @@ export class AppComponent {
 					}],
 					"records": [
 						["Sovan", "Dey", "37"],
+						["Sannidhya", "Dey Masanta", "5"],
 						["Luna", "Masanta", "31"]
 					]
 				}]
