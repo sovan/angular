@@ -24,6 +24,10 @@
         "dist/footer/footer",
         "dist/footer"
       ],
+      "form": [
+        "dist/form/form",
+        "dist/form"
+      ],
       "grid": [
         "dist/grid/grid",
         "dist/grid"

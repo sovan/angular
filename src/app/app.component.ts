@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	title = 'expirement';
 	popupStructure: any = {};
-	
+
 	constructor() {
 	}
 	callParent(sendJSON: any) {
@@ -35,7 +35,7 @@ export class AppComponent {
 		"pageData": {
 			"header": "My page",
 			"content": [{
-				"column": "6",
+				"column": "12",
 				"body": [{
 					"tag": "h3",
 					"content": "UM"
@@ -45,22 +45,30 @@ export class AppComponent {
 				}, {
 					"tag": "grid",
 					"content": "UM p2",
-					"header": ["col1", "col2", "col3"],
+					"header": [{
+						"text": "First Name",
+						"show": ["view"]
+					}, {
+						"text": "Last Name",
+						"show": ["view"]
+					}, {
+						"text": "Age",
+						"show": ["view", "edit"]
+					}],
 					"operation": [{
 						"do": "edit",
 						"icon": "fa fa-pencil",
-						"tooltips": "Click here to edit"
+						"tooltips": "Click here to edit",
+						"headerText": "Edit Form"
 					}, {
 						"do": "view",
 						"icon": "fa fa-eye",
-						"tooltips": "Click here to view"
+						"tooltips": "Click here to view",
+						"headerText": "View Form"
 					}],
 					"records": [
-						["1", "2", "3"],
-						["11", "22", "33"],
-						["111", "222", "333"],
-						["111", "222", "332223"],
-						["1111", "2222", "3333"]
+						["Sovan", "Dey", "37"],
+						["Luna", "Masanta", "31"]
 					]
 				}]
 			}, {

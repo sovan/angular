@@ -14,22 +14,31 @@ table tr {
 table th,
 table td {
     padding: 15px;
-    text-align: center;
 }
 
 table tr:nth-child(odd) {
     background: #FFF
 }
+
+table tr:last-child, table th:last-child  {
+    width: 1%;
+    white-space: nowrap;
+}
+
+
 table tr:hover {
     background: #eee;
     cursor: pointer;
 }
+
 table th {
     background: #ccc;
 }
-table tr td button{
+
+table tr td button {
     margin-right: 5px;
 }
+
 @media screen and (max-width: 800px) {
     table {
         border: 0;
@@ -56,8 +65,8 @@ table tr td button{
         float: left;
         font-weight: bold;
     }
-
-    table td:last-child {
+    table tr:last-child, table th:last-child  {
+        width: 100%;
         border-bottom: 0;
     }
 }

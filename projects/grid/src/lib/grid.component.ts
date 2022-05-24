@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'S7Grid',
   templateUrl: './grid.html',
   styleUrls: ['./grid.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
   @Input() jsonData: any;
   @Output() formChild = new EventEmitter<string>();
   constructor() { }
@@ -14,28 +14,26 @@ export class GridComponent implements OnInit {
   popupBoxData: any = {
     "tag": "button-popup",
     "id": "1",
-    "headerText": "Are you sure you want to logout?",
     "content": [{
       "column": "12",
       "body": [{
-        "tag": "form",
-        "content": "UM p2",
-        "header": ["col1", "col2", "col3"],
-        "records": [
-          ["1", "2", "3"]
-        ]
+        "tag": "form"
       }]
     }]
   }
 
 
-  makeJSON(data: any, option: any) {
-    console.log(option)
-    this.popupBoxData['option'] = option;
+  makeJSON(record: any, option: any) {
+    this.popupBoxData["headerText"] = option['headerText'];
+    var recordJSON: any = {};
+    this.jsonData["header"].map((data: any, index: any) => {
+      if (data["show"].indexOf(option['do']) != -1) {
+        recordJSON[data["text"]] = record[index];
+      }
+    });
+    this.popupBoxData["content"][0]["body"][0]["data"] = recordJSON;
+    this.popupBoxData['option'] = option['do'];
     this.callParent(this.popupBoxData)
-  }
-
-  ngOnInit(): void {
   }
 
   callParent(sendJSON: any) {

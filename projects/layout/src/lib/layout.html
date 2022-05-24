@@ -1,6 +1,6 @@
 <div class="row">
     <ng-container *ngFor="let eachBlock of jsonData">
-        <div class="col-sm-{{eachBlock['column']}} borderRound">
+        <div class="col-sm-{{eachBlock['column']}}">
             <ng-container *ngFor="let eachBody of eachBlock['body']">
                 <h3 *ngIf="eachBody['tag']=='h3'">{{eachBody['content']}}</h3>
                 <p *ngIf="eachBody['tag']=='p'">{{eachBody['content']}}</p>
@@ -11,8 +11,9 @@
                     (click)="callParent(eachBody)">
                     {{eachBody['buttonText']}}
                 </button>
+                
                 <S7Grid *ngIf="eachBody['tag']=='grid'" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
-                <S7Grid *ngIf="eachBody['tag']=='form'" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>              
+                <S7Form *ngIf="eachBody['tag']=='form'" [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Form>              
             </ng-container>
         </div>
     </ng-container>
