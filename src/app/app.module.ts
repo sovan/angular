@@ -7,16 +7,23 @@ import { FooterModule } from 'projects/footer/src/public-api';
 import { ModalModule } from 'projects/modal/src/public-api';
 import { LayoutModule } from 'projects/layout/src/public-api';
 
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [{
+  path: "**", component: AppComponent
+}];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     NavbarModule,
     FooterModule,
     ModalModule,
-    LayoutModule
+    LayoutModule,
+    RouterModule.forRoot(routes)
+
   ],
   providers: [],
   bootstrap: [AppComponent]

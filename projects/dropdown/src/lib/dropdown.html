@@ -9,10 +9,12 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown"
             [ngStyle]="{'margin-left': containerWidth+'px', 'margin-top': '-'+containerHeight+'px'}">
             <ng-container *ngFor="let eachMenu of eachMenu['menu']">
-                <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
+                <a class="dropdown-item" href="javascript:void(0)"
+                    *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
                     (click)="callParent(eachMenu)" [attr.data-toggle]="'modal'"
                     [attr.data-target]="'#modal'+eachMenu['id']">{{eachMenu['menuText']}}</a>
-                <a class="dropdown-item" href="#" *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
+                <a class="dropdown-item" href="javascript:void(0)"
+                    *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
                     (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
                 <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu" (formChild)="callParent($event)"
                     [place]="place"></S7DropDown>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -9,7 +9,7 @@ export class AppComponent {
 	title = 'expirement';
 	popupStructure: any = {};
 
-	constructor() {
+	constructor(private route: Router) {
 	}
 	callParent(sendJSON: any) {
 
@@ -24,7 +24,7 @@ export class AppComponent {
 				break;
 			}
 			default: {
-				console.log(JSON.stringify(sendJSON));
+				this.route.navigate([sendJSON['URL']]);
 				break;
 			}
 		}
