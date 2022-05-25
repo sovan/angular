@@ -4,6 +4,9 @@
             "column": "12",
             "body": [
                 {
+                    "tag": "breadcumb"
+                },
+                {
                     "tag": "h3",
                     "content": "Home"
                 },

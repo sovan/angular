@@ -16,6 +16,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
+      "breadcrumb": [
+        "dist/breadcrumb/breadcrumb",
+        "dist/breadcrumb"
+      ],
       "dropdown": [
         "dist/dropdown/dropdown",
         "dist/dropdown"
@@ -33,8 +37,6 @@
         "dist/grid"
       ],
       "layout": [
-        "dist/layout/layout",
-        "dist/layout",
         "dist/layout/layout",
         "dist/layout"
       ],

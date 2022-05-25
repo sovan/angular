@@ -14,7 +14,8 @@
                 <S7Grid *ngIf="eachBody['tag']=='grid'" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
                 <S7Form *ngIf="eachBody['tag']=='form'" [jsonData]="eachBody['data']" (formChild)="callParent($event)">
                 </S7Form>
-                <S7Tabmenu *ngIf="eachBody['tag']=='tab-menu' " [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Tabmenu>
+                <S7Tabmenu *ngIf="eachBody['tag']=='tab-menu'" [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Tabmenu>
+                <S7Breadcrumb *ngIf="eachBody['tag']=='breadcumb'" [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Breadcrumb>
                 <div *ngIf="eachBody['tag']=='space'" class="space"></div>
             </ng-container>
         </div>      
