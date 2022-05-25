@@ -1,0 +1,26 @@
+{
+    "header": "Home",
+    "content": [
+        {
+            "column": "12",
+            "body": [
+                {
+                    "tag": "h3",
+                    "content": "View Profile"
+                },
+                {
+                    "tag": "form",
+                    "id": "1",
+                    "column": "12",
+                    "data": {
+                        "First Name": "Sovan",
+                        "Last Name": "Dey",
+                        "Age": "37"
+                    },
+                    "headerText": "View Form",
+                    "option": "view"
+                }
+            ]
+        }
+    ]
+}

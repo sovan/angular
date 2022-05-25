@@ -23,18 +23,26 @@ export class GridComponent {
   }
 
 
-  makeJSON(record: any, option: any) {
+  createPopupJSON(record: any, option: any) {
     this.popupBoxData["headerText"] = option['headerText'];
     var recordJSON: any = {};
     this.jsonData["header"].map((data: any, index: any) => {
-      if (data["showIn"].indexOf(option['do']) != -1) {
+
+      if (data["showIn"].indexOf(option['callFunction']) != -1) {
+        recordJSON[data["text"]] = record[index];
+      }
+
+      if (data["showIn"].indexOf(option['redirectTo']) != -1) {
         recordJSON[data["text"]] = record[index];
       }
     });
+
     this.popupBoxData["content"][0]["body"][0]["data"] = recordJSON;
-    this.popupBoxData['option'] = option['do'];
+    this.popupBoxData['option'] = option['callFunction'];
     this.callParent(this.popupBoxData)
+    console.log(JSON.stringify(this.popupBoxData));
   }
+
 
   callParent(sendJSON: any) {
     this.formChild.emit(sendJSON);
