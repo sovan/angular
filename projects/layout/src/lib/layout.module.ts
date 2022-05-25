@@ -7,6 +7,9 @@ import { FormModule } from 'projects/form/src/public-api';
 import { TabmenuModule } from 'projects/tabmenu/src/public-api';
 import { BreadcrumbModule } from 'projects/breadcrumb/src/public-api';
 import { PaginationModule } from 'projects/pagination/src/public-api';
+import { SliderModule } from 'projects/slider/src/public-api';
+import { AccordionModule } from 'projects/accordion/src/public-api';
+import { ImagecardModule } from 'projects/imagecard/src/public-api';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { PaginationModule } from 'projects/pagination/src/public-api';
     FormModule,
     TabmenuModule,
     BreadcrumbModule,
-    PaginationModule
+    PaginationModule,
+    SliderModule,
+    AccordionModule,
+    ImagecardModule
   ],
   exports: [
     LayoutComponent

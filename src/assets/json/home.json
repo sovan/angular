@@ -7,8 +7,10 @@
                     "tag": "breadcumb"
                 },
                 {
-                    "tag": "h3",
-                    "content": "Home"
+                    "tag": "slider"
+                },
+                {
+                    "tag": "accordion"
                 },
                 {
                     "tag": "space"
@@ -16,6 +18,38 @@
                 {
                     "tag": "card",
                     "content": [
+                        {
+                            "column": "3",
+                            "body": [
+                                {
+                                    "tag": "image-card"
+                                }
+                            ]
+                        },
+                        {
+                            "column": "3",
+                            "body": [
+                                {
+                                    "tag": "image-card"
+                                }
+                            ]
+                        },
+                        {
+                            "column": "3",
+                            "body": [
+                                {
+                                    "tag": "image-card"
+                                }
+                            ]
+                        },
+                        {
+                            "column": "3",
+                            "body": [
+                                {
+                                    "tag": "image-card"
+                                }
+                            ]
+                        },
                         {
                             "column": "6",
                             "body": [

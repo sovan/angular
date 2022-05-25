@@ -21,23 +21,13 @@
                 <div *ngIf="eachBody['tag']=='space'" class="space"></div>
                 <S7Pagination *ngIf="eachBody['tag']=='pagination'" [jsonData]="eachBody"
                     (formChild)="callParent($event)"></S7Pagination>
-
-
-
-
-                
-
-
-
-
+                <S7Slider *ngIf="eachBody['tag']=='slider'" [jsonData]="eachBody" (formChild)="callParent($event)">
+                </S7Slider>
+                <S7Accordion *ngIf="eachBody['tag']=='accordion'" [jsonData]="eachBody"
+                    (formChild)="callParent($event)"></S7Accordion>
+                <S7Imagecard *ngIf="eachBody['tag']=='image-card'" [jsonData]="eachBody"
+                    (formChild)="callParent($event)"></S7Imagecard>
             </ng-container>
         </div>
-
-
-
-
-
     </ng-container>
 </div>
-
-

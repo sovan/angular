@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'S7Breadcrumb',
-  templateUrl: 'breadcrumb.html',
-  styleUrls: ['./breadcrumb.css']
+  selector: 'S7Slider',
+  templateUrl: 'slider.html',
+  styleUrls: ['./slider.css']
 })
-export class BreadcrumbComponent {
+export class SliderComponent  {
 
   @Input() jsonData: any;
   @Output() formChild = new EventEmitter<string>();

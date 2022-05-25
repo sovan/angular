@@ -16,6 +16,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
+      "accordion": [
+        "dist/accordion/accordion",
+        "dist/accordion"
+      ],
       "breadcrumb": [
         "dist/breadcrumb/breadcrumb",
         "dist/breadcrumb"
@@ -36,6 +40,10 @@
         "dist/grid/grid",
         "dist/grid"
       ],
+      "imagecard": [
+        "dist/imagecard/imagecard",
+        "dist/imagecard"
+      ],
       "layout": [
         "dist/layout/layout",
         "dist/layout"
@@ -55,6 +63,10 @@
       "pagination": [
         "dist/pagination/pagination",
         "dist/pagination"
+      ],
+      "slider": [
+        "dist/slider/slider",
+        "dist/slider"
       ],
       "tabmenu": [
         "dist/tabmenu/tabmenu",

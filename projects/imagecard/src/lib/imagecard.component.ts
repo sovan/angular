@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'S7Breadcrumb',
-  templateUrl: 'breadcrumb.html',
-  styleUrls: ['./breadcrumb.css']
+  selector: 'S7Imagecard',
+  templateUrl: 'imagecard.html',
+  styleUrls: ['./imagecard.css']
 })
-export class BreadcrumbComponent {
+export class ImagecardComponent {
 
   @Input() jsonData: any;
   @Output() formChild = new EventEmitter<string>();
@@ -17,6 +17,5 @@ export class BreadcrumbComponent {
   callParent(sendJSON: any) {
     this.formChild.emit(sendJSON);
   }
-
 
 }
