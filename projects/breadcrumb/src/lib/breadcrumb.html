@@ -1,114 +1,17 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-</nav>
-
-
-<!--
-<div class="alert alert-success" role="alert">
-    A simple success alert—check it out!
-</div>
-<div class="alert alert-danger" role="alert">
-    A simple danger alert—check it out!
-</div>
-<div class="alert alert-warning" role="alert">
-    A simple warning alert—check it out!
-</div>
-<button type="button" class="btn btn-primary">
-    Notifications <span class="badge bg-secondary">4</span>
-</button>
-
-&nbsp;
-<button type="button" class="btn btn-primary position-relative">
-    Inbox
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        99+
-        <span class="visually-hidden">unread messages</span>
-    </span>
-</button>
-
-&nbsp;
-<button type="button" class="btn btn-primary position-relative">
-    Profile
-    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-        <span class="visually-hidden">New alerts</span>
-    </span>
-</button>
-
-
-<br />
-<br />
-
-
-
-
-
-
-<br />
-<ul class="list-group">
-    <li class="list-group-item active" aria-current="true">An active item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-</ul>
-
-<br /><br />
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-    aria-controls="offcanvasRight">Toggle right offcanvas</button>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        ...
-    </div>
+<div class="breadcumbBG">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <ng-container *ngFor="let eachLink of jsonData['allLinks']">
+                <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
+                    <a href="javascript:void(0)" (click)="callParent(eachLink)">
+                        {{eachLink["text"]}}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page" *ngIf="eachLink['tag'] =='text'">
+                    {{eachLink["text"]}}
+                </li>
+            </ng-container>
+        </ol>
+    </nav>
 </div>
 
-<br /><br />
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-    aria-controls="offcanvasScrolling">Enable body scrolling</button> &nbsp;
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop"
-    aria-controls="offcanvasWithBackdrop">Enable backdrop (default)</button>&nbsp;
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-    aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <p>Try scrolling the rest of the page to see this option in action.</p>
-    </div>
-</div>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
-    aria-labelledby="offcanvasWithBackdropLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <p>.....</p>
-    </div>
-</div>
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-    aria-labelledby="offcanvasWithBothOptionsLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdroped with scrolling</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <p>Try scrolling the rest of the page to see this option in action.</p>
-    </div>
-</div>
-
-<br /><br />
-
--->

@@ -16,7 +16,7 @@
                 </S7Form>
                 <S7Tabmenu *ngIf="eachBody['tag']=='tab-menu'" [jsonData]="eachBody['data']"
                     (formChild)="callParent($event)"></S7Tabmenu>
-                <S7Breadcrumb *ngIf="eachBody['tag']=='breadcumb'" [jsonData]="eachBody['data']"
+                <S7Breadcrumb *ngIf="eachBody['tag']=='breadcumb'" [jsonData]="eachBody"
                     (formChild)="callParent($event)"></S7Breadcrumb>
                 <div *ngIf="eachBody['tag']=='space'" class="space"></div>
                 <S7Pagination *ngIf="eachBody['tag']=='pagination'" [jsonData]="eachBody"

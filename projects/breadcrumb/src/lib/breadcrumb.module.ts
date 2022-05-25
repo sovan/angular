@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BreadcrumbComponent } from './breadcrumb.component';
-
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -8,6 +8,7 @@ import { BreadcrumbComponent } from './breadcrumb.component';
     BreadcrumbComponent
   ],
   imports: [
+    CommonModule
   ],
   exports: [
     BreadcrumbComponent

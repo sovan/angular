@@ -32,7 +32,8 @@
 }
 
 table {
-    width: 100%;
+    width: 1297px;
+    margin: auto;
 }
 
 table td:last-child {
@@ -44,8 +45,30 @@ table td:last-child {
     right: 0px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 992px) {
     .mobileMenu {
         display: none;
+    }
+}
+
+
+@media (max-width: 1401px) {
+    table {
+        width: 1120px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 1201px) {
+    table {
+        width: 940px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 991px) {
+    table {
+        width: 940px;
+        margin: auto;
     }
 }
