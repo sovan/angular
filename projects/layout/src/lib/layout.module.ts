@@ -6,6 +6,7 @@ import { GridModule } from 'projects/grid/src/public-api';
 import { FormModule } from 'projects/form/src/public-api';
 import { TabmenuModule } from 'projects/tabmenu/src/public-api';
 import { BreadcrumbModule } from 'projects/breadcrumb/src/public-api';
+import { PaginationModule } from 'projects/pagination/src/public-api';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BreadcrumbModule } from 'projects/breadcrumb/src/public-api';
     GridModule,
     FormModule,
     TabmenuModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    PaginationModule
   ],
   exports: [
     LayoutComponent

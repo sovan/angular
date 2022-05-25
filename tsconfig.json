@@ -52,6 +52,10 @@
         "dist/npm-packages/npm-packages",
         "dist/npm-packages"
       ],
+      "pagination": [
+        "dist/pagination/pagination",
+        "dist/pagination"
+      ],
       "tabmenu": [
         "dist/tabmenu/tabmenu",
         "dist/tabmenu"
