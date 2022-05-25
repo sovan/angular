@@ -1,78 +1,76 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="positioning">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="javascript:void(0)">{{jsonData["logoText"]}}</a>
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <ng-container *ngFor="let eachMenu of jsonData['menu']">
-                            <li class="nav-item" *ngIf="eachMenu['menu']==undefined">
-                                <a class="nav-link" href="javascript:void(0)" (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
-                            </li>
-                            <!--multi level dropdown menu-->
-                            <li class="nav-item dropdown" *ngIf="eachMenu['menu']!=undefined">
-                                <a class="nav-link" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    {{eachMenu['menuText']}}
-                                    <i class="fa fa-chevron-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <ng-container *ngFor="let eachMenu of eachMenu['menu']">
-                                        <a class="dropdown-item" href="javascript:void(0)"
-                                            *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
-                                            [attr.data-toggle]="'modal'" [attr.data-target]="'#modal'+eachMenu['id']"
-                                            (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
-                                        <a class="dropdown-item" href="javascript:void(0)"
-                                            *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
-                                            (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
-                                        <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
-                                            (formChild)="callParent($event)" [place]="'right'">
-                                        </S7DropDown>
-                                    </ng-container>
-                                </div>
-                            </li>
-                            <!--multi level dropdown menu-->
-                        </ng-container>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0" *ngIf="jsonData['searcBox']">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0"
-                            type="submit">{{jsonData["searchText"]}}</button>
-                    </form>
-                    &nbsp;
-                    <div style="float:right!important">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="{{jsonData['profile']['icon']}}"></i>
-                                &nbsp;
-                                <i class="fa fa-chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                [ngClass]="{'dropdown-menu-right': jsonData['profile']['align']=='left'}">
-                                <ng-container *ngFor="let eachMenu of jsonData['profile']['menu']">
-                                    <a class="dropdown-item" href="javascript:void(0)"
-                                        *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
-                                        (click)="callParent(eachMenu)" [attr.data-toggle]="'modal'"
-                                        [attr.data-target]="'#modal'+eachMenu['id']">{{eachMenu['menuText']}}</a>
-                                    <a class="dropdown-item" href="javascript:void(0)"
-                                        *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark positioning">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="paddingBoth">
+        <table>
+            <tr>
+                <td>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <a class="navbar-brand" href="javascript:void(0)">{{jsonData["logoText"]}}</a>
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <ng-container *ngFor="let eachMenu of jsonData['menu']">
+                                <li class="nav-item" *ngIf="eachMenu['menu']==undefined">
+                                    <a class="nav-link" href="javascript:void(0)"
                                         (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
-                                    <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
-                                        [place]="jsonData['profile']['align']" (formChild)="callParent($event)">
-                                    </S7DropDown>
-                                </ng-container>
-                            </div>
+                                </li>
+                                <!--multi level dropdown menu-->
+                                <li class="nav-item dropdown" *ngIf="eachMenu['menu']!=undefined">
+                                    <a class="nav-link" href="javascript:void(0)" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{eachMenu['menuText']}}
+                                        <i class="fa fa-chevron-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ng-container *ngFor="let eachMenu of eachMenu['menu']">
+                                            <a class="dropdown-item" href="javascript:void(0)"
+                                                *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
+                                                [attr.data-toggle]="'modal'"
+                                                [attr.data-target]="'#modal'+eachMenu['id']"
+                                                (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
+                                            <a class="dropdown-item" href="javascript:void(0)"
+                                                *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
+                                                (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
+                                            <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
+                                                (formChild)="callParent($event)" [place]="'right'">
+                                            </S7DropDown>
+                                        </ng-container>
+                                    </div>
+                                </li>
+                                <!--multi level dropdown menu-->
+                            </ng-container>
+                        </ul>
+                    </div>
+                </td>
+                <td class="mobileMenu">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="{{jsonData['profile']['icon']}}"></i>
+                            &nbsp;
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu dp-menu-right" aria-labelledby="dropdownMenuButton">
+                            <ng-container *ngFor="let eachMenu of jsonData['profile']['menu']">
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                    *ngIf="eachMenu['menu']==undefined && eachMenu['tag']=='button-popup'"
+                                    (click)="callParent(eachMenu)" [attr.data-toggle]="'modal'"
+                                    [attr.data-target]="'#modal'+eachMenu['id']">{{eachMenu['menuText']}}</a>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                    *ngIf="eachMenu['menu']==undefined && eachMenu['tag']!='button-popup'"
+                                    (click)="callParent(eachMenu)">{{eachMenu['menuText']}}</a>
+                                <S7DropDown *ngIf="eachMenu['menu']!=undefined" [eachMenu]="eachMenu"
+                                    [place]="jsonData['profile']['align']" (formChild)="callParent($event)">
+                                </S7DropDown>
+                            </ng-container>
                         </div>
                     </div>
+                </td>
+            </tr>
+        </table>
 
 
-                </div>
-            </nav>
-        </div>
+
     </div>
-</div>
+</nav>

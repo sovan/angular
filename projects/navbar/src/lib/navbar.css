@@ -1,7 +1,8 @@
 .positioning {
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 9;
+    top: 0px;
 }
 
 .dropdown {
@@ -24,3 +25,27 @@
     border: 2px solid #aaa;
 }
 
+.paddingBoth {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+table td:last-child {
+    width: 1px;
+    white-space: nowrap;
+}
+
+.dp-menu-right {
+    right: 0px;
+}
+
+@media (max-width: 800px) {
+    .mobileMenu {
+        display: none;
+    }
+}
