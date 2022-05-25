@@ -1,3 +1,9 @@
-.borderRound {
-    border: 1px solid #000;
+.space {
+    width: 100%;
+    float: left;
+    height: 20px;
+}
+
+p {
+    text-align: justify;
 }

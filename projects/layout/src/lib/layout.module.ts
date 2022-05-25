@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { CommonModule } from '@angular/common';
 import { GridModule } from 'projects/grid/src/public-api';
 import { FormModule } from 'projects/form/src/public-api';
+import { TabmenuModule } from 'projects/tabmenu/src/public-api';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormModule } from 'projects/form/src/public-api';
   imports: [
     CommonModule,
     GridModule,
-    FormModule
+    FormModule,
+    TabmenuModule
   ],
   exports: [
     LayoutComponent

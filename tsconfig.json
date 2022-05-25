@@ -49,6 +49,10 @@
       "npm-packages": [
         "dist/npm-packages/npm-packages",
         "dist/npm-packages"
+      ],
+      "tabmenu": [
+        "dist/tabmenu/tabmenu",
+        "dist/tabmenu"
       ]
     },
     "importHelpers": true,

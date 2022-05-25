@@ -9,6 +9,9 @@
                     "content": "View Profile"
                 },
                 {
+                    "tag": "space"
+                },
+                {
                     "tag": "form",
                     "id": "1",
                     "column": "12",
