@@ -1,5 +1,4 @@
 {
-    "header": "Home",
     "content": [
         {
             "column": "12",
@@ -7,67 +6,6 @@
                 {
                     "tag": "h3",
                     "content": "Home"
-                },
-                {
-                    "tag": "grid",
-                    "content": "UM p2",
-                    "header": [
-                        {
-                            "text": "First Name",
-                            "showIn": [
-                                "view"
-                            ]
-                        },
-                        {
-                            "text": "Last Name",
-                            "showIn": [
-                                "view"
-                            ]
-                        },
-                        {
-                            "text": "Age",
-                            "showIn": [
-                                "view",
-                                "edit"
-                            ]
-                        }
-                    ],
-                    "operation": [
-                        {
-                            "callFunction": "edit",
-                            "icon": "fa fa-pencil",
-                            "tooltips": "Click here to edit",
-                            "headerText": "Edit Form"
-                        },
-                        {
-                            "callFunction": "view",
-                            "icon": "fa fa-eye",
-                            "tooltips": "Click here to view",
-                            "headerText": "View Form"
-                        },
-                        {
-                            "redirectTo": "<1>/view/<ID>",
-                            "icon": "fa fa-eye",
-                            "tag": "redirection"
-                        }
-                    ],
-                    "records": [
-                        [
-                            "Sovan",
-                            "Dey",
-                            "37"
-                        ],
-                        [
-                            "Sannidhya",
-                            "Dey Masanta",
-                            "5"
-                        ],
-                        [
-                            "Luna",
-                            "Masanta",
-                            "31"
-                        ]
-                    ]
                 }
             ]
         }

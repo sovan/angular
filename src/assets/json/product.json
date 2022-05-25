@@ -1,34 +1,26 @@
 {
-    "header": "Home",
     "content": [
         {
             "column": "12",
             "body": [
                 {
                     "tag": "h3",
-                    "content": "Home"
+                    "content": "All Products"
                 },
                 {
                     "tag": "grid",
                     "content": "UM p2",
                     "header": [
                         {
-                            "text": "First Name",
+                            "text": "Product Name",
                             "showIn": [
                                 "view"
                             ]
                         },
                         {
-                            "text": "Last Name",
+                            "text": "Product Price",
                             "showIn": [
                                 "view"
-                            ]
-                        },
-                        {
-                            "text": "Age",
-                            "showIn": [
-                                "view",
-                                "edit"
                             ]
                         }
                     ],
@@ -44,28 +36,20 @@
                             "icon": "fa fa-eye",
                             "tooltips": "Click here to view",
                             "headerText": "View Form"
-                        },
-                        {
-                            "redirectTo": "<1>/view/<ID>",
-                            "icon": "fa fa-eye",
-                            "tag": "redirection"
                         }
                     ],
                     "records": [
                         [
-                            "Sovan",
-                            "Dey",
-                            "37"
+                            "Laptop",
+                            "1000"
                         ],
                         [
-                            "Sannidhya",
-                            "Dey Masanta",
-                            "5"
+                            "Mouse",
+                            "100"
                         ],
                         [
-                            "Luna",
-                            "Masanta",
-                            "31"
+                            "Desktop",
+                            "200"
                         ]
                     ]
                 }

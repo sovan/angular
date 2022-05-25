@@ -1,12 +1,11 @@
 {
-    "header": "Home",
     "content": [
         {
             "column": "12",
             "body": [
                 {
                     "tag": "h3",
-                    "content": "Home"
+                    "content": "All Users"
                 },
                 {
                     "tag": "grid",
@@ -38,12 +37,6 @@
                             "icon": "fa fa-pencil",
                             "tooltips": "Click here to edit",
                             "headerText": "Edit Form"
-                        },
-                        {
-                            "callFunction": "view",
-                            "icon": "fa fa-eye",
-                            "tooltips": "Click here to view",
-                            "headerText": "View Form"
                         },
                         {
                             "redirectTo": "<1>/view/<ID>",
