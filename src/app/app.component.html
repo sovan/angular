@@ -1,5 +1,5 @@
-<S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)"></S7Navbar>
-<div class="container containerPlacing">
+<S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)" *ngIf="(pageStructure['menuData'] | json) != '{}'"></S7Navbar>
+<div class="container containerPlacing" *ngIf="(pageStructure['pageData'] | json) != '{}'">
     <S7Layout [jsonData]="pageStructure['pageData']['content']" (formChild)="callParent($event)"></S7Layout>
 </div>
 

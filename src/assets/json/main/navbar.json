@@ -1,0 +1,54 @@
+{
+    "logoText": "S7even",
+    "searchText": "Search",
+    "searcBox": true,
+    "profile": {
+        "icon": "fa fa-user",
+        "align": "left",
+        "menu": [
+            {
+                "menuText": "My profile",
+                "URL": "my-profile"
+            },
+            {
+                "menuText": "Logout",
+                "tag": "button-popup",
+                "id": "1",
+                "headerText": "Are you sure you want to logout?",
+                "content": [
+                    {
+                        "column": "6",
+                        "body": [
+                            {
+                                "tag": "h3",
+                                "content": "UM"
+                            },
+                            {
+                                "tag": "p",
+                                "content": "UM p1"
+                            },
+                            {
+                                "tag": "p",
+                                "content": "UM p2"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "menu": [
+        {
+            "menuText": "Home",
+            "URL": "home"
+        },
+        {
+            "menuText": "Users",
+            "URL": "users"
+        },
+        {
+            "menuText": "Products",
+            "URL": "product"
+        }
+    ]
+}

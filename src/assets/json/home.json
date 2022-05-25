@@ -1,0 +1,70 @@
+{
+    "header": "Home",
+    "content": [
+        {
+            "column": "12",
+            "body": [
+                {
+                    "tag": "h3",
+                    "content": "Home"
+                },
+                {
+                    "tag": "grid",
+                    "content": "UM p2",
+                    "header": [
+                        {
+                            "text": "First Name",
+                            "showIn": [
+                                "view"
+                            ]
+                        },
+                        {
+                            "text": "Last Name",
+                            "showIn": [
+                                "view"
+                            ]
+                        },
+                        {
+                            "text": "Age",
+                            "showIn": [
+                                "view",
+                                "edit"
+                            ]
+                        }
+                    ],
+                    "operation": [
+                        {
+                            "do": "edit",
+                            "icon": "fa fa-pencil",
+                            "tooltips": "Click here to edit",
+                            "headerText": "Edit Form"
+                        },
+                        {
+                            "do": "view",
+                            "icon": "fa fa-eye",
+                            "tooltips": "Click here to view",
+                            "headerText": "View Form"
+                        }
+                    ],
+                    "records": [
+                        [
+                            "Sovan",
+                            "Dey",
+                            "37"
+                        ],
+                        [
+                            "Sannidhya",
+                            "Dey Masanta",
+                            "5"
+                        ],
+                        [
+                            "Luna",
+                            "Masanta",
+                            "31"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ]
+}

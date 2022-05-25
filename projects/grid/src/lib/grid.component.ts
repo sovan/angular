@@ -27,7 +27,7 @@ export class GridComponent {
     this.popupBoxData["headerText"] = option['headerText'];
     var recordJSON: any = {};
     this.jsonData["header"].map((data: any, index: any) => {
-      if (data["show"].indexOf(option['do']) != -1) {
+      if (data["showIn"].indexOf(option['do']) != -1) {
         recordJSON[data["text"]] = record[index];
       }
     });
