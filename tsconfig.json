@@ -44,6 +44,10 @@
         "dist/imagecard/imagecard",
         "dist/imagecard"
       ],
+      "innerlayout": [
+        "dist/innerlayout/innerlayout",
+        "dist/innerlayout"
+      ],
       "layout": [
         "dist/layout/layout",
         "dist/layout"
