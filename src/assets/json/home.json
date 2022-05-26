@@ -60,34 +60,212 @@
                     "tag": "card",
                     "content": [
                         {
-                            "column": "3",
+                            "column": "12",
                             "body": [
                                 {
-                                    "tag": "image-card"
-                                }
-                            ]
-                        },
-                        {
-                            "column": "3",
-                            "body": [
-                                {
-                                    "tag": "image-card"
-                                }
-                            ]
-                        },
-                        {
-                            "column": "3",
-                            "body": [
-                                {
-                                    "tag": "image-card"
-                                }
-                            ]
-                        },
-                        {
-                            "column": "3",
-                            "body": [
-                                {
-                                    "tag": "image-card"
+                                    "tag": "card",
+                                    "content": [
+                                        {
+                                            "column": "3",
+                                            "body": [
+                                                {
+                                                    "tag": "image-card",
+                                                    "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+                                                    "content": [
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "h5",
+                                                                    "content": "Image Name"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "p",
+                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                },
+                                                                {
+                                                                    "tag": "button-popup",
+                                                                    "id": "1",
+                                                                    "headerText": "Popup from Slider",
+                                                                    "buttonText": "Simple Popup",
+                                                                    "content": [
+                                                                        {
+                                                                            "column": "12",
+                                                                            "body": [
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                },
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "column": "3",
+                                            "body": [
+                                                {
+                                                    "tag": "image-card",
+                                                    "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+                                                    "content": [
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "h5",
+                                                                    "content": "Image Name1"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "p",
+                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                },
+                                                                {
+                                                                    "tag": "button-popup",
+                                                                    "id": "1",
+                                                                    "headerText": "Popup from Slider",
+                                                                    "buttonText": "Simple Popup",
+                                                                    "content": [
+                                                                        {
+                                                                            "column": "12",
+                                                                            "body": [
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                },
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "column": "3",
+                                            "body": [
+                                                {
+                                                    "tag": "image-card",
+                                                    "image": "https://www.w3schools.com/howto/img_nature_wide.jpg",
+                                                    "content": [
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "h5",
+                                                                    "content": "Image Name3"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "p",
+                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                },
+                                                                {
+                                                                    "tag": "button-popup",
+                                                                    "id": "1",
+                                                                    "headerText": "Popup from Slider",
+                                                                    "buttonText": "Simple Popup",
+                                                                    "content": [
+                                                                        {
+                                                                            "column": "12",
+                                                                            "body": [
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                },
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "column": "3",
+                                            "body": [
+                                                {
+                                                    "tag": "image-card",
+                                                    "image": "https://www.w3schools.com/howto/img_nature_wide.jpg",
+                                                    "content": [
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "h5",
+                                                                    "content": "Image Name2"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "column": "12",
+                                                            "body": [
+                                                                {
+                                                                    "tag": "p",
+                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                },
+                                                                {
+                                                                    "tag": "button-popup",
+                                                                    "id": "1",
+                                                                    "headerText": "Popup from Slider",
+                                                                    "buttonText": "Simple Popup",
+                                                                    "content": [
+                                                                        {
+                                                                            "column": "12",
+                                                                            "body": [
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                },
+                                                                                {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         },
