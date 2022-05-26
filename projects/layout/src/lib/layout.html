@@ -9,12 +9,13 @@
                 <!--Basic html-->
                 <ng-container>
                     <h3 *ngIf="eachBody['tag']=='h3'">{{eachBody['content']}}</h3>
+                    <h4 *ngIf="eachBody['tag']=='headerOfGrid'">{{eachBody['content']}}</h4>
                     <h5 *ngIf="eachBody['tag']=='h5'">{{eachBody['content']}}</h5>
                     <p *ngIf="eachBody['tag']=='p'">{{eachBody['content']}}</p>
                     <div *ngIf="eachBody['tag']=='space'" class="space"></div>
                     <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
                         [attr.data-target]="'#modal'+eachBody['id']" *ngIf="eachBody['tag']=='button-popup'"
-                        (click)="callParent(eachBody)">
+                        (click)="callParent(eachBody)" [style.float]="eachBody['align'] ? 'right':''">
                         {{eachBody['buttonText']}}
                     </button>
                 </ng-container>
@@ -154,8 +155,6 @@
                         </ul>
                     </nav>
                 </ng-container>
-
-
 
 
                 
