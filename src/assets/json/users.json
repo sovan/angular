@@ -34,7 +34,7 @@
                             "body": [
                                 {
                                     "align": "right",
-                                    "tag": "button-popup",
+                                    "tag": "button-popup", 
                                     "id": "1",
                                     "headerText": "Add User",
                                     "buttonText": "Add a User",

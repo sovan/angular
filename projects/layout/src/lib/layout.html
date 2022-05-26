@@ -3,8 +3,9 @@
         <div class="col-sm-{{eachBlock['column']}}">
             <ng-container *ngFor="let eachBody of eachBlock['body']">
 
-                <S7Layout [jsonData]="eachBody['content']" *ngIf="eachBody['tag']=='card'"
-                    (formChild)="callParent($event)"></S7Layout>
+                <ng-container *ngIf="eachBody['tag']=='card'">
+                    <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)"></S7Layout>
+                </ng-container>
 
                 <!--Basic html-->
                 <ng-container>
@@ -22,12 +23,15 @@
 
 
                 <!--Grid-->
-                <S7Grid *ngIf="eachBody['tag']=='grid'" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
+                <ng-container *ngIf="eachBody['tag']=='grid'">
+                    <S7Grid [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
+                </ng-container>
+
 
                 <!--Form-->
-                <S7Form *ngIf="eachBody['tag']=='form'" [jsonData]="eachBody['data']" (formChild)="callParent($event)">
-                </S7Form>
-
+                <ng-container *ngIf="eachBody['tag']=='form'">
+                    <S7Form [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Form>
+                </ng-container>
 
 
                 <!--Slider-->
@@ -100,7 +104,7 @@
 
 
                 <!--breadcumb-->
-                <ng-container *ngIf="eachBody['tag']=='breadcumb'" >
+                <ng-container *ngIf="eachBody['tag']=='breadcumb'">
                     <div class="breadcumbBG">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -131,7 +135,7 @@
                     </div>
                 </ng-container>
 
-                
+
 
                 <!--Pagination-->
                 <ng-container *ngIf="eachBody['tag']=='pagination'">
@@ -157,7 +161,7 @@
                 </ng-container>
 
 
-                
+
                 <!--Tabmenu-->
                 <ng-container *ngIf="eachBody['tag']=='tab-menu'">
                     <ul class="nav nav-tabs nav-fill" id="ex1" role="tablist">
