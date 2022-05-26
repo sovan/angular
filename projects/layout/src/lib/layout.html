@@ -4,7 +4,7 @@
             <ng-container *ngFor="let eachBody of eachBlock['body']">
 
                 <S7Layout [jsonData]="eachBody['content']" *ngIf="eachBody['tag']=='card'"
-                        (formChild)="callParent($event)"></S7Layout>
+                    (formChild)="callParent($event)"></S7Layout>
 
                 <!--Basic html-->
                 <ng-container>
@@ -18,7 +18,7 @@
                     </button>
                 </ng-container>
 
-            
+
                 <!--Grid-->
                 <S7Grid *ngIf="eachBody['tag']=='grid'" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
 
@@ -85,11 +85,11 @@
 
 
                 <!--breadcumb-->
-                <ng-container *ngIf="eachBody['tag']=='pagination'">
+                <ng-container *ngIf="eachBody['tag']=='breadcumb'">
                     <div class="breadcumbBG">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <ng-container *ngFor="let eachLink of jsonData['allLinks']">
+                                <ng-container *ngFor="let eachLink of eachBody['allLinks']">
                                     <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
                                         <a href="javascript:void(0)" (click)="callParent(eachLink)">
                                             {{eachLink["text"]}}
@@ -132,55 +132,54 @@
 
 
 
+
+                
+
                 <!--Slider-->
                 <ng-container *ngIf="eachBody['tag']=='slider'">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
                         <!--Lower section button -->
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
+                        <div class="carousel-indicators" *ngIf="eachBody['jumpToSlideButton']!=undefined && eachBody['jumpToSlideButton']=='active'">
+                            <ng-container *ngFor="let eachSlider of eachBody['content']; let i = index">
+                                <button type="button" data-bs-target="#carouselExampleCaptions"
+                                    [attr.data-bs-slide-to]="i" [ngClass]="i==0 ? 'active' : ''"
+                                    aria-current="true"></button>
+                            </ng-container>
                         </div>
+
+                        <!--images and Body-->
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://wallpaperaccess.com/full/215445.jpg" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
+                            <ng-container *ngFor="let eachSlider of eachBody['content']; let i = index">
+                                <div class="carousel-item" [ngClass]="i==0 ? 'active' : ''">
+                                    <img src="{{eachSlider['image']}}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <S7Layout [jsonData]="eachSlider['content']" (formChild)="callParent($event)">
+                                        </S7Layout>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://wallpaperaccess.com/full/36379.jpg" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
-                                    class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
-                                </div>
-                            </div>
+                            </ng-container>
                         </div>
+
                         <!-- button right and left -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <ng-container
+                            *ngIf="eachBody['nextPrevButton']!=undefined && eachBody['nextPrevButton']=='active'">
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </ng-container>
                     </div>
                 </ng-container>
+
+
+
 
                 <!--Accordian-->
                 <ng-container *ngIf="eachBody['tag']=='accordion'">
