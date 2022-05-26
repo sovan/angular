@@ -6,24 +6,40 @@
                 <div [ngSwitch]="eachBody['tag']">
                     <div *ngSwitchDefault>
                         <!--Basic html-->
-                        <h3 *ngIf="eachBody['tag']=='h3'">{{eachBody['content']}}</h3>
-                        <h4 *ngIf="eachBody['tag']=='headerOfGrid'">{{eachBody['content']}}</h4>
-                        <h5 *ngIf="eachBody['tag']=='h5'">{{eachBody['content']}}</h5>
                         <p *ngIf="eachBody['tag']=='p'">{{eachBody['content']}}</p>
-                        <div *ngIf="eachBody['tag']=='space'" class="space"></div>
+                    </div>
+
+                    <div *ngSwitchCase="'h3'">
+                        <h3>{{eachBody['content']}}</h3>
+                    </div>
+
+                    <div *ngSwitchCase="'headerOfGrid'">
+                        <h4>{{eachBody['content']}}</h4>
+                    </div>
+
+                    <div *ngSwitchCase="'h5'">
+                        <h5>{{eachBody['content']}}</h5>
+                    </div>
+
+                    <div *ngSwitchCase="'space'">
+                        <div class="space"></div>
+                    </div>
+
+                    <div *ngSwitchCase="'button-popup'">
+                        <!--Modal Box call button -->
                         <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
-                            [attr.data-target]="'#modal'+eachBody['id']" *ngIf="eachBody['tag']=='button-popup'"
-                            (click)="callParent(eachBody)" [style.float]="eachBody['align'] ? 'right':''">
+                            [attr.data-target]="'#modal'+eachBody['id']" (click)="callParent(eachBody)"
+                            [style.float]="eachBody['align'] ? 'right':''">
                             {{eachBody['buttonText']}}
                         </button>
                     </div>
 
-                    
+
                     <div *ngSwitchCase="'card'">
                         <!--Recursive Function call-->
                         <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)"></S7Layout>
                     </div>
-                    
+
                     <div *ngSwitchCase="'grid'">
                         <!--Grid-->
                         <S7Grid [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
@@ -47,20 +63,21 @@
                                         aria-current="true"></button>
                                 </ng-container>
                             </div>
-    
+
                             <!--images and Body-->
                             <div class="carousel-inner">
                                 <ng-container *ngFor="let eachSlider of eachBody['content']; let i = index">
                                     <div class="carousel-item" [ngClass]="i==0 ? 'active' : ''">
                                         <img src="{{eachSlider['image']}}" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <S7Layout [jsonData]="eachSlider['content']" (formChild)="callParent($event)">
+                                            <S7Layout [jsonData]="eachSlider['content']"
+                                                (formChild)="callParent($event)">
                                             </S7Layout>
                                         </div>
                                     </div>
                                 </ng-container>
                             </div>
-    
+
                             <!-- button right and left -->
                             <ng-container
                                 *ngIf="eachBody['nextPrevButton']!=undefined && eachBody['nextPrevButton']=='active'">
@@ -85,8 +102,9 @@
                             <ng-container *ngFor="let eachRow of eachBody['content']; let i = index">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwso">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            [attr.data-bs-target]="'#sss' + i" aria-expanded="true">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" [attr.data-bs-target]="'#sss' + i"
+                                            aria-expanded="true">
                                             {{eachRow['title']}}
                                         </button>
                                     </h2>
@@ -173,41 +191,56 @@
                         <div class="tab-content" id="ex2-content">
                             <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel"
                                 aria-labelledby="ex2-tab-1">
-                                1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum
                                 has been the
-                                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                                industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley
                                 of type
-                                and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                                and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                but
                                 also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                                the
                                 1960s
-                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                with
                                 desktop
                                 publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </div>
                             <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
-                                2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum
                                 has been the
-                                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                                industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley
                                 of type
-                                and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                                and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                but
                                 also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                                the
                                 1960s
-                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                with
                                 desktop
                                 publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </div>
                             <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
-                                3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum
                                 has been the
-                                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                                industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley
                                 of type
-                                and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                                and scrambled it to make a type specimen book. It has survived not only five centuries,
+                                but
                                 also the
-                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                                leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                                the
                                 1960s
-                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                                with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                with
                                 desktop
                                 publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </div>
