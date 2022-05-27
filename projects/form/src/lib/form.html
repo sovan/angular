@@ -1,9 +1,29 @@
-{{headers | json}}
 <table>
     <tbody>
         <tr *ngFor="let eachHeader of headers">
-            <th>{{eachHeader}}</th>
-            <td>{{jsonData[eachHeader]}}</td>
+            <th>{{formDataImage[eachHeader]['lable']}}</th>
+            <td>
+                <ng-container [ngSwitch]="formDataImage[eachHeader]['type']">
+
+                    <ng-container *ngSwitchDefault>
+                        <!--Default type -->
+                        <div style="color:#F00">Input Type : {{formDataImage[eachHeader]['type']}} not specified</div>
+                    </ng-container>
+
+                    <ng-container *ngSwitchCase="'text'">
+
+                        <input type="text" placeholder="{{formDataImage[eachHeader]['placeHolder']}}"
+                            (focusout)="validateEachField(eachHeader)" (keyup)="validateEachField(eachHeader)"
+                            class="form-control {{formDataImage[eachHeader]['valid']['class']}}"
+                            [(ngModel)]="formValue[eachHeader]" />
+
+                        <div class="invalid-feedback">{{formDataImage[eachHeader]['valid']['message']}}</div>
+
+                    </ng-container>
+
+
+                </ng-container>
+            </td>
         </tr>
     </tbody>
 </table>

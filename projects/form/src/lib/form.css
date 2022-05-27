@@ -24,4 +24,5 @@ table th {
     background: #eee;
     width: 1%;
     white-space: nowrap;
+    vertical-align: text-top
 }

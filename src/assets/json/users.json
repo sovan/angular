@@ -34,7 +34,7 @@
                             "body": [
                                 {
                                     "align": "right",
-                                    "tag": "button-popup", 
+                                    "tag": "button-popup",
                                     "id": "1",
                                     "headerText": "Add User",
                                     "buttonText": "Add a User",
@@ -43,12 +43,52 @@
                                             "column": "12",
                                             "body": [
                                                 {
-                                                    "tag": "p",
-                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
-                                                },
-                                                {
-                                                    "tag": "p",
-                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                    "tag": "form",
+                                                    "data": {
+                                                        "fname": {
+                                                            "type": "text",
+                                                            "lable": "First Name",
+                                                            "placeHolder": "Type in First Name",
+                                                            "validation": [
+                                                                {
+                                                                    "validateKey": "required",
+                                                                    "msg": "Please enter first name"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "lname": {
+                                                            "type": "text",
+                                                            "lable": "Last Name",
+                                                            "placeHolder": "Type in Last Name",
+                                                            "validation": [
+                                                                {
+                                                                    "validateKey": "required",
+                                                                    "msg": "Please enter last name"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "age": {
+                                                            "type": "text",
+                                                            "lable": "Age",
+                                                            "placeHolder": "Type in Age",
+                                                            "validation": [
+                                                                {
+                                                                    "validateKey": "required",
+                                                                    "msg": "Please enter your age"
+                                                                },
+                                                                {
+                                                                    "validateKey": "min",
+                                                                    "val": 18,
+                                                                    "msg": "Age should be greater than 18 years"
+                                                                },
+                                                                {
+                                                                    "validateKey": "max",
+                                                                    "val": 99,
+                                                                    "msg": "Age should less than 99 years"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         }
