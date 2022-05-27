@@ -15,14 +15,25 @@ export class FormComponent implements OnChanges {
   formValue: any = {};
 
   validateEachField(boxName: string) {
-
-
-
-    for(var i=0; i<this.formDataImage[boxName]["validation"].length; i++){
+    for (var i = 0; i < this.formDataImage[boxName]["validation"].length; i++) {
       let eachValidation = this.formDataImage[boxName]["validation"][i];
       this.formDataImage[boxName]['valid']['message'] = '';
       this.formDataImage[boxName]['valid']['class'] = '';
-      let value = this.formValue[boxName];
+
+      //Get the value 
+      var value = "";
+      if (this.formDataImage[boxName]['type'] == 'number') {
+        if (this.formValue[boxName] == null) {
+          value = '';
+        } else {
+          value = this.formValue[boxName]
+        }
+      } else {
+        value = this.formValue[boxName].trim();
+      }
+
+
+      //Validation starts
       let errorMSG = "";
       switch (eachValidation['validateKey']) {
         case "required": {
@@ -32,13 +43,13 @@ export class FormComponent implements OnChanges {
           break;
         }
         case "min": {
-          if (value != "" && value<eachValidation['val']) {
+          if (value != "" && parseInt(value) < parseInt(eachValidation['val'])) {
             errorMSG = eachValidation['msg'];
           }
           break;
         }
         case "max": {
-          if (value != "" && value>eachValidation['val']) {
+          if (value != "" && parseInt(value) > parseInt(eachValidation['val'])) {
             errorMSG = eachValidation['msg'];
           }
           break;
@@ -54,7 +65,7 @@ export class FormComponent implements OnChanges {
       }
     }
 
-    
+
 
 
   }

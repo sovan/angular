@@ -68,15 +68,14 @@
                                                             ]
                                                         },
                                                         "age": {
-                                                            "type": "text",
+                                                            "type": "number",
                                                             "lable": "Age",
                                                             "placeHolder": "Type in Age",
                                                             "validation": [
                                                                 {
                                                                     "validateKey": "required",
-                                                                    "msg": "Please enter your age"
-                                                                },
-                                                                {
+                                                                    "msg": "Please enter age"
+                                                                },{
                                                                     "validateKey": "min",
                                                                     "val": 18,
                                                                     "msg": "Age should be greater than 18 years"

@@ -11,16 +11,20 @@
                     </ng-container>
 
                     <ng-container *ngSwitchCase="'text'">
-
                         <input type="text" placeholder="{{formDataImage[eachHeader]['placeHolder']}}"
                             (focusout)="validateEachField(eachHeader)" (keyup)="validateEachField(eachHeader)"
                             class="form-control {{formDataImage[eachHeader]['valid']['class']}}"
                             [(ngModel)]="formValue[eachHeader]" />
-
-                        <div class="invalid-feedback">{{formDataImage[eachHeader]['valid']['message']}}</div>
-
                     </ng-container>
 
+                    <ng-container *ngSwitchCase="'number'">
+                        <input type="number" placeholder="{{formDataImage[eachHeader]['placeHolder']}}"
+                            (focusout)="validateEachField(eachHeader)" (keyup)="validateEachField(eachHeader)"
+                            class="form-control {{formDataImage[eachHeader]['valid']['class']}}"
+                            [(ngModel)]="formValue[eachHeader]" />
+                    </ng-container>
+
+                    <div class="invalid-feedback">{{formDataImage[eachHeader]['valid']['message']}}</div>
 
                 </ng-container>
             </td>
