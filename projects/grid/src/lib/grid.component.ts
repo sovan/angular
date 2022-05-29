@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'S7Grid',
@@ -17,12 +17,14 @@ export class GridComponent implements OnChanges {
   footerButton: any = [];
   constructor() { }
   hookToGrid: any = 'doNotFire';
+  popupWhicButtonClicked: any = '';
 
   callParent(sendJSON: any) {
     this.formChild.emit(sendJSON);
   }
 
   readValueOfForm(action: any) {
+    this.popupWhicButtonClicked = action;
     this.hookToGrid = new Date().getTime();
   }
 
@@ -37,7 +39,7 @@ export class GridComponent implements OnChanges {
     this.headerText = action['headerText'];
     this.formFields = {};
 
-    this.footerButton = action['operationButton'];
+    this.footerButton = action['operationOnPopup'];
 
     Object.keys(this.jsonData['form']).map((value: string) => { //Create the object for creating a form
       if (this.jsonData['form'][value]['show'].indexOf(action['callFunction']) != -1) {
@@ -55,7 +57,7 @@ export class GridComponent implements OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     Object.keys(this.jsonData['form']).map((value: string) => {
       if (this.jsonData['form'][value]['show'] != undefined && this.jsonData['form'][value]['show'].indexOf("list") != -1) { //List column configuration
         this.gridHeader.push(this.jsonData['form'][value]['lable']);
@@ -65,6 +67,9 @@ export class GridComponent implements OnChanges {
   }
 
   activityOnFormValue(data: any){
-    console.log(JSON.stringify(data));
+    data['url'] = this.jsonData['url'];
+    data['operation'] = this.popupWhicButtonClicked['callFunction'];
+    data['tag'] = "database";
+    this.formChild.emit(data);
   }
 }

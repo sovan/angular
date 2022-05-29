@@ -40,6 +40,14 @@ export class AppComponent {
 			case "button-popup": {
 				this.popupStructure[sendJSON['id']] = sendJSON;
 				break;
+			} 
+			case "database": {
+				console.log(JSON.stringify(sendJSON));
+				break;
+			}
+			case "action-popup": {
+				this.popupStructure[1] = sendJSON;
+				break;
 			}
 			case "action-popup": {
 				this.popupStructure[1] = sendJSON;
@@ -49,7 +57,7 @@ export class AppComponent {
 				//console.log(sendJSON['redirectTo'], this.currentPageURL);
 				var URLSegment = sendJSON['redirectTo'].split('/');
 				var currentURLArray = this.currentPageURL.split('/');
-				
+
 
 
 				URLSegment.map((eachSegment: any, index: number) => {

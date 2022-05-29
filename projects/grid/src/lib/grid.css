@@ -81,7 +81,8 @@ table.header td:last-child  {
     white-space: nowrap;
 }
 .iconClass span{
-    margin-right: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 .iconClass{
     margin-left: 5px;

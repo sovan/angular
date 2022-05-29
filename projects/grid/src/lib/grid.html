@@ -44,7 +44,7 @@
                     <!--Popup button -->
 
 
-                    <button class="btn {{eachOperation['class']}}" [attr.data-toggle]="'modal'"
+                    <button class="btn {{eachOperation['class']}} iconClass" [attr.data-toggle]="'modal'"
                         [attr.data-target]="'#modal-grid-form-'+jsonData['id']"
                         (click)="passValueToModal(eachOperation, eachRecord)"
                         *ngIf="eachOperation['callFunction']!=undefined">

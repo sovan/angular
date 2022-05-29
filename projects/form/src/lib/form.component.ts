@@ -75,26 +75,34 @@ export class FormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      if (propName == 'hookToGrid') {
-        if (changes[propName]['currentValue'] != 'doNotFire') { //Sent form-value to parent
+      if (propName == 'hookToGrid') { //Sent form-value to parent
+        if (changes[propName]['currentValue'] != 'doNotFire') { //If first time on load don't return form value to parent
           let isFormValid: any = 'valid';
           Object.keys(this.formDataImage).map((key: any) => {
             isFormValid = this.validateEachField(key) ? 'valid' : 'invalid';
           })
           var returnFormData: any = {};
           returnFormData['formValue'] = this.formValue;
+
+
+
           returnFormData['callFunction'] = this.operation['callFunction'];
           returnFormData['isFormValid'] = isFormValid;
 
           this.formChild.emit(returnFormData);
         }
-      } else {
+      } else { //All other onChanges other than parent ask for submit form
+        
         this.formDataImage = JSON.parse(JSON.stringify(this.jsonData));
         this.headers = Object.keys(this.formDataImage);
-        //Putting default validation message in the object
-        this.headers.map((key: any) => {
+        
+        Object.keys(this.record).map((key: any) => { //Filling value for edit and view
+          this.formValue[key] = this.record[key] ? this.record[key] : "";
+        });
+
+
+        this.headers.map((key: any) => { //Put validation data on the form
           this.formDataImage[key]['valid'] = { "class": "", "message": "" };
-          this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for edit and view
         });
       }
     }

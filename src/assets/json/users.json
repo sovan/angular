@@ -19,6 +19,7 @@
                 },
                 {
                     "tag": "grid",
+                    "url": "abc.com",
                     "id": "user-grid",
                     "headerOfGrid": "All Users",
                     "form": {
@@ -108,7 +109,7 @@
                             ],
                             "headerText": "Add a User",
                             "class": "btn-primary",
-                            "operationButton": [
+                            "operationOnPopup": [
                                 {
                                     "callFunction": "save",
                                     "tooltips": "Click here to save",
@@ -117,9 +118,10 @@
                                         {
                                             "type": "icon",
                                             "value": "fa fa-save"
-                                        }, {
+                                        },
+                                        {
                                             "type": "text",
-                                            "value": "Save Rec"
+                                            "value": "Insert"
                                         }
                                     ]
                                 },
@@ -131,7 +133,8 @@
                                         {
                                             "type": "icon",
                                             "value": "fa fa-close"
-                                        },{
+                                        },
+                                        {
                                             "type": "text",
                                             "value": "Close"
                                         }
@@ -159,6 +162,38 @@
                     "operation": [
                         {
                             "callFunction": "edit",
+                            "operationOnPopup": [
+                                {
+                                    "callFunction": "update",
+                                    "tooltips": "Click here to save",
+                                    "class": "btn-warning",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-save"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "Update"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "callFunction": "close",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-danger",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-close"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "Close"
+                                        }
+                                    ]
+                                }
+                            ],
                             "tooltips": "Click here to edit",
                             "headerText": "Edit User",
                             "class": "btn-primary",
