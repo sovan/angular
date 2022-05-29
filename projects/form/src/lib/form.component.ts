@@ -19,55 +19,57 @@ export class FormComponent implements OnChanges {
 
   validateEachField(boxName: string) {
     let isValid = true;
-    for (var i = 0; i < this.formDataImage[boxName]["validation"].length; i++) {
-      let eachValidation = this.formDataImage[boxName]["validation"][i];
-      this.formDataImage[boxName]['valid']['message'] = '';
-      this.formDataImage[boxName]['valid']['class'] = '';
+    if (this.formDataImage[boxName]["validation"] != undefined) {
+      for (var i = 0; i < this.formDataImage[boxName]["validation"].length; i++) {
+        let eachValidation = this.formDataImage[boxName]["validation"][i];
+        this.formDataImage[boxName]['valid']['message'] = '';
+        this.formDataImage[boxName]['valid']['class'] = '';
 
-      //Get the value 
-      var value = "";
-      if (this.formDataImage[boxName]['type'] == 'number') {
-        if (this.formValue[boxName] == null) {
-          value = '';
+        //Get the value 
+        var value = "";
+        if (this.formDataImage[boxName]['type'] == 'number') {
+          if (this.formValue[boxName] == null) {
+            value = '';
+          } else {
+            value = this.formValue[boxName]
+          }
         } else {
-          value = this.formValue[boxName]
+          value = this.formValue[boxName].trim();
         }
-      } else {
-        value = this.formValue[boxName].trim();
-      }
 
 
-      //Validation starts
-      let errorMSG = "";
-      switch (eachValidation['validateKey']) {
-        case "required": {
-          if (value == "" || value == null) {
-            errorMSG = eachValidation['msg'];
+        //Validation starts
+        let errorMSG = "";
+        switch (eachValidation['validateKey']) {
+          case "required": {
+            if (value == "" || value == null) {
+              errorMSG = eachValidation['msg'];
+            }
+            break;
           }
+          case "min": {
+            if (value != "" && parseInt(value) < parseInt(eachValidation['val'])) {
+              errorMSG = eachValidation['msg'];
+            }
+            break;
+          }
+          case "max": {
+            if (value != "" && parseInt(value) > parseInt(eachValidation['val'])) {
+              errorMSG = eachValidation['msg'];
+            }
+            break;
+          }
+        }
+        if (!errorMSG && value != "") {
+          this.formDataImage[boxName]['valid']['message'] = "";
+          this.formDataImage[boxName]['valid']['class'] = 'is-valid';
+          isValid = true;
+        } else if (errorMSG) {
+          this.formDataImage[boxName]['valid']['message'] = errorMSG;
+          this.formDataImage[boxName]['valid']['class'] = 'is-invalid';
+          isValid = false;
           break;
         }
-        case "min": {
-          if (value != "" && parseInt(value) < parseInt(eachValidation['val'])) {
-            errorMSG = eachValidation['msg'];
-          }
-          break;
-        }
-        case "max": {
-          if (value != "" && parseInt(value) > parseInt(eachValidation['val'])) {
-            errorMSG = eachValidation['msg'];
-          }
-          break;
-        }
-      }
-      if (!errorMSG && value != "") {
-        this.formDataImage[boxName]['valid']['message'] = "";
-        this.formDataImage[boxName]['valid']['class'] = 'is-valid';
-        isValid = true;
-      } else if (errorMSG) {
-        this.formDataImage[boxName]['valid']['message'] = errorMSG;
-        this.formDataImage[boxName]['valid']['class'] = 'is-invalid';
-        isValid = false;
-        break;
       }
     }
     return isValid;
@@ -78,24 +80,23 @@ export class FormComponent implements OnChanges {
       if (propName == 'hookToGrid') { //Sent form-value to parent
         if (changes[propName]['currentValue'] != 'doNotFire') { //If first time on load don't return form value to parent
           let isFormValid: any = 'valid';
+
+
           Object.keys(this.formDataImage).map((key: any) => {
             isFormValid = this.validateEachField(key) ? 'valid' : 'invalid';
           })
           var returnFormData: any = {};
           returnFormData['formValue'] = this.formValue;
-
-
-
           returnFormData['callFunction'] = this.operation['callFunction'];
           returnFormData['isFormValid'] = isFormValid;
 
           this.formChild.emit(returnFormData);
         }
       } else { //All other onChanges other than parent ask for submit form
-        
+
         this.formDataImage = JSON.parse(JSON.stringify(this.jsonData));
         this.headers = Object.keys(this.formDataImage);
-        
+
         Object.keys(this.record).map((key: any) => { //Filling value for edit and view
           this.formValue[key] = this.record[key] ? this.record[key] : "";
         });

@@ -206,6 +206,23 @@
                         },
                         {
                             "callFunction": "view",
+                            "operationOnPopup": [
+                                {
+                                    "callFunction": "close",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-danger",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-close"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "Close"
+                                        }
+                                    ]
+                                }
+                            ],
                             "tooltips": "Click here to view",
                             "headerText": "View User",
                             "class": "btn-success",
