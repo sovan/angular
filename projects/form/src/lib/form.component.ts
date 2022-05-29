@@ -7,6 +7,8 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 })
 export class FormComponent implements OnChanges {
   @Input() jsonData: any;
+  @Input() operation: any;
+  @Input() record: any;
   @Output() formChild = new EventEmitter<string>();
 
   headers: any = [];
@@ -64,20 +66,15 @@ export class FormComponent implements OnChanges {
         break;
       }
     }
-
-
-
-
   }
 
   ngOnChanges() {
     this.formDataImage = JSON.parse(JSON.stringify(this.jsonData));
     this.headers = Object.keys(this.formDataImage);
-
     //Putting default validation message in the object
     this.headers.map((key: any) => {
       this.formDataImage[key]['valid'] = { "class": "", "message": "" };
-      this.formValue[key] = "";
+      this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for edit and view
     });
   }
 }

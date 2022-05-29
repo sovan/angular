@@ -7,3 +7,10 @@
 p {
     text-align: justify;
 }
+
+.modalCloseButton{
+    width: 30px;
+    float: right;
+    right: -33px;
+    position: absolute;
+}

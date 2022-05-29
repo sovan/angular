@@ -18,146 +18,150 @@
                     ]
                 },
                 {
-                    "tag": "card",
-                    "content": [
-                        {
-                            "column": "10",
-                            "body": [
+                    "tag": "grid",
+                    "headerOfGrid": "All Users",
+                    "form": {
+                        "id": {
+                            "type": "text",
+                            "lable": "ID",
+                            "placeHolder": "Type in ID",
+                            "show": [                              
+                                "view"
+                            ]
+                        },
+                        "fname": {
+                            "type": "text",
+                            "lable": "First Name",
+                            "placeHolder": "Type in First Name",
+                            "show": [
+                                "add",
+                                "edit",
+                                "list",
+                                "view"
+                            ],
+                            "validation": [
                                 {
-                                    "tag": "headerOfGrid",
-                                    "content": "All Users"
+                                    "validateKey": "required",
+                                    "msg": "Please enter first name"
                                 }
                             ]
                         },
-                        {
-                            "column": "2",
-                            "body": [
+                        "lname": {
+                            "type": "text",
+                            "lable": "Last Name",
+                            "placeHolder": "Type in Last Name",
+                            "show": [
+                                "add",
+                                "edit",
+                                "list",
+                                "view"
+                            ],
+                            "validation": [
                                 {
-                                    "align": "right",
-                                    "tag": "button-popup",
-                                    "id": "1",
-                                    "headerText": "Add User",
-                                    "buttonText": "Add a User",
-                                    "content": [
-                                        {
-                                            "column": "12",
-                                            "body": [
-                                                {
-                                                    "tag": "form",
-                                                    "data": {
-                                                        "fname": {
-                                                            "type": "text",
-                                                            "lable": "First Name",
-                                                            "placeHolder": "Type in First Name",
-                                                            "validation": [
-                                                                {
-                                                                    "validateKey": "required",
-                                                                    "msg": "Please enter first name"
-                                                                }
-                                                            ]
-                                                        },
-                                                        "lname": {
-                                                            "type": "text",
-                                                            "lable": "Last Name",
-                                                            "placeHolder": "Type in Last Name",
-                                                            "validation": [
-                                                                {
-                                                                    "validateKey": "required",
-                                                                    "msg": "Please enter last name"
-                                                                }
-                                                            ]
-                                                        },
-                                                        "age": {
-                                                            "type": "number",
-                                                            "lable": "Age",
-                                                            "placeHolder": "Type in Age",
-                                                            "validation": [
-                                                                {
-                                                                    "validateKey": "required",
-                                                                    "msg": "Please enter age"
-                                                                },{
-                                                                    "validateKey": "min",
-                                                                    "val": 18,
-                                                                    "msg": "Age should be greater than 18 years"
-                                                                },
-                                                                {
-                                                                    "validateKey": "max",
-                                                                    "val": 99,
-                                                                    "msg": "Age should less than 99 years"
-                                                                }
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "validateKey": "required",
+                                    "msg": "Please enter last name"
                                 }
                             ]
                         },
-                        {
-                            "column": "12",
-                            "body": [
+                        "age": {
+                            "type": "number",
+                            "lable": "Age",
+                            "placeHolder": "Type in Age",
+                            "show": [
+                                "add",
+                                "edit",
+                                "list",
+                                "view"
+                            ],
+                            "validation": [
                                 {
-                                    "tag": "space"
+                                    "validateKey": "required",
+                                    "msg": "Please enter age"
+                                },
+                                {
+                                    "validateKey": "min",
+                                    "val": 18,
+                                    "msg": "Age should be greater than 18 years"
+                                },
+                                {
+                                    "validateKey": "max",
+                                    "val": 99,
+                                    "msg": "Age should less than 99 years"
                                 }
                             ]
                         }
-                    ]
-                },
-                {
-                    "tag": "grid",
-                    "content": "UM p2",
-                    "header": [
+                    },
+                    "headerOperation": [
                         {
-                            "text": "First Name",
-                            "showIn": [
-                                "view"
-                            ]
-                        },
-                        {
-                            "text": "Last Name",
-                            "showIn": [
-                                "view"
-                            ]
-                        },
-                        {
-                            "text": "Age",
-                            "showIn": [
-                                "view",
-                                "edit"
-                            ]
+                            "callFunction": "add",
+                            "icon": "fa fa-pencil-square-o",
+                            "tooltips": "Click here to add",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-plus"
+                                },
+                                {
+                                    "type": "text",
+                                    "value": "Add User"
+                                }
+                            ],
+                            "headerText": "Add a User"
                         }
                     ],
                     "operation": [
                         {
                             "callFunction": "edit",
-                            "icon": "fa fa-pencil-square-o",
                             "tooltips": "Click here to edit",
-                            "headerText": "Edit Form"
+                            "headerText": "Edit User",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-pencil-square-o"
+                                }
+                            ]
+                        },
+                        {
+                            "callFunction": "view",
+                            "tooltips": "Click here to view",
+                            "headerText": "View User",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-eye"
+                                }
+                            ]
                         },
                         {
                             "redirectTo": "<1>/view/<ID>",
-                            "icon": "fa fa-eye",
-                            "tag": "redirection"
+                            "tag": "redirection",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-eye"
+                                }
+                            ]
                         }
                     ],
                     "records": [
-                        [
-                            "Sovan",
-                            "Dey",
-                            "37"
-                        ],
-                        [
-                            "Sannidhya",
-                            "Dey Masanta",
-                            "5"
-                        ],
-                        [
-                            "Luna",
-                            "Masanta",
-                            "31"
-                        ]
+                        {
+                            "fname": "Sovan",
+                            "lname": "Dey",
+                            "age": "37",
+                            "id": "1"
+                        },
+                        {
+                            "fname": "Sannidhya Dey Masanta",
+                            "lname": "Dey",
+                            "age": "5",
+                            "id": "2"
+                        },
+                        {
+                            "fname": "Luna",
+                            "lname": "Masanta",
+                            "age": "31",
+                            "id": "3"
+                        }
                     ]
                 },
                 {

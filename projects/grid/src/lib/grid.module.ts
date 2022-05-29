@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { GridComponent } from './grid.component';
 import { CommonModule } from '@angular/common';
-
+import { FormModule } from 'projects/form/src/public-api';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
     GridComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormModule
   ],
   exports: [
     GridComponent

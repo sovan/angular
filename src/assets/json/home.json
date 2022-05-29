@@ -57,7 +57,7 @@
                                                         },
                                                         {
                                                             "tag": "button-popup",
-                                                            "id": "1",
+                                                            "id": "3",
                                                             "headerText": "Popup from Slider",
                                                             "buttonText": "Simple Popup",
                                                             "content": [
@@ -132,8 +132,7 @@
                                                                 },
                                                                 {
                                                                     "tag": "button-popup",
-                                                                    "id": "1",
-                                                                    "headerText": "Popup from Slider",
+                                                                    "id": "4",
                                                                     "buttonText": "Simple Popup",
                                                                     "content": [
                                                                         {
@@ -182,7 +181,7 @@
                                                                 },
                                                                 {
                                                                     "tag": "button-popup",
-                                                                    "id": "1",
+                                                                    "id": "5",
                                                                     "headerText": "Popup from Slider",
                                                                     "buttonText": "Simple Popup",
                                                                     "content": [
@@ -232,7 +231,7 @@
                                                                 },
                                                                 {
                                                                     "tag": "button-popup",
-                                                                    "id": "1",
+                                                                    "id": "6",
                                                                     "headerText": "Popup from Slider",
                                                                     "buttonText": "Simple Popup",
                                                                     "content": [
@@ -282,7 +281,7 @@
                                                                 },
                                                                 {
                                                                     "tag": "button-popup",
-                                                                    "id": "1",
+                                                                    "id": "7",
                                                                     "headerText": "Popup from Slider",
                                                                     "buttonText": "Simple Popup",
                                                                     "content": [
@@ -438,7 +437,7 @@
                                 {
                                     "buttonText": "Simple Popup",
                                     "tag": "button-popup",
-                                    "id": "1",
+                                    "id": "2",
                                     "headerText": "Header",
                                     "content": [
                                         {

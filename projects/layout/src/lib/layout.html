@@ -10,34 +10,65 @@
                     </div>
 
                     <div *ngSwitchCase="'p'">
+                        <!--P-->
                         <p>{{eachBody['content']}}</p>
                     </div>
 
                     <div *ngSwitchCase="'h3'">
+                        <!--H3-->
                         <h3>{{eachBody['content']}}</h3>
                     </div>
 
-                    <div *ngSwitchCase="'headerOfGrid'">
-                        <h4>{{eachBody['content']}}</h4>
-                    </div>
+                    
 
                     <div *ngSwitchCase="'h5'">
+                        <!--H5-->
                         <h5>{{eachBody['content']}}</h5>
                     </div>
 
                     <div *ngSwitchCase="'space'">
+                        <!--Space-->
                         <div class="space"></div>
                     </div>
 
                     <div *ngSwitchCase="'button-popup'">
                         <!--Modal Box call button -->
                         <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
-                            [attr.data-target]="'#modal'+eachBody['id']" (click)="callParent(eachBody)"
-                            [style.float]="eachBody['align'] ? 'right':''">
+                            [attr.data-target]="'#modal'+eachBody['id']" [style.float]="eachBody['align'] ? 'right':''">
                             {{eachBody['buttonText']}}
                         </button>
+                        <div class="modal fade" id="modal{{eachBody['id']}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" *ngIf="jsonData!=undefined">
+                                <div class="modal-content">
+                                    <div class="modal-header"
+                                        *ngIf="eachBody['headerText']!=undefined && eachBody['headerText']!=''">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{eachBody['headerText']}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <button type="button" class="close modalCloseButton" data-dismiss="modal"
+                                        aria-label="Close"
+                                        *ngIf="eachBody['headerText']==undefined || eachBody['headerText']==''">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="modal-body">
+                                        <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)">
+                                        </S7Layout>
+                                    </div>
+                                    <!--
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
+                    
 
                     <div *ngSwitchCase="'card'">
                         <!--Recursive Function call-->
@@ -125,7 +156,7 @@
                     </div>
 
                     <div *ngSwitchCase="'breadcumb'">
-                        <!--breadcumb-->
+                        <!--Bread Cumb-->
                         <div class="breadcumbBG">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">

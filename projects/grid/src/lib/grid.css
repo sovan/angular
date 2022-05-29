@@ -1,72 +1,85 @@
-table {
+table.grid  {
     border: 1px solid #ccc;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 15px;
 }
 
-table tr {
+table.grid tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     padding: .35em;
 }
 
-table th,
-table td {
+table.grid th,
+table.grid td {
     padding: 15px;
 }
 
-table tr:nth-child(odd) {
+table.grid tr:nth-child(odd) {
     background: #FFF
 }
 
-table tr:last-child, table th:last-child  {
+table.grid tr:last-child, table.grid th:last-child  {
     width: 1%;
     white-space: nowrap;
 }
 
 
-table tr:hover {
+table.grid tr:hover {
     background: #eee;
     cursor: pointer;
 }
 
-table th {
+table.grid th {
     background: #ccc;
 }
 
-table tr td button {
+table.grid tr td button {
     margin-right: 5px;
 }
 
 @media screen and (max-width: 800px) {
-    table {
+    table.grid {
         border: 0;
     }
 
-    table thead {
+    table.grid thead {
         display: none;
     }
 
-    table tr {
+    table.grid tr {
         border-bottom: 3px solid #ddd;
         display: block;
         margin-bottom: 10px;
     }
 
-    table td {
+    table.grid td {
         border-bottom: 1px solid #ddd;
         display: block;
         text-align: right;
     }
 
-    table td::before {
+    table.grid td::before {
         content: attr(data-label);
         float: left;
         font-weight: bold;
     }
-    table tr:last-child, table th:last-child  {
+    table.grid tr:last-child, table.grid th:last-child  {
         width: 100%;
         border-bottom: 0;
     }
+}
+
+table.header{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+table.header td:last-child  {
+    width: 1px;
+    white-space: nowrap;
+}
+.iconClass span{
+    margin-right: 5px;
 }
