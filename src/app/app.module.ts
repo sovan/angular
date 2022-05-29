@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavbarModule } from 'projects/navbar/src/public-api';
 import { FooterModule } from 'projects/footer/src/public-api';
-import { ModalModule } from 'projects/modal/src/public-api';
 import { LayoutModule } from 'projects/layout/src/public-api';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,7 +20,6 @@ const routes: Routes = [{
     BrowserModule,
     NavbarModule,
     FooterModule,
-    ModalModule,
     LayoutModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
