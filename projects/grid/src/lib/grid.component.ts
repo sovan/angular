@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'S7Grid',
@@ -14,30 +14,21 @@ export class GridComponent implements OnChanges {
   record: any = {};
   operation: any = {};
   formFields: any = {};
+  footerButton: any = [];
   constructor() { }
-
-
-  popupBoxData: any = {
-    "tag": "button-popup",
-    "id": "1",
-    "content": [{
-      "column": "12",
-      "body": [{
-        "tag": "form"
-      }]
-    }]
-  };
-
-
-
+  hookToGrid: any = 'doNotFire';
 
   callParent(sendJSON: any) {
     this.formChild.emit(sendJSON);
   }
 
+  readValueOfForm(action: any) {
+    this.hookToGrid = new Date().getTime();
+  }
 
-  passValueToMadal(action: any, record: any = undefined) {
-    if (action['callFunction'] == 'edit' || action['callFunction'] == 'view') {
+
+  passValueToModal(action: any, record: any = undefined) {
+    if (action['callFunction'] == 'edit' || action['callFunction'] == 'view' || action['callFunction'] == 'delete') {
       this.record = record;
     } else if (action['callFunction'] == 'add') {
       this.record = {};
@@ -45,6 +36,8 @@ export class GridComponent implements OnChanges {
     this.operation = action;
     this.headerText = action['headerText'];
     this.formFields = {};
+
+    this.footerButton = action['operationButton'];
 
     Object.keys(this.jsonData['form']).map((value: string) => { //Create the object for creating a form
       if (this.jsonData['form'][value]['show'].indexOf(action['callFunction']) != -1) {
@@ -62,12 +55,16 @@ export class GridComponent implements OnChanges {
     });
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     Object.keys(this.jsonData['form']).map((value: string) => {
       if (this.jsonData['form'][value]['show'] != undefined && this.jsonData['form'][value]['show'].indexOf("list") != -1) { //List column configuration
         this.gridHeader.push(this.jsonData['form'][value]['lable']);
         this.gridKey.push(value);
       }
     });
+  }
+
+  activityOnFormValue(data: any){
+    console.log(JSON.stringify(data));
   }
 }

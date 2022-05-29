@@ -107,7 +107,37 @@
                                 }
                             ],
                             "headerText": "Add a User",
-                            "class": "btn-primary"
+                            "class": "btn-primary",
+                            "operationButton": [
+                                {
+                                    "callFunction": "save",
+                                    "tooltips": "Click here to save",
+                                    "class": "btn-warning",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-save"
+                                        }, {
+                                            "type": "text",
+                                            "value": "Save Rec"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "callFunction": "close",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-danger",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-close"
+                                        },{
+                                            "type": "text",
+                                            "value": "Close"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "callFunction": "download",

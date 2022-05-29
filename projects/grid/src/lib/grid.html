@@ -7,7 +7,7 @@
         <td>
             <ng-container *ngFor="let eachGridButton of jsonData['headerOperation']">
                 <button type="button" class="btn {{eachGridButton['class']}} iconClass" [attr.data-toggle]="'modal'"
-                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="passValueToMadal(eachGridButton)">
+                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="passValueToModal(eachGridButton)">
                     <ng-container *ngFor="let eachButtonText of eachGridButton['buttonText']">
                         <ng-container *ngIf="eachButtonText['type']=='text'">
                             <span>{{eachButtonText['value']}}</span>
@@ -41,12 +41,12 @@
                 *ngIf="jsonData['operation']!=undefined && jsonData['operation'].length!=0">
                 <ng-container *ngFor="let eachOperation of jsonData['operation']">
 
-                    <!--Popup button-->
+                    <!--Popup button -->
 
 
                     <button class="btn {{eachOperation['class']}}" [attr.data-toggle]="'modal'"
                         [attr.data-target]="'#modal-grid-form-'+jsonData['id']"
-                        (click)="passValueToMadal(eachOperation, eachRecord)"
+                        (click)="passValueToModal(eachOperation, eachRecord)"
                         *ngIf="eachOperation['callFunction']!=undefined">
                         <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
                             <ng-container *ngIf="eachButtonText['type']=='text'">
@@ -76,11 +76,14 @@
         </tr>
     </tbody>
 </table>
+
+<!--Modal -->
 <div class="modal fade" id="modal-grid-form-{{jsonData['id']}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
+            <!--Modal header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{headerText}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,16 +91,30 @@
                 </button>
             </div>
 
+            <!--Modal form -->
             <div class="modal-body">
-                <S7Form [jsonData]="formFields" (formChild)="callParent($event)" [operation]="operation"
-                    [record]="record" *ngIf="operation['callFunction']!='delete'"></S7Form>
+                <S7Form [jsonData]="formFields" (formChild)="activityOnFormValue($event)" [operation]="operation"
+                    [record]="record" *ngIf="operation['callFunction']!='delete'" [hookToGrid]="hookToGrid"></S7Form>
                 <p *ngIf="operation['callFunction']=='delete'">{{operation['bodyText']}}</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
 
+            <!--Modal footer button -->
+            <div class="modal-footer" *ngIf="footerButton!=undefined && footerButton.length>0">
+                <ng-container *ngFor="let eachModalButton of footerButton">
+                    <button type="button" class="btn {{eachModalButton['class']}} iconClass"
+                        [attr.data-dismiss]="eachModalButton['callFunction']=='close'?'modal':''"
+                        (click)="readValueOfForm(eachModalButton)">
+                        <ng-container *ngFor="let eachButtonText of eachModalButton['buttonText']">
+                            <ng-container *ngIf="eachButtonText['type']=='text'">
+                                <span>{{eachButtonText['value']}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="eachButtonText['type']=='icon'">
+                                <span><i class="{{eachButtonText['value']}}"></i></span>
+                            </ng-container>
+                        </ng-container>
+                    </button>
+                </ng-container>
+            </div>
         </div>
     </div>
 </div>
