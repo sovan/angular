@@ -104,6 +104,7 @@ export class FormComponent implements OnChanges {
 
         this.headers.map((key: any) => { //Put validation data on the form
           this.formDataImage[key]['valid'] = { "class": "", "message": "" };
+          this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for add
         });
       }
     }
