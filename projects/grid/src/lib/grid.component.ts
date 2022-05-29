@@ -40,7 +40,7 @@ export class GridComponent implements OnChanges {
     this.formFields = {};
 
     this.footerButton = action['operationOnPopup'];
-
+    
     Object.keys(this.jsonData['form']).map((value: string) => { //Create the object for creating a form
       if (this.jsonData['form'][value]['show'].indexOf(action['callFunction']) != -1) {
         var fields: any = {};

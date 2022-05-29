@@ -235,6 +235,38 @@
                         },
                         {
                             "callFunction": "delete",
+                            "operationOnPopup": [
+                                {
+                                    "callFunction": "close",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-primary",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-close"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "No"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "callFunction": "confirm-delete",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-danger",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-check"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "Yes"
+                                        }
+                                    ]
+                                }
+                            ],
                             "tooltips": "Click here to Delete",
                             "headerText": "Delete User",
                             "bodyText": "Are you sure you want to Delete this user?",

@@ -93,8 +93,11 @@
 
             <!--Modal form -->
             <div class="modal-body">
+                
                 <S7Form [jsonData]="formFields" (formChild)="activityOnFormValue($event)" [operation]="operation"
-                    [record]="record" *ngIf="operation['callFunction']!='delete'" [hookToGrid]="hookToGrid"></S7Form>
+                    [record]="record" [hookToGrid]="hookToGrid"></S7Form>
+                
+
                 <p *ngIf="operation['callFunction']=='delete'">{{operation['bodyText']}}</p>
             </div>
 
