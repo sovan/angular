@@ -83,3 +83,6 @@ table.header td:last-child  {
 .iconClass span{
     margin-right: 5px;
 }
+.iconClass{
+    margin-left: 5px;
+}

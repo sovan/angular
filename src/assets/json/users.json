@@ -19,13 +19,14 @@
                 },
                 {
                     "tag": "grid",
+                    "id": "user-grid",
                     "headerOfGrid": "All Users",
                     "form": {
                         "id": {
                             "type": "text",
                             "lable": "ID",
                             "placeHolder": "Type in ID",
-                            "show": [                              
+                            "show": [
                                 "view"
                             ]
                         },
@@ -94,7 +95,6 @@
                     "headerOperation": [
                         {
                             "callFunction": "add",
-                            "icon": "fa fa-pencil-square-o",
                             "tooltips": "Click here to add",
                             "buttonText": [
                                 {
@@ -106,7 +106,24 @@
                                     "value": "Add User"
                                 }
                             ],
-                            "headerText": "Add a User"
+                            "headerText": "Add a User",
+                            "class": "btn-primary"
+                        },
+                        {
+                            "callFunction": "download",
+                            "tooltips": "Click here to download",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-download"
+                                },
+                                {
+                                    "type": "text",
+                                    "value": "Download"
+                                }
+                            ],
+                            "headerText": "Download all Users",
+                            "class": "btn-warning"
                         }
                     ],
                     "operation": [
@@ -114,6 +131,7 @@
                             "callFunction": "edit",
                             "tooltips": "Click here to edit",
                             "headerText": "Edit User",
+                            "class": "btn-primary",
                             "buttonText": [
                                 {
                                     "type": "icon",
@@ -125,6 +143,7 @@
                             "callFunction": "view",
                             "tooltips": "Click here to view",
                             "headerText": "View User",
+                            "class": "btn-success",
                             "buttonText": [
                                 {
                                     "type": "icon",
@@ -133,8 +152,22 @@
                             ]
                         },
                         {
+                            "callFunction": "delete",
+                            "tooltips": "Click here to Delete",
+                            "headerText": "Delete User",
+                            "bodyText": "Are you sure you want to Delete this user?",
+                            "class": "btn-danger",
+                            "buttonText": [
+                                {
+                                    "type": "icon",
+                                    "value": "fa fa-trash"
+                                }
+                            ]
+                        },
+                        {
                             "redirectTo": "<1>/view/<ID>",
                             "tag": "redirection",
+                            "class": "btn-success",
                             "buttonText": [
                                 {
                                     "type": "icon",

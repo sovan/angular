@@ -54,13 +54,12 @@ export class GridComponent implements OnChanges {
           fields['type'] = this.jsonData['form'][value]['type'];
           fields['placeHolder'] = this.jsonData['form'][value]['placeHolder'];
           fields['validation'] = this.jsonData['form'][value]['validation'];
-        } else {
+        } else if (action['callFunction'] == 'view') {
           fields['type'] = 'show';
         }
         this.formFields[value] = fields;
       }
     });
-    //console.log(JSON.stringify(this.formFields))
   }
 
   ngOnChanges() {

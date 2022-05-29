@@ -6,8 +6,8 @@
         </td>
         <td>
             <ng-container *ngFor="let eachGridButton of jsonData['headerOperation']">
-                <button type="button" class="btn btn-primary iconClass" [attr.data-toggle]="'modal'"
-                    [attr.data-target]="'#modal-grid-form'" (click)="passValueToMadal(eachGridButton)">
+                <button type="button" class="btn {{eachGridButton['class']}} iconClass" [attr.data-toggle]="'modal'"
+                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="passValueToMadal(eachGridButton)">
                     <ng-container *ngFor="let eachButtonText of eachGridButton['buttonText']">
                         <ng-container *ngIf="eachButtonText['type']=='text'">
                             <span>{{eachButtonText['value']}}</span>
@@ -35,7 +35,7 @@
     <tbody>
         <tr *ngFor="let eachRecord of jsonData['records']">
             <td [attr.data-label]="gridHeader[i]" *ngFor="let eachKey of gridKey; let i=index">
-                {{eachRecord[eachKey]}} 
+                {{eachRecord[eachKey]}}
             </td>
             <td [attr.data-label]="'Operation'"
                 *ngIf="jsonData['operation']!=undefined && jsonData['operation'].length!=0">
@@ -43,8 +43,11 @@
 
                     <!--Popup button-->
 
-                    <button class="btn btn-primary" [attr.data-toggle]="'modal'" [attr.data-target]="'#modal-grid-form'"
-                        (click)="passValueToMadal(eachOperation, eachRecord)" *ngIf="eachOperation['callFunction']!=undefined">
+
+                    <button class="btn {{eachOperation['class']}}" [attr.data-toggle]="'modal'"
+                        [attr.data-target]="'#modal-grid-form-'+jsonData['id']"
+                        (click)="passValueToMadal(eachOperation, eachRecord)"
+                        *ngIf="eachOperation['callFunction']!=undefined">
                         <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
                             <ng-container *ngIf="eachButtonText['type']=='text'">
                                 <span>{{eachButtonText['value']}}</span>
@@ -56,7 +59,7 @@
                     </button>
 
                     <!--Redirection button-->
-                    <button class="btn btn-primary" (click)="callParent(eachOperation)"
+                    <button class="btn {{eachOperation['class']}}" (click)="callParent(eachOperation)"
                         *ngIf="eachOperation['redirectTo']!=undefined">
                         <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
                             <ng-container *ngIf="eachButtonText['type']=='text'">
@@ -68,15 +71,13 @@
                         </ng-container>
                     </button>
 
-
                 </ng-container>
             </td>
         </tr>
     </tbody>
 </table>
-
-<div class="modal fade" id="modal-grid-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="modal-grid-form-{{jsonData['id']}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -86,8 +87,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-                <S7Form [jsonData]="formFields" (formChild)="callParent($event)" [operation]="operation" [record]="record"></S7Form>
+                <S7Form [jsonData]="formFields" (formChild)="callParent($event)" [operation]="operation"
+                    [record]="record" *ngIf="operation['callFunction']!='delete'"></S7Form>
+                <p *ngIf="operation['callFunction']=='delete'">{{operation['bodyText']}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
