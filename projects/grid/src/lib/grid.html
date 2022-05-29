@@ -98,7 +98,7 @@
                     [record]="record" [hookToGrid]="hookToGrid"></S7Form>
                 
 
-                <p *ngIf="operation['callFunction']=='delete'">{{operation['bodyText']}}</p>
+                <p *ngIf="operation['callFunction']=='delete' || operation['callFunction']=='download'">{{operation['bodyText']}}</p>
             </div>
 
             <!--Modal footer button -->

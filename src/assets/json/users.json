@@ -145,6 +145,54 @@
                         {
                             "callFunction": "download",
                             "tooltips": "Click here to download",
+                            "bodyText": "Please click on the Formats you want to download ...",
+                            "operationOnPopup": [
+                                {
+                                    "callFunction": "close",
+                                    "tooltips": "Click here to close",
+                                    "class": "btn-danger",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-close"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "Close"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "callFunction": "download-as-csv",
+                                    "tooltips": "Click here to download",
+                                    "class": "btn-primary",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-download"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "CSV"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "callFunction": "download-as-xlx",
+                                    "tooltips": "Click here to download",
+                                    "class": "btn-primary",
+                                    "buttonText": [
+                                        {
+                                            "type": "icon",
+                                            "value": "fa fa-download"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "value": "XLX"
+                                        }
+                                    ]
+                                }
+                            ],
                             "buttonText": [
                                 {
                                     "type": "icon",
