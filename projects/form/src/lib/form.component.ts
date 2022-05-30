@@ -84,10 +84,12 @@ export class FormComponent implements OnChanges {
 
 
           Object.keys(this.formDataImage).map((key: any) => {
-            if (isFormValid != 'invalid') { //Any fields validation faild form gets invalid
-              isFormValid = this.validateEachField(key) ? 'valid' : 'invalid';
+            let isValid = this.validateEachField(key)
+            if (!isValid) {
+              isFormValid = 'invalid';
             }
-          })
+          });
+          
           var returnFormData: any = {};
           returnFormData['formValue'] = this.formValue;
           returnFormData['callFunction'] = this.operation != undefined ? this.operation['callFunction'] : "";
