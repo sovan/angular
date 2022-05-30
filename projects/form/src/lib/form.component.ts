@@ -78,7 +78,8 @@ export class FormComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
       if (propName == 'hookToGrid') { //Sent form-value to parent
-        if (changes[propName]['currentValue'] != 'doNotFire') { //If first time on load don't return form value to parent
+        if (changes[propName]['previousValue'] != undefined && changes[propName]['currentValue'] != 'doNotFire') { //If first time on load don't return form value to parent
+          //console.log(changes[propName])
           let isFormValid: any = 'valid';
 
 

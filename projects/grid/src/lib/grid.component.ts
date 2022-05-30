@@ -24,15 +24,36 @@ export class GridComponent implements OnChanges {
   }
 
   readValueOfForm(action: any) {
-    this.popupWhicButtonClicked = action;
-    this.hookToGrid = new Date().getTime();
+    this.hookToGrid = 'doNotFire';
+    if (this.operation['callFunction'] == 'delete') {
+      var data: any = {};
+      data['formValue'] = this.record;
+      data['callFunction'] = this.operation['callFunction'];
+      data['isFormValid'] = 'valid';
+      data['url'] = this.jsonData['url'];
+      data['operation'] = action["callFunction"];
+      data['tag'] = 'database';
+      this.formChild.emit(data);
+    } else if (this.operation['callFunction'] == 'download') {
+      var data: any = {};
+      data['formValue'] = this.jsonData['records'];
+      data['callFunction'] = this.operation['callFunction'];
+      data['isFormValid'] = 'valid';
+      data['url'] = this.jsonData['url'];
+      data['operation'] = action["callFunction"];
+      data['tag'] = 'database';
+      this.formChild.emit(data);
+    } else {
+      this.popupWhicButtonClicked = action;
+      this.hookToGrid = new Date().getTime();
+    }
   }
 
 
   passValueToModal(action: any, record: any = undefined) {
     if (action['callFunction'] == 'edit' || action['callFunction'] == 'view' || action['callFunction'] == 'delete') {
       this.record = record;
-    } else if (action['callFunction'] == 'add') {
+    } else if (action['callFunction'] == 'add' || action['callFunction'] == 'download') {
       this.record = {};
     }
     this.operation = action;
@@ -40,7 +61,7 @@ export class GridComponent implements OnChanges {
     this.formFields = {};
 
     this.footerButton = action['operationOnPopup'];
-    
+
     Object.keys(this.jsonData['form']).map((value: string) => { //Create the object for creating a form
       if (this.jsonData['form'][value]['show'].indexOf(action['callFunction']) != -1) {
         var fields: any = {};
@@ -66,10 +87,11 @@ export class GridComponent implements OnChanges {
     });
   }
 
-  activityOnFormValue(data: any){
+  activityOnFormValue(data: any) {
     data['url'] = this.jsonData['url'];
     data['operation'] = this.popupWhicButtonClicked['callFunction'];
     data['tag'] = "database";
+    //console.log('------------------', this.operation['callFunction']);
     this.formChild.emit(data);
   }
 }
