@@ -90,9 +90,8 @@ export class FormComponent implements OnChanges {
           })
           var returnFormData: any = {};
           returnFormData['formValue'] = this.formValue;
-          returnFormData['callFunction'] = this.operation['callFunction'];
+          returnFormData['callFunction'] = this.operation != undefined ? this.operation['callFunction'] : "";
           returnFormData['isFormValid'] = isFormValid;
-
           this.formChild.emit(returnFormData);
         }
       } else { //All other onChanges other than parent ask for submit form

@@ -19,7 +19,7 @@
                         <h3>{{eachBody['content']}}</h3>
                     </div>
 
-                    
+
 
                     <div *ngSwitchCase="'h5'">
                         <!--H5-->
@@ -57,18 +57,69 @@
                                         <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)">
                                         </S7Layout>
                                     </div>
-                                    <!--
+<!--
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                    -->
+                                    </div>-->
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
+
+                    <div *ngSwitchCase="'button-form'">
+                        <!--Modal Box call button -->
+                        <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
+                            [attr.data-target]="'#modal'+eachBody['id']" [style.float]="eachBody['align'] ? 'right':''" (click)="generateForm(eachBody['body']['data'])">
+                            {{eachBody['buttonText']}}
+                        </button>
+                        <div class="modal fade" id="modal{{eachBody['id']}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" *ngIf="jsonData!=undefined">
+                                <div class="modal-content">
+                                    <div class="modal-header"
+                                        *ngIf="eachBody['headerText']!=undefined && eachBody['headerText']!=''">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{eachBody['headerText']}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <button type="button" class="close modalCloseButton" data-dismiss="modal"
+                                        aria-label="Close"
+                                        *ngIf="eachBody['headerText']==undefined || eachBody['headerText']==''">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="modal-body"> 
+                                        <S7Form [record]="{}" [jsonData]="formJSONData" [hookToGrid]="{hookToGrid}" (formChild)="sentValueByForm($event, eachBody['body'])"></S7Form>
+                                    </div>
+
+                                   
+
+                                    <div class="modal-footer" *ngIf="eachBody['body']['operationOnPopup']!=undefined && eachBody['body']['operationOnPopup'].length>0">
+                                        <ng-container *ngFor="let eachModalButton of eachBody['body']['operationOnPopup']">
+                                            <button type="button" class="btn {{eachModalButton['class']}} iconClass"
+                                                [attr.data-dismiss]="eachModalButton['callFunction'] == 'close' ? 'modal' : ''"
+                                                (click)="getValueOfModal(eachModalButton, eachModalButton)">
+                                                <ng-container *ngFor="let eachButtonText of eachModalButton['buttonText']">
+                                                    <ng-container *ngIf="eachButtonText['type']=='text'">
+                                                        <span>{{eachButtonText['value']}}</span>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                                                        <span><i class="{{eachButtonText['value']}}"></i></span>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </button>
+                                        </ng-container>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div *ngSwitchCase="'card'">
                         <!--Recursive Function call-->
@@ -82,7 +133,7 @@
 
                     <div *ngSwitchCase="'form'">
                         <!--Form-->
-                        <S7Form [jsonData]="eachBody['data']" (formChild)="callParent($event)"></S7Form>
+                        <S7Form [record]="{}" [jsonData]="eachBody['data']" [hookToGrid]="{hookToGrid}"></S7Form>
                     </div>
 
                     <div *ngSwitchCase="'slider'">

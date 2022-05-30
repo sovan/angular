@@ -94,7 +94,7 @@
             <!--Modal form -->
             <div class="modal-body">
                 <ng-container *ngIf="['add','edit','view'].indexOf(operation['callFunction'])!=-1">
-                    <S7Form [jsonData]="formFields" (formChild)="sentValueOfValueByForm($event)" [operation]="operation"
+                    <S7Form [jsonData]="formFields" (formChild)="sentValueByForm($event)" [operation]="operation"
                         [record]="record" [hookToGrid]="hookToGrid"></S7Form>
                 </ng-container>
                 <p *ngIf="['delete','download'].indexOf(operation['callFunction']) != -1">{{operation['bodyText']}}</p>

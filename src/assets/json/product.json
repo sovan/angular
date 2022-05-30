@@ -4,54 +4,82 @@
             "column": "12",
             "body": [
                 {
-                    "tag": "h3",
-                    "content": "All Products"
-                },
-                {
-                    "tag": "grid",
-                    "content": "UM p2",
-                    "header": [
-                        {
-                            "text": "Product Name",
-                            "showIn": [
-                                "view"
-                            ]
+                    "tag": "button-form",
+                    "headerText": "Any Form",
+                    "id": "4",
+                    "buttonText": "Simple Form",
+                    "body": {
+                        "url": "abc.com",
+                        "tag": "form",
+                        "data": {
+                            "fname": {
+                                "type": "text",
+                                "lable": "First Name",
+                                "placeHolder": "Type in First Name",
+                                "show": [
+                                    "add",
+                                    "edit",
+                                    "list",
+                                    "view"
+                                ],
+                                "validation": [
+                                    {
+                                        "validateKey": "required",
+                                        "msg": "Please enter first name"
+                                    }
+                                ]
+                            },
+                            "lname": {
+                                "type": "text",
+                                "lable": "Last Name",
+                                "placeHolder": "Type in Last Name",
+                                "show": [
+                                    "add",
+                                    "edit",
+                                    "list",
+                                    "view"
+                                ],
+                                "validation": [
+                                    {
+                                        "validateKey": "required",
+                                        "msg": "Please enter last name"
+                                    }
+                                ]
+                            }
                         },
-                        {
-                            "text": "Product Price",
-                            "showIn": [
-                                "view"
-                            ]
-                        }
-                    ],
-                    "operation": [
-                        {
-                            "callFunction": "edit",
-                            "icon": "fa fa-pencil",
-                            "tooltips": "Click here to edit",
-                            "headerText": "Edit Form"
-                        },
-                        {
-                            "callFunction": "view",
-                            "icon": "fa fa-eye",
-                            "tooltips": "Click here to view",
-                            "headerText": "View Form"
-                        }
-                    ],
-                    "records": [
-                        [
-                            "Laptop",
-                            "1000"
-                        ],
-                        [
-                            "Mouse",
-                            "100"
-                        ],
-                        [
-                            "Desktop",
-                            "200"
+                        "operationOnPopup": [
+                            {
+                                "callFunction": "save",
+                                "tooltips": "Click here to save",
+                                "class": "btn-warning",
+                                "buttonText": [
+                                    {
+                                        "type": "icon",
+                                        "value": "fa fa-save"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "value": "Update"
+                                    }
+                                ]
+                            },
+                            {
+                                "callFunction": "close",
+                                "tooltips": "Click here to close",
+                                "class": "btn-danger",
+                                "buttonText": [
+                                    {
+                                        "type": "icon",
+                                        "value": "fa fa-close"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "value": "Close"
+                                    }
+                                ]
+                            }
                         ]
-                    ]
+                    }
                 }
             ]
         }

@@ -51,7 +51,7 @@ export class GridComponent implements OnChanges {
   }
 
   /*
-    Get modal contents form data
+    Get modal contents Form Data
   */
   getValueOfModal(action: any) {
     this.hookToGrid = 'doNotFire';
@@ -81,9 +81,9 @@ export class GridComponent implements OnChanges {
   }
 
   /*
-  Data sent by the Form by hooking ngonchange in form component
+  Data sent by the Form by hooking ngOnChange in form component
   */
-  sentValueOfValueByForm(data: any) {
+  sentValueByForm(data: any) {
     data['url'] = this.jsonData['url'];
     data['operation'] = this.popupWhicButtonClicked['callFunction'];
     data['tag'] = "database";
