@@ -7,7 +7,7 @@
         <td>
             <ng-container *ngFor="let eachGridButton of jsonData['headerOperation']">
                 <button type="button" class="btn {{eachGridButton['class']}} iconClass" [attr.data-toggle]="'modal'"
-                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="passValueToModal(eachGridButton)">
+                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="setValueToModal(eachGridButton)">
                     <ng-container *ngFor="let eachButtonText of eachGridButton['buttonText']">
                         <ng-container *ngIf="eachButtonText['type']=='text'">
                             <span>{{eachButtonText['value']}}</span>
@@ -46,7 +46,7 @@
 
                     <button class="btn {{eachOperation['class']}} iconClass" [attr.data-toggle]="'modal'"
                         [attr.data-target]="'#modal-grid-form-'+jsonData['id']"
-                        (click)="passValueToModal(eachOperation, eachRecord)"
+                        (click)="setValueToModal(eachOperation, eachRecord)"
                         *ngIf="eachOperation['callFunction']!=undefined">
                         <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
                             <ng-container *ngIf="eachButtonText['type']=='text'">
@@ -86,7 +86,7 @@
             <!--Modal header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{headerText}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -94,23 +94,23 @@
             <!--Modal form -->
             <div class="modal-body">
                 <ng-container *ngIf="['add','edit','view'].indexOf(operation['callFunction'])!=-1">
-                    <S7Form [jsonData]="formFields" (formChild)="activityOnFormValue($event)" [operation]="operation"
+                    <S7Form [jsonData]="formFields" (formChild)="sentValueOfValueByForm($event)" [operation]="operation"
                         [record]="record" [hookToGrid]="hookToGrid"></S7Form>
                 </ng-container>
-                <p *ngIf="['delete','download'].indexOf(operation['callFunction'])!=-1">{{operation['bodyText']}}</p>
+                <p *ngIf="['delete','download'].indexOf(operation['callFunction']) != -1">{{operation['bodyText']}}</p>
             </div>
 
             <!--Modal footer button -->
             <div class="modal-footer" *ngIf="footerButton!=undefined && footerButton.length>0">
                 <ng-container *ngFor="let eachModalButton of footerButton">
                     <button type="button" class="btn {{eachModalButton['class']}} iconClass"
-                        [attr.data-dismiss]="eachModalButton['callFunction']=='close'?'modal':''"
-                        (click)="readValueOfForm(eachModalButton)">
+                        [attr.data-dismiss]="eachModalButton['callFunction'] == 'close' ? 'modal' : ''"
+                        (click)="getValueOfModal(eachModalButton)">
                         <ng-container *ngFor="let eachButtonText of eachModalButton['buttonText']">
                             <ng-container *ngIf="eachButtonText['type']=='text'">
                                 <span>{{eachButtonText['value']}}</span>
                             </ng-container>
-                            <ng-container *ngIf="eachButtonText['type']=='icon'">
+                            <ng-container *ngIf="eachButtonText['type'] == 'icon'">
                                 <span><i class="{{eachButtonText['value']}}"></i></span>
                             </ng-container>
                         </ng-container>

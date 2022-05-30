@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnChanges, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'S7Grid',
@@ -8,6 +8,7 @@ import { Component, Output, Input, EventEmitter, OnChanges } from '@angular/core
 export class GridComponent implements OnChanges {
   @Input() jsonData: any;
   @Output() formChild = new EventEmitter<string>();
+  @ViewChild('closeBtn') closeBtn!: ElementRef;
   headerText: any = 'Form ???';
   gridHeader: any = [];
   gridKey: any = [];
@@ -23,7 +24,10 @@ export class GridComponent implements OnChanges {
     this.formChild.emit(sendJSON);
   }
 
-  readValueOfForm(action: any) {
+  /*
+    Get modal contents form data
+  */
+  getValueOfModal(action: any) {
     this.hookToGrid = 'doNotFire';
     if (this.operation['callFunction'] == 'delete') {
       var data: any = {};
@@ -47,10 +51,32 @@ export class GridComponent implements OnChanges {
       this.popupWhicButtonClicked = action;
       this.hookToGrid = new Date().getTime();
     }
+    this.closeModal();
   }
 
+  /*
+  Data sent by the Form by hooking ngonchange in form component
+  */
+  sentValueOfValueByForm(data: any) {
+    data['url'] = this.jsonData['url'];
+    data['operation'] = this.popupWhicButtonClicked['callFunction'];
+    data['tag'] = "database";
+    this.formChild.emit(data);
+  }
 
-  passValueToModal(action: any, record: any = undefined) {
+  /*
+    close modal call 
+  */
+  private closeModal(): void {
+    setTimeout(() => {
+      this.closeBtn.nativeElement.click();
+    }, 500);
+  }
+
+  /*
+  Creating the modal contents for forms
+  */
+  setValueToModal(action: any, record: any = undefined) {
     if (action['callFunction'] == 'edit' || action['callFunction'] == 'view' || action['callFunction'] == 'delete') {
       this.record = record;
     } else if (action['callFunction'] == 'add' || action['callFunction'] == 'download') {
@@ -59,9 +85,7 @@ export class GridComponent implements OnChanges {
     this.operation = action;
     this.headerText = action['headerText'];
     this.formFields = {};
-
     this.footerButton = action['operationOnPopup'];
-
     Object.keys(this.jsonData['form']).map((value: string) => { //Create the object for creating a form
       if (this.jsonData['form'][value]['show'].indexOf(action['callFunction']) != -1) {
         var fields: any = {};
@@ -79,6 +103,7 @@ export class GridComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    //When records loaded then creating the grid
     Object.keys(this.jsonData['form']).map((value: string) => {
       if (this.jsonData['form'][value]['show'] != undefined && this.jsonData['form'][value]['show'].indexOf("list") != -1) { //List column configuration
         this.gridHeader.push(this.jsonData['form'][value]['lable']);
@@ -87,11 +112,5 @@ export class GridComponent implements OnChanges {
     });
   }
 
-  activityOnFormValue(data: any) {
-    data['url'] = this.jsonData['url'];
-    data['operation'] = this.popupWhicButtonClicked['callFunction'];
-    data['tag'] = "database";
-    //console.log('------------------', this.operation['callFunction']);
-    this.formChild.emit(data);
-  }
+
 }
