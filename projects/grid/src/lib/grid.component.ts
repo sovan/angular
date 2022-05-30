@@ -21,7 +21,33 @@ export class GridComponent implements OnChanges {
   popupWhicButtonClicked: any = '';
 
   callParent(sendJSON: any) {
-    this.formChild.emit(sendJSON);
+    if (sendJSON['operation'] == 'save') { //Click on Insert
+      if (sendJSON['isFormValid'] == 'valid') {
+        this.formChild.emit(sendJSON);
+        this.closeModal();
+      } else {
+        console.log('Invalid form');
+      }
+    } else if (sendJSON['operation'] == 'update') { //Click on Update
+      if (sendJSON['isFormValid'] == 'valid') {
+        this.formChild.emit(sendJSON);
+        this.closeModal();
+      } else {
+        console.log('Invalid form');
+      }
+    } else if (sendJSON['operation'] == 'confirm-delete') { //Click on confirm-delete
+      this.formChild.emit(sendJSON);
+      this.closeModal();
+    } else if (sendJSON['operation'] == 'download-as-xlx') { //Click on Download As XLX
+      this.formChild.emit(sendJSON);
+      this.closeModal();
+    } else if (sendJSON['operation'] == 'download-as-csv') { //Click on Download As CSV
+      this.formChild.emit(sendJSON);
+      this.closeModal();
+    } else {
+      console.log(sendJSON['operation']);
+    }
+
   }
 
   /*
@@ -37,7 +63,7 @@ export class GridComponent implements OnChanges {
       data['url'] = this.jsonData['url'];
       data['operation'] = action["callFunction"];
       data['tag'] = 'database';
-      this.formChild.emit(data);
+      this.callParent(data);
     } else if (this.operation['callFunction'] == 'download') {
       var data: any = {};
       data['formValue'] = this.jsonData['records'];
@@ -46,12 +72,12 @@ export class GridComponent implements OnChanges {
       data['url'] = this.jsonData['url'];
       data['operation'] = action["callFunction"];
       data['tag'] = 'database';
-      this.formChild.emit(data);
+      this.callParent(data);
     } else {
       this.popupWhicButtonClicked = action;
       this.hookToGrid = new Date().getTime();
     }
-    this.closeModal();
+
   }
 
   /*
@@ -61,8 +87,10 @@ export class GridComponent implements OnChanges {
     data['url'] = this.jsonData['url'];
     data['operation'] = this.popupWhicButtonClicked['callFunction'];
     data['tag'] = "database";
-    this.formChild.emit(data);
+    this.callParent(data);
   }
+
+
 
   /*
     close modal call 
