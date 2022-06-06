@@ -60,7 +60,7 @@
                     
                     <div *ngSwitchCase="'form'">
                         
-                        <S7Form [record]="{}" [jsonData]="eachBody" ></S7Form>
+                        <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)"></S7Form>
                     </div>
 
 

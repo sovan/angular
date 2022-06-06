@@ -17,6 +17,7 @@ export class FormComponent implements OnChanges {
   constructor() { }
   formValue: any = {};
 
+  validForm: boolean = true;
   validateEachField(boxName: string) {
     let isValid = true;
     if (this.formDataImage[boxName]["validation"] != undefined) {
@@ -73,6 +74,25 @@ export class FormComponent implements OnChanges {
       }
     }
     return isValid;
+  }
+
+
+  actionOnForm(jsonData: any) {
+    if (jsonData['validation']) {
+      this.validForm = true;
+      Object.keys(this.formDataImage).map((boxName: string) => {
+        if (!this.validateEachField(boxName)) {
+          this.validForm = false;
+        }
+      })
+      if (this.validForm) {
+        let returnData: any = { "tag": jsonData['callFunction'], "formValue": this.formValue };
+        this.formChild.emit(returnData);
+      }
+    } else {
+      let returnData: any = { "tag": jsonData['callFunction'] };
+      this.formChild.emit(returnData);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

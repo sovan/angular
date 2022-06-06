@@ -44,6 +44,7 @@ export class ModalComponent implements OnChanges {
   }
 
   callParent(sendJSON: any){
+    
     this.formChild.emit(sendJSON);
   }
 }

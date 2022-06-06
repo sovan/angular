@@ -57,6 +57,14 @@ export class AppComponent {
 				this.popupStructure[1] = sendJSON;
 				break;
 			}
+			case "close": {
+				console.log(sendJSON);
+				break;
+			}
+			case "save": {
+				console.log(sendJSON);
+				break;
+			}
 			case "action-popup": {
 				this.popupStructure[1] = sendJSON;
 				break;

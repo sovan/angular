@@ -239,6 +239,10 @@
                                                                             "column": "12",
                                                                             "body": [
                                                                                 {
+                                                                                    "tag": "p",
+                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                },
+                                                                                {
                                                                                     "url": "abc.com",
                                                                                     "tag": "form",
                                                                                     "data": {
@@ -280,6 +284,7 @@
                                                                                     "operationOnPopup": [
                                                                                         {
                                                                                             "callFunction": "save",
+                                                                                            "validation": true,
                                                                                             "tooltips": "Click here to save",
                                                                                             "class": "btn-warning",
                                                                                             "buttonText": [
@@ -291,10 +296,21 @@
                                                                                                     "type": "text",
                                                                                                     "value": "Insert"
                                                                                                 }
+                                                                                            ],
+                                                                                            "buttonLoadingText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-circle-o-notch fa-spin"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Inserting ..."
+                                                                                                }
                                                                                             ]
                                                                                         },
                                                                                         {
                                                                                             "callFunction": "close",
+                                                                                            "validation": false,
                                                                                             "tooltips": "Click here to close",
                                                                                             "class": "btn-danger",
                                                                                             "buttonText": [

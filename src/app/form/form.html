@@ -39,8 +39,7 @@
 </table>
 <div class="footerButton">
     <ng-container *ngFor="let eachButton of jsonData['operationOnPopup']">
-        {{eachButton | json}}
-        <button type="button" class="btn {{eachButton['class']}}" data-dismiss="modal">
+        <button type="button" class="btn {{eachButton['class']}}" (click)="actionOnForm(eachButton)">
             <ng-container *ngFor="let eachButtonText of eachButton['buttonText']">
                 <ng-container *ngIf="eachButtonText['type'] == 'text'">
                     <span>{{eachButtonText['value']}}</span>

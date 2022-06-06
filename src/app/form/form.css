@@ -45,3 +45,6 @@ table th {
 .footerButton span:last-child{
     margin-right: 0px;
 }
+.footerButton button{
+    margin-left: 10px;
+}
