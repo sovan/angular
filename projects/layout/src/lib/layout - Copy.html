@@ -1,0 +1,276 @@
+<div class="row">
+    {{indexJSON}}
+    <ng-container *ngFor="let eachBlock of jsonData; let i=index">
+        <div class="col-sm-{{eachBlock['column']}}">
+            <ng-container *ngFor="let eachBody of eachBlock['body']; let j=index">
+                <!--Switch starts-->
+                <div [ngSwitch]="eachBody['tag']">
+
+                    <div *ngSwitchCase="'accordion'">
+                        <!--Accordian-->
+                        
+                        
+                        
+
+
+                        <div class="accordion" id="accordionExample">
+                            <ng-container *ngFor="let eachRow of eachBody['content']; let i = index">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwso">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" [attr.data-bs-target]="'#sss' + i"
+                                            aria-expanded="true">
+                                            {{eachRow['title']}}
+                                        </button>
+                                    </h2>
+                                    <div id="sss{{i}}" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <S7Layout [jsonData]="eachRow['content']" (formChild)="callParent($event)" [indexJSON]="indexJSON+'>body>content'">
+                                            </S7Layout>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div *ngSwitchDefault>
+                        <!--Default tag -->
+                        <div style="background-color:#F00">------------Default tag {{eachBody['tag']}}------------</div>
+                    </div>
+
+                    <div *ngSwitchCase="'p'">
+                        <!--P-->
+                        <p>{{eachBody['content']}}</p>
+                    </div>
+
+                    <div *ngSwitchCase="'h3'">
+                        <!--H3-->
+                        <h3>{{eachBody['content']}}</h3>
+                    </div>
+
+
+
+                    <div *ngSwitchCase="'h5'">
+                        <!--H5-->
+                        <h5>{{eachBody['content']}}</h5>
+                    </div>
+
+                    <div *ngSwitchCase="'space'">
+                        <!--Space-->
+                        <div class="space"></div>
+                    </div>
+
+                    <div *ngSwitchCase="'button-popup'">
+                        <!--Modal Box call button -->
+                        <button (formChild)="callParent($event)" type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
+                            [attr.data-target]="'#modal'" [style.float]="eachBody['align'] ? 'right':''" (click)="openModal(eachBody)">
+                            {{eachBody['buttonText']}}
+                        </button>
+                    </div>
+
+
+                    <div *ngSwitchCase="'button-form'">
+                        <!--Modal Box call button -->
+                        <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
+                            [attr.data-target]="'#modal'+eachBody['id']" [style.float]="eachBody['align'] ? 'right':''" (click)="generateForm(eachBody['body']['data'])">
+                            {{eachBody['buttonText']}}
+                        </button>
+                        <div class="modal fade" id="modal{{eachBody['id']}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" *ngIf="jsonData!=undefined">
+                                <div class="modal-content">
+                                    <div class="modal-header"
+                                        *ngIf="eachBody['headerText']!=undefined && eachBody['headerText']!=''">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{eachBody['headerText']}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <button type="button" class="close modalCloseButton" data-dismiss="modal"
+                                        aria-label="Close"
+                                        *ngIf="eachBody['headerText']==undefined || eachBody['headerText']==''">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <div class="modal-body"> 
+                                        <S7Form [record]="{}" [jsonData]="formJSONData" [hookToGrid]="{hookToGrid}" (formChild)="sentValueByForm($event, eachBody['body'])"></S7Form>
+                                    </div>
+
+                                   
+
+                                    <div class="modal-footer" *ngIf="eachBody['body']['operationOnPopup']!=undefined && eachBody['body']['operationOnPopup'].length>0">
+                                        <ng-container *ngFor="let eachModalButton of eachBody['body']['operationOnPopup']">
+                                            <button type="button" class="btn {{eachModalButton['class']}} iconClass"
+                                                [attr.data-dismiss]="eachModalButton['callFunction'] == 'close' ? 'modal' : ''"
+                                                (click)="getValueOfModal(eachModalButton, eachModalButton)">
+                                                <ng-container *ngFor="let eachButtonText of eachModalButton['buttonText']">
+                                                    <ng-container *ngIf="eachButtonText['type']=='text'">
+                                                        <span>{{eachButtonText['value']}}</span>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                                                        <span><i class="{{eachButtonText['value']}}"></i></span>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </button>
+                                        </ng-container>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div *ngSwitchCase="'card'">
+                        <!--Recursive Function call-->
+                        <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)" ></S7Layout>
+                    </div>
+
+                    <div *ngSwitchCase="'grid'">
+                        <!--Grid-->
+                        <S7Grid [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
+                    </div>
+
+                    <div *ngSwitchCase="'form'">
+                        <!--Form-->
+                        <S7Form [record]="{}" [jsonData]="eachBody['data']" [hookToGrid]="{hookToGrid}"></S7Form>
+                    </div>
+
+                    <div *ngSwitchCase="'slider'">
+                        <!--Slider-->
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+                            <!--Lower section button -->
+                            <div class="carousel-indicators"
+                                *ngIf="eachBody['jumpToSlideButton']!=undefined && eachBody['jumpToSlideButton']=='active'">
+                                <ng-container *ngFor="let eachSlider of eachBody['content']; let i = index">
+                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        [attr.data-bs-slide-to]="i" [ngClass]="i==0 ? 'active' : ''"
+                                        aria-current="true"></button>
+                                </ng-container>
+                            </div>
+
+                            <!--images and Body-->
+                            <div class="carousel-inner">
+                                <ng-container *ngFor="let eachSlider of eachBody['content']; let i = index">
+                                    <div class="carousel-item" [ngClass]="i==0 ? 'active' : ''">
+                                        <img src="{{eachSlider['image']}}" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <S7Layout [jsonData]="eachSlider['content']"
+                                                (formChild)="callParent($event)">
+                                            </S7Layout>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <!-- button right and left -->
+                            <ng-container
+                                *ngIf="eachBody['nextPrevButton']!=undefined && eachBody['nextPrevButton']=='active'">
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    
+
+                    <div *ngSwitchCase="'breadcumb'">
+                        <!--Bread Cumb-->
+                        <div class="breadcumbBG">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <ng-container *ngFor="let eachLink of eachBody['allLinks']">
+                                        <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
+                                            <a href="javascript:void(0)" (click)="callParent(eachLink)">
+                                                {{eachLink["text"]}}
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page"
+                                            *ngIf="eachLink['tag'] =='text'">
+                                            {{eachLink["text"]}}
+                                        </li>
+                                    </ng-container>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'image-card'">
+                        <!--Image Card-->
+                        <div class="card" style="margin-bottom: 20px;">
+                            <img src="{{eachBody['image']}}" class="card-img-top">
+                            <div class="card-body">
+                                <S7Layout [jsonData]="eachBody['content']" (formChild)="callParent($event)"></S7Layout>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'pagination'">
+                        <!--Pagination-->
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)">1</a>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0)">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <div *ngSwitchCase="'tab-menu'">
+                        <!--Tabmenu-->
+                        <ul class="nav nav-tabs nav-fill" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" href="javascript:void(0)">Link</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="javascript:void(0)">L2</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="javascript:void(0)">L3</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="ex2-content">
+                            <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel"
+                                aria-labelledby="ex2-tab-1">
+                                xxxxxxxxxxxxxxxxxxx
+                            </div>
+                            <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                                ssssssssss
+                            </div>
+                            <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+                                qqqqqqqqqqqqqqq
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Switch end-->
+
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

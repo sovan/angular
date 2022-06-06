@@ -18,6 +18,7 @@ export class AppComponent {
 	};
 
 	currentPageURL: string = '';
+	popupJSON: any = {};
 
 	constructor(private router: Router, private route1: ActivatedRoute, private appService: AppService) {
 		this.appService.postData('/main/navbar').subscribe(jsonData => {
@@ -30,17 +31,23 @@ export class AppComponent {
 			this.appService.postData(this.router.url).subscribe(jsonData => {
 				this.currentPageURL = this.router.url;
 				this.pageStructure['pageData'] = jsonData;
+				sessionStorage.setItem('currentPage', JSON.stringify(jsonData));
+				//console.log(sessionStorage.getItem('currentPage'));
 			});
 		});
 	}
 
 	callParent(sendJSON: any) {
-		//console.log(JSON.stringify(sendJSON));
 		switch (sendJSON['tag']) {
 			case "button-popup": {
-				this.popupStructure[sendJSON['id']] = sendJSON;
+				this.popupJSON = JSON.parse(JSON.stringify(this.pageStructure['pageData']));
+				this.popupStructure[1] = { 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] };
 				break;
-			} 
+			}			
+			case "form": {
+				this.popupStructure[1] = { 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] };
+				break;
+			}
 			case "database": {
 				console.log(JSON.stringify(sendJSON));
 				break;
@@ -57,9 +64,6 @@ export class AppComponent {
 				//console.log(sendJSON['redirectTo'], this.currentPageURL);
 				var URLSegment = sendJSON['redirectTo'].split('/');
 				var currentURLArray = this.currentPageURL.split('/');
-
-
-
 				URLSegment.map((eachSegment: any, index: number) => {
 					//console.log(eachURL, currentURLArray)
 					switch (eachSegment) {

@@ -1,9 +1,11 @@
-<S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)" *ngIf="(pageStructure['menuData'] | json) != '{}'"></S7Navbar>
+<S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)"
+    *ngIf="(pageStructure['menuData'] | json) != '{}'"></S7Navbar>
 
 
 
 <div class="container containerPlacing" *ngIf="(pageStructure['pageData'] | json) != '{}'">
-    <S7Layout [jsonData]="pageStructure['pageData']['content']" (formChild)="callParent($event)"></S7Layout>
+    <S7Layout [indexJSON]="{'json': pageStructure['pageData'], 'index':['content']}" (formChild)="callParent($event)">
+    </S7Layout>
 </div>
 
 
@@ -12,3 +14,5 @@
 
 
 <S7Footer></S7Footer>
+
+<S7Modal [indexJSON]="popupStructure[1]" ></S7Modal>

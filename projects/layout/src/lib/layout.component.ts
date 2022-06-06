@@ -6,39 +6,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./layout.css']
 })
 export class LayoutComponent {
-  @Input() jsonData: any;
+  @Input() indexJSON: any;
   @Output() formChild = new EventEmitter<string>();
+  jsonData: any = {};
 
-  hookToGrid: any = 'doNotFire';
-  formJSONData: any = {};
-  constructor() { }
-  operation: any = '';
+  constructor() {
+    //console.log(JSON.stringify(this.indexJSON));
 
-  callParent(sendJSON: any) {
-    this.formChild.emit(sendJSON);
   }
-
-  generateForm(json: any) {
-    this.formJSONData = JSON.parse(JSON.stringify(json));
-  }
-
-
-  getValueOfModal(action: any, operation: any) {
-    this.hookToGrid = new Date().getTime();
-    this.operation = operation['callFunction']
-  }
-
-  /*
-  Data sent by the Form by hooking ngOnChange in form component
-  */
-  sentValueByForm(data: any, others: any) {
-    if (this.operation != 'close' && data['isFormValid'] == 'valid') {
-      data['url'] = others['url'];
-      data['operation'] = this.operation;
-      data['tag'] = "database";
-      delete (data['callFunction']);
-      this.callParent(data);
-    }
-  }
-
 }

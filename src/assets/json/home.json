@@ -58,8 +58,8 @@
                                                         {
                                                             "tag": "button-popup",
                                                             "id": "3",
-                                                            "headerText": "Popup from Slider",
-                                                            "buttonText": "Simple Popup",
+                                                            "headerText": "Popup from Slider22",
+                                                            "buttonText": "Simple Popup 4",
                                                             "content": [
                                                                 {
                                                                     "column": "12",
@@ -133,7 +133,7 @@
                                                                 {
                                                                     "tag": "button-popup",
                                                                     "id": "4",
-                                                                    "buttonText": "Simple Popup",
+                                                                    "buttonText": "Simple Popup 6",
                                                                     "content": [
                                                                         {
                                                                             "column": "12",
@@ -182,19 +182,19 @@
                                                                 {
                                                                     "tag": "button-popup",
                                                                     "id": "5",
-                                                                    "headerText": "Popup from Slider",
-                                                                    "buttonText": "Simple Popup",
+                                                                    "headerText": "7 Popup from Slider",
+                                                                    "buttonText": "Simple Popup 7",
                                                                     "content": [
                                                                         {
                                                                             "column": "12",
                                                                             "body": [
                                                                                 {
                                                                                     "tag": "p",
-                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                    "content": "7Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
                                                                                 },
                                                                                 {
                                                                                     "tag": "p",
-                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                    "content": "7Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                                                                                 }
                                                                             ]
                                                                         }
@@ -233,79 +233,86 @@
                                                                     "tag": "button-form",
                                                                     "headerText": "Any Form",
                                                                     "id": "6",
-                                                                    "buttonText": "Simple Form",
-                                                                    "body": {
-                                                                        "url": "abc.com",
-                                                                        "tag": "form",
-                                                                        "data": {
-                                                                            "fname": {
-                                                                                "type": "text",
-                                                                                "lable": "First Name",
-                                                                                "placeHolder": "Type in First Name",
-                                                                                "show": [
-                                                                                    "add",
-                                                                                    "edit",
-                                                                                    "list",
-                                                                                    "view"
-                                                                                ],
-                                                                                "validation": [
-                                                                                    {
-                                                                                        "validateKey": "required",
-                                                                                        "msg": "Please enter first name"
-                                                                                    }
-                                                                                ]
-                                                                            },
-                                                                            "lname": {
-                                                                                "type": "text",
-                                                                                "lable": "Last Name",
-                                                                                "placeHolder": "Type in Last Name",
-                                                                                "show": [
-                                                                                    "add",
-                                                                                    "edit",
-                                                                                    "list",
-                                                                                    "view"
-                                                                                ],
-                                                                                "validation": [
-                                                                                    {
-                                                                                        "validateKey": "required",
-                                                                                        "msg": "Please enter last name"
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        },
-                                                                        "operationOnPopup": [
-                                                                            {
-                                                                                "callFunction": "save",
-                                                                                "tooltips": "Click here to save",
-                                                                                "class": "btn-warning",
-                                                                                "buttonText": [
-                                                                                    {
-                                                                                        "type": "icon",
-                                                                                        "value": "fa fa-save"
+                                                                    "buttonText": "Simple Form 8",
+                                                                    "content": [
+                                                                        {
+                                                                            "column": "12",
+                                                                            "body": [
+                                                                                {
+                                                                                    "url": "abc.com",
+                                                                                    "tag": "form",
+                                                                                    "data": {
+                                                                                        "fname": {
+                                                                                            "type": "text",
+                                                                                            "lable": "First Name",
+                                                                                            "placeHolder": "Type in First Name",
+                                                                                            "show": [
+                                                                                                "add",
+                                                                                                "edit",
+                                                                                                "list",
+                                                                                                "view"
+                                                                                            ],
+                                                                                            "validation": [
+                                                                                                {
+                                                                                                    "validateKey": "required",
+                                                                                                    "msg": "Please enter first name"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        "lname": {
+                                                                                            "type": "text",
+                                                                                            "lable": "Last Name",
+                                                                                            "placeHolder": "Type in Last Name",
+                                                                                            "show": [
+                                                                                                "add",
+                                                                                                "edit",
+                                                                                                "list",
+                                                                                                "view"
+                                                                                            ],
+                                                                                            "validation": [
+                                                                                                {
+                                                                                                    "validateKey": "required",
+                                                                                                    "msg": "Please enter last name"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
                                                                                     },
-                                                                                    {
-                                                                                        "type": "text",
-                                                                                        "value": "Insert"
-                                                                                    }
-                                                                                ]
-                                                                            },
-                                                                            {
-                                                                                "callFunction": "close",
-                                                                                "tooltips": "Click here to close",
-                                                                                "class": "btn-danger",
-                                                                                "buttonText": [
-                                                                                    {
-                                                                                        "type": "icon",
-                                                                                        "value": "fa fa-close"
-                                                                                    },
-                                                                                    {
-                                                                                        "type": "text",
-                                                                                        "value": "Close"
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        ]
-                                                                    }
+                                                                                    "operationOnPopup": [
+                                                                                        {
+                                                                                            "callFunction": "save",
+                                                                                            "tooltips": "Click here to save",
+                                                                                            "class": "btn-warning",
+                                                                                            "buttonText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-save"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Insert"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "callFunction": "close",
+                                                                                            "tooltips": "Click here to close",
+                                                                                            "class": "btn-danger",
+                                                                                            "buttonText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-close"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Close"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
@@ -339,8 +346,8 @@
                                                                 {
                                                                     "tag": "button-popup",
                                                                     "id": "7",
-                                                                    "headerText": "Popup from Slider",
-                                                                    "buttonText": "Simple Popup",
+                                                                    "headerText": "sssPopup from Slider",
+                                                                    "buttonText": "Simple Popup 11",
                                                                     "content": [
                                                                         {
                                                                             "column": "12",
@@ -388,17 +395,22 @@
                                                                     "column": "12",
                                                                     "body": [
                                                                         {
-                                                                            "tag": "h3",
-                                                                            "content": "Slider1"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "column": "12",
-                                                                    "body": [
-                                                                        {
-                                                                            "tag": "p",
-                                                                            "content": "11111Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                            "tag": "card",
+                                                                            "content": [
+                                                                                {
+                                                                                    "column": "9",
+                                                                                    "body": [
+                                                                                        {
+                                                                                            "tag": "h3",
+                                                                                            "content": "Slider2"
+                                                                                        },
+                                                                                        {
+                                                                                            "tag": "p",
+                                                                                            "content": "sssssssss"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
                                                                         }
                                                                     ]
                                                                 }
@@ -421,7 +433,7 @@
                                                                     "body": [
                                                                         {
                                                                             "tag": "p",
-                                                                            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                            "content": "Slider2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                                                                         }
                                                                     ]
                                                                 }
@@ -445,15 +457,15 @@
                                                                         {
                                                                             "tag": "button-popup",
                                                                             "id": "1",
-                                                                            "headerText": "Popup from Slider",
-                                                                            "buttonText": "Simple Popup",
+                                                                            "headerText": "11 Popup from Slider",
+                                                                            "buttonText": "Simple Popup 2",
                                                                             "content": [
                                                                                 {
                                                                                     "column": "12",
                                                                                     "body": [
                                                                                         {
                                                                                             "tag": "p",
-                                                                                            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                            "content": "SLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
                                                                                         },
                                                                                         {
                                                                                             "tag": "p",
@@ -492,7 +504,7 @@
                                     "tag": "space"
                                 },
                                 {
-                                    "buttonText": "Simple Popup",
+                                    "buttonText": "Simple Popup 3",
                                     "tag": "button-popup",
                                     "id": "2",
                                     "headerText": "Header",
