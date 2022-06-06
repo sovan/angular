@@ -77,7 +77,7 @@ export class FormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      console.log(propName)
+      //console.log(propName)
       this.formDataImage = JSON.parse(JSON.stringify(this.jsonData['data']));
       this.headers = Object.keys(this.formDataImage);
 

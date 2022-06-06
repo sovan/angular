@@ -42,10 +42,11 @@ export class AppComponent {
 			case "button-popup": {
 				this.popupJSON = JSON.parse(JSON.stringify(this.pageStructure['pageData']));
 				this.popupStructure[1] = { 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] };
+				
 				break;
 			}			
 			case "form": {
-				this.popupStructure[1] = { 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] };
+				this.popupStructure[1] = JSON.parse(JSON.stringify({ 'index': sendJSON['index'], 'json': this.pageStructure['pageData']}));
 				break;
 			}
 			case "database": {

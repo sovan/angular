@@ -31,9 +31,24 @@
                     </ng-container>
 
                     <div class="invalid-feedback">{{formDataImage[eachHeader]['valid']['message']}}</div>
-                     
+
                 </ng-container>
             </td>
         </tr>
     </tbody>
 </table>
+<div class="footerButton">
+    <ng-container *ngFor="let eachButton of jsonData['operationOnPopup']">
+        {{eachButton | json}}
+        <button type="button" class="btn {{eachButton['class']}}" data-dismiss="modal">
+            <ng-container *ngFor="let eachButtonText of eachButton['buttonText']">
+                <ng-container *ngIf="eachButtonText['type'] == 'text'">
+                    <span>{{eachButtonText['value']}}</span>
+                </ng-container>
+                <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                    <span><i class="{{eachButtonText['value']}}"></i></span>
+                </ng-container>
+            </ng-container>
+        </button>
+    </ng-container>
+</div>
