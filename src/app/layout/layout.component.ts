@@ -33,13 +33,13 @@ export class LayoutComponent implements OnChanges {
   }
   
   openFormModal(data: any) {
-    console.log(data)
+    //console.log(data)
     this.callParent({ "tag": "form", "index": data });
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let propName in changes) {
+    for (let propName in changes) { 
       if (propName == 'indexJSON') {
         var json = this.indexJSON['json'];
         this.indexJSON['index'].map((index: any) => {

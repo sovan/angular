@@ -25,10 +25,8 @@
                             class="form-control {{formDataImage[eachHeader]['valid']['class']}}"
                             [(ngModel)]="formValue[eachHeader]" />
                     </ng-container>
-                    {{this.jsonData['operationOnPopup'] | json}}
                     <ng-container *ngSwitchCase="'show'">
                         <!--Show-->
-                        
                         {{formValue[eachHeader]}}
                     </ng-container>
 
