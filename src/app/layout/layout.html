@@ -10,7 +10,10 @@
 
                 <div [ngSwitch]="eachBody['tag']">
 
-
+                    <div *ngSwitchCase="'grid'">
+                        <!--Grid-->
+                        <S7Grid [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
+                    </div>
 
                     <div *ngSwitchCase="'accordion'">
                         <div class="accordion" id="accordionExample{{eachBody['id']}}">
@@ -59,6 +62,7 @@
 
 
                     <div *ngSwitchCase="'form'">
+                        {{eachBody | json}}
                         <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)" [action]="action">
                         </S7Form>
                     </div>

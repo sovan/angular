@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 })
 export class FormComponent implements OnChanges {
   @Input() jsonData: any;
-  @Input() action: any;
+  @Input() operation: any;
   @Input() record: any;
   @Input() hookToGrid: any;
   @Output() formChild = new EventEmitter<string>();
@@ -16,10 +16,7 @@ export class FormComponent implements OnChanges {
   formDataImage: any;
   constructor() { }
   formValue: any = {};
-  loading:any = []
 
-
-  validForm: boolean = true;
   validateEachField(boxName: string) {
     let isValid = true;
     if (this.formDataImage[boxName]["validation"] != undefined) {
@@ -63,8 +60,6 @@ export class FormComponent implements OnChanges {
             break;
           }
         }
-
-        
         if (!errorMSG && value != "") {
           this.formDataImage[boxName]['valid']['message'] = "";
           this.formDataImage[boxName]['valid']['class'] = 'is-valid';
@@ -80,29 +75,30 @@ export class FormComponent implements OnChanges {
     return isValid;
   }
 
-
-  actionOnForm(jsonData: any) {
-    if (jsonData['validation']) {
-      this.validForm = true;
-      Object.keys(this.formDataImage).map((boxName: string) => {
-        if (!this.validateEachField(boxName)) {
-          this.validForm = false;
-        }
-      })
-      if (this.validForm) {
-        let returnData: any = { "tag": jsonData['callFunction'], "formValue": this.formValue };
-        this.formChild.emit(returnData);
-      }
-    } else {
-      let returnData: any = { "tag": jsonData['callFunction'] };
-      this.formChild.emit(returnData);
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      if (propName == 'jsonData' || propName == 'record') {
-        this.formDataImage = JSON.parse(JSON.stringify(this.jsonData['data']));
+      if (propName == 'hookToGrid') { //Sent form-value to parent
+        if (changes[propName]['previousValue'] != undefined && changes[propName]['currentValue'] != 'doNotFire') { //If first time on load don't return form value to parent
+          //console.log(changes[propName])
+          let isFormValid: any = 'valid';
+
+
+          Object.keys(this.formDataImage).map((key: any) => {
+            let isValid = this.validateEachField(key)
+            if (!isValid) {
+              isFormValid = 'invalid';
+            }
+          });
+          
+          var returnFormData: any = {};
+          returnFormData['formValue'] = this.formValue;
+          returnFormData['callFunction'] = this.operation != undefined ? this.operation['callFunction'] : "";
+          returnFormData['isFormValid'] = isFormValid;
+          this.formChild.emit(returnFormData);
+        }
+      } else { //All other onChanges other than parent ask for submit form
+
+        this.formDataImage = JSON.parse(JSON.stringify(this.jsonData));
         this.headers = Object.keys(this.formDataImage);
 
         Object.keys(this.record).map((key: any) => { //Filling value for edit and view
@@ -114,12 +110,6 @@ export class FormComponent implements OnChanges {
           this.formDataImage[key]['valid'] = { "class": "", "message": "" };
           this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for add
         });
-      } else if (propName == 'action') {
-        if (this.action['action'] == 'loading' && this.action['loading'] == true && this.loading.indexOf(this.action['button'])==-1) {
-          this.loading.push(this.action['button']);
-        } else {
-          this.loading.pop(); //Remove by index
-        }
       }
     }
   }

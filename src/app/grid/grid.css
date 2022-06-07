@@ -1,0 +1,89 @@
+table.grid  {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+table.grid tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+table.grid th,
+table.grid td {
+    padding: 15px;
+}
+
+table.grid tr:nth-child(odd) {
+    background: #FFF
+}
+
+table.grid tr:last-child, table.grid th:last-child  {
+    width: 1%;
+    white-space: nowrap;
+}
+
+
+table.grid tr:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+table.grid th {
+    background: #ccc;
+}
+
+table.grid tr td button {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    table.grid {
+        border: 0;
+    }
+
+    table.grid thead {
+        display: none;
+    }
+
+    table.grid tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    table.grid td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        text-align: right;
+    }
+
+    table.grid td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+    table.grid tr:last-child, table.grid th:last-child  {
+        width: 100%;
+        border-bottom: 0;
+    }
+}
+
+table.header{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+table.header td:last-child  {
+    width: 1px;
+    white-space: nowrap;
+}
+.iconClass span{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.iconClass{
+    margin-left: 5px;
+}

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { LayoutComponent } from './layout.component';
 
 import { CommonModule } from '@angular/common';
-import { GridModule } from 'projects/grid/src/public-api';
+import { GridModule } from '../grid/grid.module';
 import { FormModule } from '../form/form.module';
 
 

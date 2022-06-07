@@ -1,0 +1,122 @@
+<!--Grid header -->
+<table class="header">
+    <tr>
+        <td>
+            <h3>{{jsonData["headerOfGrid"]}}</h3>
+        </td>
+        <td>
+            <ng-container *ngFor="let eachGridButton of jsonData['headerOperation']">
+                <button type="button" class="btn {{eachGridButton['class']}} iconClass" [attr.data-toggle]="'modal'"
+                    [attr.data-target]="'#modal-grid-form-'+jsonData['id']" (click)="setValueToModal(eachGridButton)">
+                    <ng-container *ngFor="let eachButtonText of eachGridButton['buttonText']">
+                        <ng-container *ngIf="eachButtonText['type']=='text'">
+                            <span>{{eachButtonText['value']}}</span>
+                        </ng-container>
+                        <ng-container *ngIf="eachButtonText['type']=='icon'">
+                            <span><i class="{{eachButtonText['value']}}"></i></span>
+                        </ng-container>
+                    </ng-container>
+                </button>
+            </ng-container>
+        </td>
+    </tr>
+</table>
+
+
+<!--Grid body -->
+<table class="grid">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let eachHeader of gridHeader">{{eachHeader}}</th>
+            <th scope="col" *ngIf="jsonData['operation']!=undefined && jsonData['operation'].length!=0">Operation
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let eachRecord of jsonData['records']">
+            <td [attr.data-label]="gridHeader[i]" *ngFor="let eachKey of gridKey; let i=index">
+                {{eachRecord[eachKey]}}
+            </td>
+            <td [attr.data-label]="'Operation'"
+                *ngIf="jsonData['operation']!=undefined && jsonData['operation'].length!=0">
+                <ng-container *ngFor="let eachOperation of jsonData['operation']">
+
+                    <!--Popup button -->
+
+
+                    <button class="btn {{eachOperation['class']}} iconClass" [attr.data-toggle]="'modal'"
+                        [attr.data-target]="'#modal-grid-form-'+jsonData['id']"
+                        (click)="setValueToModal(eachOperation, eachRecord)"
+                        *ngIf="eachOperation['callFunction']!=undefined">
+                        <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
+                            <ng-container *ngIf="eachButtonText['type']=='text'">
+                                <span>{{eachButtonText['value']}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="eachButtonText['type']=='icon'">
+                                <span><i class="{{eachButtonText['value']}}"></i></span>
+                            </ng-container>
+                        </ng-container>
+                    </button>
+
+                    <!--Redirection button-->
+                    <button class="btn {{eachOperation['class']}}" (click)="callParent(eachOperation)"
+                        *ngIf="eachOperation['redirectTo']!=undefined">
+                        <ng-container *ngFor="let eachButtonText of eachOperation['buttonText']">
+                            <ng-container *ngIf="eachButtonText['type']=='text'">
+                                <span>{{eachButtonText['value']}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="eachButtonText['type']=='icon'">
+                                <span><i class="{{eachButtonText['value']}}"></i></span>
+                            </ng-container>
+                        </ng-container>
+                    </button>
+
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!--Modal -->
+<div class="modal fade" id="modal-grid-form-{{jsonData['id']}}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!--Modal header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{headerText}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!--Modal form -->
+            <div class="modal-body">
+                <ng-container *ngIf="['add','edit','view'].indexOf(operation['callFunction'])!=-1">
+                    <S7Form [jsonData]="formFields" (formChild)="sentValueByForm($event)" [operation]="operation"
+                        [record]="record" [hookToGrid]="hookToGrid"></S7Form>
+                </ng-container>
+                <p *ngIf="['delete','download'].indexOf(operation['callFunction']) != -1">{{operation['bodyText']}}</p>
+            </div>
+
+            <!--Modal footer button -->
+            <div class="modal-footer" *ngIf="footerButton!=undefined && footerButton.length>0">
+                <ng-container *ngFor="let eachModalButton of footerButton">
+                    <button type="button" class="btn {{eachModalButton['class']}} iconClass"
+                        [attr.data-dismiss]="eachModalButton['callFunction'] == 'close' ? 'modal' : ''"
+                        (click)="getValueOfModal(eachModalButton)">
+                        <ng-container *ngFor="let eachButtonText of eachModalButton['buttonText']">
+                            <ng-container *ngIf="eachButtonText['type']=='text'">
+                                <span>{{eachButtonText['value']}}</span>
+                            </ng-container>
+                            <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                                <span><i class="{{eachButtonText['value']}}"></i></span>
+                            </ng-container>
+                        </ng-container>
+                    </button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
