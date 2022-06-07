@@ -62,7 +62,6 @@
 
 
                     <div *ngSwitchCase="'form'">
-                        {{eachBody | json}}
                         <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)" [action]="action">
                         </S7Form>
                     </div>
@@ -129,7 +128,7 @@
                                 *ngFor="let eachRow of eachBody['content']; let k=index">
                                 <button class="nav-link" [ngClass]="{'active': k === 0}" id="home-tab"
                                     data-bs-toggle="tab" [attr.data-bs-target]="'#tabMenu' + eachBody['id']+k"
-                                    type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                                    type="button" role="tab" aria-controls="home" aria-selected="true">{{eachRow['title']}}</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
