@@ -1184,6 +1184,9 @@
                                     ]
                                 },
                                 {
+                                    "tag": "pagination"
+                                },
+                                {
                                     "buttonText": "Simple Popup 3",
                                     "tag": "button-popup",
                                     "id": "2",
