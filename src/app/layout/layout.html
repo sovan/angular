@@ -74,13 +74,13 @@
                     </div>
 
                     <div *ngSwitchCase="'slider'">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
+                        <div id="sliderID{{eachBody['id']}}" class="carousel slide" data-bs-ride="carousel">
+                            {{eachBody['id']}}
                             <!--Lower section button -->
                             <div class="carousel-indicators"
                                 *ngIf="eachBody['jumpToSlideButton']!=undefined && eachBody['jumpToSlideButton']=='active'">
                                 <ng-container *ngFor="let eachSlider of eachBody['content']; let k = index">
-                                    <button type="button" data-bs-target="#carouselExampleCaptions"
+                                    <button type="button"  [attr.data-bs-target]="'#sliderID' + eachBody['id']"
                                         [attr.data-bs-slide-to]="k" [ngClass]="k==0 ? 'active' : ''"
                                         aria-current="true"></button>
                                 </ng-container>
@@ -105,12 +105,12 @@
                             <ng-container
                                 *ngIf="eachBody['nextPrevButton']!=undefined && eachBody['nextPrevButton']=='active'">
                                 <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
