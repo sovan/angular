@@ -5,6 +5,7 @@
             "body": [
                 {
                     "tag": "accordion",
+                    "id": "2",
                     "content": [
                         {
                             "title": "Acc 1",
@@ -239,8 +240,32 @@
                                                                             "column": "12",
                                                                             "body": [
                                                                                 {
+                                                                                    "tag": "image-card",
+                                                                                    "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+                                                                                    "content": [
+                                                                                        {
+                                                                                            "column": "12",
+                                                                                            "body": [
+                                                                                                {
+                                                                                                    "tag": "h5",
+                                                                                                    "content": "Image Name"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "column": "12",
+                                                                                            "body": [
+                                                                                                {
+                                                                                                    "tag": "p",
+                                                                                                    "content": "Lorssem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
                                                                                     "tag": "p",
-                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                    "content": "Form description. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                                                                                 },
                                                                                 {
                                                                                     "url": "abc.com",
@@ -360,21 +385,179 @@
                                                                     "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                                                                 },
                                                                 {
-                                                                    "tag": "button-popup",
-                                                                    "id": "7",
-                                                                    "headerText": "sssPopup from Slider",
-                                                                    "buttonText": "Simple Popup 11",
+                                                                    "tag": "button-form",
+                                                                    "headerText": "ABCD Form",
+                                                                    "id": "9",
+                                                                    "buttonText": "Simple Form ABCD",
                                                                     "content": [
                                                                         {
                                                                             "column": "12",
                                                                             "body": [
                                                                                 {
-                                                                                    "tag": "p",
-                                                                                    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."
+                                                                                    "tag": "accordion",
+                                                                                    "id": "3",
+                                                                                    "content": [
+                                                                                        {
+                                                                                            "title": "Acc 1",
+                                                                                            "content": [
+                                                                                                {
+                                                                                                    "column": "12",
+                                                                                                    "body": [
+                                                                                                        {
+                                                                                                            "tag": "p",
+                                                                                                            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "title": "Acc 22",
+                                                                                            "content": [
+                                                                                                {
+                                                                                                    "column": "12",
+                                                                                                    "body": [
+                                                                                                        {
+                                                                                                            "tag": "image-card",
+                                                                                                            "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+                                                                                                            "content": [
+                                                                                                                {
+                                                                                                                    "column": "12",
+                                                                                                                    "body": [
+                                                                                                                        {
+                                                                                                                            "tag": "h5",
+                                                                                                                            "content": "Image Name"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "column": "12",
+                                                                                                                    "body": [
+                                                                                                                        {
+                                                                                                                            "tag": "p",
+                                                                                                                            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "tag": "image-card",
+                                                                                    "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+                                                                                    "content": [
+                                                                                        {
+                                                                                            "column": "12",
+                                                                                            "body": [
+                                                                                                {
+                                                                                                    "tag": "h5",
+                                                                                                    "content": "Image Name"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "column": "12",
+                                                                                            "body": [
+                                                                                                {
+                                                                                                    "tag": "p",
+                                                                                                    "content": "Lorssem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
                                                                                 },
                                                                                 {
                                                                                     "tag": "p",
-                                                                                    "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                                                                                    "content": "Form description. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                                                                },
+                                                                                {
+                                                                                    "url": "abc.com",
+                                                                                    "tag": "form",
+                                                                                    "data": {
+                                                                                        "fname": {
+                                                                                            "type": "text",
+                                                                                            "lable": "First Name",
+                                                                                            "placeHolder": "Type in First Name",
+                                                                                            "show": [
+                                                                                                "add",
+                                                                                                "edit",
+                                                                                                "list",
+                                                                                                "view"
+                                                                                            ],
+                                                                                            "validation": [
+                                                                                                {
+                                                                                                    "validateKey": "required",
+                                                                                                    "msg": "Please enter first name"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        "lname": {
+                                                                                            "type": "text",
+                                                                                            "lable": "Last Name",
+                                                                                            "placeHolder": "Type in Last Name",
+                                                                                            "show": [
+                                                                                                "add",
+                                                                                                "edit",
+                                                                                                "list",
+                                                                                                "view"
+                                                                                            ],
+                                                                                            "validation": [
+                                                                                                {
+                                                                                                    "validateKey": "required",
+                                                                                                    "msg": "Please enter last name"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "operationOnPopup": [
+                                                                                        {
+                                                                                            "callFunction": "save",
+                                                                                            "validation": true,
+                                                                                            "tooltips": "Click here to save",
+                                                                                            "class": "btn-warning",
+                                                                                            "buttonText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-save"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Insert"
+                                                                                                }
+                                                                                            ],
+                                                                                            "buttonLoadingText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-circle-o-notch fa-spin"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Inserting ..."
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "callFunction": "close",
+                                                                                            "validation": false,
+                                                                                            "tooltips": "Click here to close",
+                                                                                            "class": "btn-danger",
+                                                                                            "buttonText": [
+                                                                                                {
+                                                                                                    "type": "icon",
+                                                                                                    "value": "fa fa-close"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "text",
+                                                                                                    "value": "Close"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
                                                                                 }
                                                                             ]
                                                                         }

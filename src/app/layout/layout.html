@@ -1,31 +1,31 @@
-
 <div class="row">
 
 
-    
+
 
     <ng-container *ngFor="let eachBlock of jsonData; let i=index">
         <div class="col-sm-{{eachBlock['column']}}">
-            
+
             <ng-container *ngFor="let eachBody of eachBlock['body']; let j=index">
-                
+
                 <div [ngSwitch]="eachBody['tag']">
 
 
 
                     <div *ngSwitchCase="'accordion'">
-                        <div class="accordion" id="accordionExample">
+                        <div class="accordion" id="accordionExample{{eachBody['id']}}">
                             <ng-container *ngFor="let eachRow of eachBody['content']; let k=index">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            [attr.data-bs-target]="'#sss' + k" aria-expanded="true"
+                                            [attr.data-bs-target]="'#accordion' + eachBody['id']+k" aria-expanded="true"
                                             aria-controls="collapseOne">
                                             {{eachRow['title']}}
                                         </button>
                                     </h2>
-                                    <div id="sss{{k}}" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                        data-bs-parent="#accordionExample">
+                                    <div id="accordion{{eachBody['id']}}{{k}}" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne"
+                                        [attr.data-bs-parent]="'#accordionExample' + eachBody['id']">
                                         <div class="accordion-body">
                                             <S7Layout (formChild)="callParent($event)"
                                                 [indexJSON]="{'json': indexJSON['json'], 'index': createIndex([i,'body',j,'content',k,'content'])}">
@@ -56,11 +56,11 @@
                         </button>
                     </div>
 
-                    
-                    
+
+
                     <div *ngSwitchCase="'form'">
-                        
-                        <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)" [action]="action"></S7Form>
+                        <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)" [action]="action">
+                        </S7Form>
                     </div>
 
 
