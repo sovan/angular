@@ -17,3 +17,10 @@ p {
 .accordion{
     margin-bottom: 10px;
 }
+.tab-content{
+    border:1px solid #DEE2E6;
+    border-top: 0px;
+    border-radius: 0 0 5px 5px;
+    padding: 15px;
+    text-align: justify;
+}

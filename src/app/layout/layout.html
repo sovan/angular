@@ -83,7 +83,7 @@
                             <div class="carousel-indicators"
                                 *ngIf="eachBody['jumpToSlideButton']!=undefined && eachBody['jumpToSlideButton']=='active'">
                                 <ng-container *ngFor="let eachSlider of eachBody['content']; let k = index">
-                                    <button type="button"  [attr.data-bs-target]="'#sliderID' + eachBody['id']"
+                                    <button type="button" [attr.data-bs-target]="'#sliderID' + eachBody['id']"
                                         [attr.data-bs-slide-to]="k" [ngClass]="k==0 ? 'active' : ''"
                                         aria-current="true"></button>
                                 </ng-container>
@@ -108,12 +108,12 @@
                             <ng-container
                                 *ngIf="eachBody['nextPrevButton']!=undefined && eachBody['nextPrevButton']=='active'">
                                 <button class="carousel-control-prev" type="button"
-                                [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="prev">
+                                    [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <button class="carousel-control-next" type="button"
-                                [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="next">
+                                    [attr.data-bs-target]="'#sliderID' + eachBody['id']" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -124,30 +124,26 @@
 
                     <div *ngSwitchCase="'tab-menu'">
                         <!--Tabmenu-->
-                        <ul class="nav nav-tabs nav-fill" id="ex1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" href="javascript:void(0)">Link</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="javascript:void(0)">L2</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" href="javascript:void(0)">L3</a>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation"
+                                *ngFor="let eachRow of eachBody['content']; let k=index">
+                                <button class="nav-link" [ngClass]="{'active': k === 0}" id="home-tab"
+                                    data-bs-toggle="tab" [attr.data-bs-target]="'#tabMenu' + eachBody['id']+k"
+                                    type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
                             </li>
                         </ul>
-                        <div class="tab-content" id="ex2-content">
-                            <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel"
-                                aria-labelledby="ex2-tab-1">
-                                xxxxxxxxxxxxxxxxxxx
-                            </div>
-                            <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
-                                ssssssssss
-                            </div>
-                            <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
-                                qqqqqqqqqqqqqqq
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show" [ngClass]="{'active': k === 0}"
+                                id="tabMenu{{eachBody['id']}}{{k}}" role="tabpanel" aria-labelledby="home-tab"
+                                *ngFor="let eachRow of eachBody['content']; let k=index">
+                                <S7Layout (formChild)="callParent($event)"
+                                    [indexJSON]="{'json': indexJSON['json'], 'index': createIndex([i,'body',j,'content',k,'content'])}">
+                                </S7Layout>
                             </div>
                         </div>
                     </div>
+
+
 
 
                     <div *ngSwitchCase="'h3'">
