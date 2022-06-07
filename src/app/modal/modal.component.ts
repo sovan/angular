@@ -36,8 +36,10 @@ export class ModalComponent implements OnChanges {
 
   createIndex(index: any) {
     var returnIndex = [];
-    for (var i = 0; i < this.indexJSON['index'].length; i++) {
-      returnIndex.push(this.indexJSON['index'][i]);
+    if (this.indexJSON['index']!=undefined) {
+      for (var i = 0; i < this.indexJSON['index'].length; i++) {
+        returnIndex.push(this.indexJSON['index'][i]);
+      }
     }
     for (var i = 0; i < index.length; i++) {
       returnIndex.push(index[i]);
