@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { NavbarModule } from 'projects/navbar/src/public-api';
-import { FooterModule } from 'projects/footer/src/public-api';
+import { NavbarModule } from './navbar/navbar.module';
+import { FooterModule } from './footer/footer.module';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
