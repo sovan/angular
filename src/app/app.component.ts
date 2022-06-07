@@ -10,7 +10,8 @@ import { AppService } from "./app.service";
 })
 export class AppComponent {
 	title = 'expirement';
-	popupStructure: any = {};
+	popupStructure: any = [];
+	popupFunction: any = [];
 
 	pageStructure = {
 		"pageData": { 'content': [] },
@@ -42,11 +43,12 @@ export class AppComponent {
 			case "button-popup": {
 				this.popupJSON = JSON.parse(JSON.stringify(this.pageStructure['pageData']));
 				this.popupStructure[1] = { 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] };
-				
+
 				break;
-			}			
+			}
 			case "form": {
-				this.popupStructure[1] = JSON.parse(JSON.stringify({ 'index': sendJSON['index'], 'json': this.pageStructure['pageData']}));
+				this.popupStructure[1] = JSON.parse(JSON.stringify({ 'index': sendJSON['index'], 'json': this.pageStructure['pageData'] }));
+				this.popupFunction[1] = {};
 				break;
 			}
 			case "database": {
@@ -58,11 +60,17 @@ export class AppComponent {
 				break;
 			}
 			case "close": {
-				console.log(sendJSON);
+				this.popupFunction[1] = { 'action': 'close' };
 				break;
 			}
 			case "save": {
-				console.log(sendJSON);
+				this.popupFunction[1] = { 'action': 'loading', 'loading': true, 'button': sendJSON['tag'] };
+				setTimeout(() => {
+					this.popupFunction[1] = { 'action': 'loading', 'loading': false, 'button': sendJSON['tag'] };
+					setTimeout(() => {
+						this.popupFunction[1] = { 'action': 'close' };
+					}, 200);
+				}, 2000)
 				break;
 			}
 			case "action-popup": {

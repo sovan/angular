@@ -39,13 +39,25 @@
 </table>
 <div class="footerButton">
     <ng-container *ngFor="let eachButton of jsonData['operationOnPopup']">
-        <button type="button" class="btn {{eachButton['class']}}" (click)="actionOnForm(eachButton)">
-            <ng-container *ngFor="let eachButtonText of eachButton['buttonText']">
-                <ng-container *ngIf="eachButtonText['type'] == 'text'">
-                    <span>{{eachButtonText['value']}}</span>
+        <button type="button" class="btn {{eachButton['class']}}" (click)="actionOnForm(eachButton)" [disabled]="loading.length>0">
+            <ng-container *ngIf="loading.indexOf(eachButton['callFunction'])==-1">
+                <ng-container *ngFor="let eachButtonText of eachButton['buttonText']">
+                    <ng-container *ngIf="eachButtonText['type'] == 'text'">
+                        <span>{{eachButtonText['value']}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                        <span><i class="{{eachButtonText['value']}}"></i></span>
+                    </ng-container>
                 </ng-container>
-                <ng-container *ngIf="eachButtonText['type'] == 'icon'">
-                    <span><i class="{{eachButtonText['value']}}"></i></span>
+            </ng-container>
+            <ng-container *ngIf="loading.indexOf(eachButton['callFunction'])!=-1">
+                <ng-container *ngFor="let eachButtonText of eachButton['buttonLoadingText']">
+                    <ng-container *ngIf="eachButtonText['type'] == 'text'">
+                        <span>{{eachButtonText['value']}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="eachButtonText['type'] == 'icon'">
+                        <span><i class="{{eachButtonText['value']}}"></i></span>
+                    </ng-container>
                 </ng-container>
             </ng-container>
         </button>

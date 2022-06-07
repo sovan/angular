@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges ,ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'S7Modal',
@@ -8,9 +8,10 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 })
 export class ModalComponent implements OnChanges {
   
-  @Input() targetFrom: any;
+  @Input() action: any;
   @Input() indexJSON: any;
-  
+  @ViewChild('closeBtn') closeBtn!: ElementRef;
+
   @Output() formChild = new EventEmitter<string>();
 
   jsonData: any = {};
@@ -19,15 +20,16 @@ export class ModalComponent implements OnChanges {
   
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      //console.log(propName);
       if (propName == 'indexJSON' && this.indexJSON!=undefined) {
         var json = this.indexJSON["json"];
-        //console.log(JSON.stringify(this.indexJSON['index']))
         this.indexJSON['index'].map((index: any) => {
-          //console.log(JSON.stringify(json), index)
           json = json[index];
         });
         this.jsonData = json;
+      } else if(propName == 'action'){
+        if(this.action['action']=='close'){
+          this.closeBtn.nativeElement.click();
+        } 
       }
     }
   }
@@ -44,7 +46,6 @@ export class ModalComponent implements OnChanges {
   }
 
   callParent(sendJSON: any){
-    
     this.formChild.emit(sendJSON);
   }
 }

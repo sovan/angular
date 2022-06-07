@@ -7,12 +7,13 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 })
 export class LayoutComponent implements OnChanges {
   @Input() indexJSON: any;
+  @Input() action: any;
   @Output() formChild = new EventEmitter<string>();
   jsonData: any = {};
 
 
   hookToGrid: any = 'doNotFire';
-  
+
   createIndex(index: any) {
     var returnIndex = [];
     for (var i = 0; i < this.indexJSON['index'].length; i++) {
@@ -31,7 +32,7 @@ export class LayoutComponent implements OnChanges {
   openModal(data: any) {
     this.callParent({ "tag": "button-popup", "index": data });
   }
-  
+
   openFormModal(data: any) {
     //console.log(data)
     this.callParent({ "tag": "form", "index": data });
@@ -39,7 +40,7 @@ export class LayoutComponent implements OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let propName in changes) { 
+    for (let propName in changes) {
       if (propName == 'indexJSON') {
         var json = this.indexJSON['json'];
         this.indexJSON['index'].map((index: any) => {

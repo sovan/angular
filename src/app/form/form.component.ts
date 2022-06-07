@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 })
 export class FormComponent implements OnChanges {
   @Input() jsonData: any;
-  @Input() operation: any;
+  @Input() action: any;
   @Input() record: any;
   @Input() hookToGrid: any;
   @Output() formChild = new EventEmitter<string>();
@@ -16,6 +16,8 @@ export class FormComponent implements OnChanges {
   formDataImage: any;
   constructor() { }
   formValue: any = {};
+  loading:any = []
+
 
   validForm: boolean = true;
   validateEachField(boxName: string) {
@@ -97,19 +99,26 @@ export class FormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      //console.log(propName)
-      this.formDataImage = JSON.parse(JSON.stringify(this.jsonData['data']));
-      this.headers = Object.keys(this.formDataImage);
+      if (propName == 'jsonData' || propName == 'record') {
+        this.formDataImage = JSON.parse(JSON.stringify(this.jsonData['data']));
+        this.headers = Object.keys(this.formDataImage);
 
-      Object.keys(this.record).map((key: any) => { //Filling value for edit and view
-        this.formValue[key] = this.record[key] ? this.record[key] : "";
-      });
+        Object.keys(this.record).map((key: any) => { //Filling value for edit and view
+          this.formValue[key] = this.record[key] ? this.record[key] : "";
+        });
 
 
-      this.headers.map((key: any) => { //Put validation data on the form
-        this.formDataImage[key]['valid'] = { "class": "", "message": "" };
-        this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for add
-      });
+        this.headers.map((key: any) => { //Put validation data on the form
+          this.formDataImage[key]['valid'] = { "class": "", "message": "" };
+          this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for add
+        });
+      } else if (propName == 'action') {
+        if (this.action['action'] == 'loading' && this.action['loading'] == true && this.loading.indexOf(this.action['button'])==-1) {
+          this.loading.push(this.action['button']);
+        } else {
+          this.loading.pop(); //Remove by index
+        }
+      }
     }
   }
 }

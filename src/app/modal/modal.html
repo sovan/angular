@@ -3,18 +3,18 @@
         <div class="modal-content">
             <div class="modal-header" *ngIf="jsonData['headerText']!=undefined && jsonData['headerText']!=''">
                 <h5 class="modal-title" id="exampleModalLabel">{{jsonData['headerText']}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <button type="button" class="close modalCloseButton" data-dismiss="modal" aria-label="Close" *ngIf="jsonData['headerText']==undefined || jsonData['headerText']==''">
+            <button #closeBtn type="button" class="close modalCloseButton" data-dismiss="modal" aria-label="Close" *ngIf="jsonData['headerText']==undefined || jsonData['headerText']==''">
                 <span aria-hidden="true">&times;</span>
             </button>
 
 
             <div class="modal-body">
-                <S7Layout (formChild)="callParent($event)"
+                <S7Layout (formChild)="callParent($event)" [action] = "action"
                     [indexJSON]="{'json': indexJSON['json'], 'index': createIndex(['content'])}"></S7Layout>
             </div>
 
