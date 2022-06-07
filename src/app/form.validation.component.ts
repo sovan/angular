@@ -5,7 +5,7 @@ export class formValidation {
 	
 
 	public static validate(value: string, validateKey: string, eachValidationMSG: string, eachValidationValue: string) {
-		let errorMSG: any ={};
+		let errorMSG: any = "";
 		switch (validateKey) {
 			case "required": {
 			  if (value == "" || value == null) {
