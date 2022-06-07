@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-
+import { formValidation } from '../form.validation.component';
 @Component({
   selector: 'S7Form',
   templateUrl: './form.html',
@@ -16,7 +16,7 @@ export class FormComponent implements OnChanges {
   formDataImage: any;
   constructor() { }
   formValue: any = {};
-  loading:any = []
+  loading: any = []
 
 
   validForm: boolean = true;
@@ -39,32 +39,7 @@ export class FormComponent implements OnChanges {
         } else {
           value = this.formValue[boxName].trim();
         }
-
-
-        //Validation starts
-        let errorMSG = "";
-        switch (eachValidation['validateKey']) {
-          case "required": {
-            if (value == "" || value == null) {
-              errorMSG = eachValidation['msg'];
-            }
-            break;
-          }
-          case "min": {
-            if (value != "" && parseInt(value) < parseInt(eachValidation['val'])) {
-              errorMSG = eachValidation['msg'];
-            }
-            break;
-          }
-          case "max": {
-            if (value != "" && parseInt(value) > parseInt(eachValidation['val'])) {
-              errorMSG = eachValidation['msg'];
-            }
-            break;
-          }
-        }
-
-        
+        let errorMSG = formValidation.validate(value, eachValidation['validateKey'], eachValidation['msg'], eachValidation['val']);
         if (!errorMSG && value != "") {
           this.formDataImage[boxName]['valid']['message'] = "";
           this.formDataImage[boxName]['valid']['class'] = 'is-valid';
@@ -115,7 +90,7 @@ export class FormComponent implements OnChanges {
           this.formValue[key] = this.record[key] ? this.record[key] : ""; //Filling value for add
         });
       } else if (propName == 'action') {
-        if (this.action['action'] == 'loading' && this.action['loading'] == true && this.loading.indexOf(this.action['button'])==-1) {
+        if (this.action['action'] == 'loading' && this.action['loading'] == true && this.loading.indexOf(this.action['button']) == -1) {
           this.loading.push(this.action['button']);
         } else {
           this.loading.pop(); //Remove by index
