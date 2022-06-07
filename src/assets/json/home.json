@@ -4,6 +4,20 @@
             "column": "12",
             "body": [
                 {
+                    "tag": "breadcumb",
+                    "allLinks": [
+                        {
+                            "redirectTo": "/home",
+                            "tag": "redirection",
+                            "text": "Home"
+                        },
+                        {
+                            "tag": "text",
+                            "text": "Users"
+                        }
+                    ]
+                },
+                {
                     "tag": "accordion",
                     "id": "2",
                     "content": [

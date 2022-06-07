@@ -143,6 +143,27 @@
                         </nav>
                     </div>
 
+                    <div *ngSwitchCase="'breadcumb'">
+                        <!--Bread Cumb-->
+                        <div class="breadcumbBG">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <ng-container *ngFor="let eachLink of eachBody['allLinks']">
+                                        <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
+                                            <a href="javascript:void(0)" (click)="callParent(eachLink)">
+                                                {{eachLink["text"]}}
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page"
+                                            *ngIf="eachLink['tag'] =='text'">
+                                            {{eachLink["text"]}}
+                                        </li>
+                                    </ng-container>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
                     <div *ngSwitchCase="'tab-menu'">
                         <!--Tabmenu-->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
