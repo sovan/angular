@@ -53,18 +53,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <ng-container *ngFor="let eachRadio of selectedWidget['radio']">
+
+
+
+
+                    <ng-container *ngFor="let eachRadio of selectedWidget['radio']; let i=index">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault{{i}}" [(ngModel)]="formValue['container-size']" value="{{eachRadio['value']}}">
+                            <label class="form-check-label" for="flexRadioDefault{{i}}">
                                 {{eachRadio['lable']}}
                             </label>
                         </div>
                     </ng-container>
+
+
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" (click)="allWidget()">Save changes</button>
                 </div>
             </div>
         </div>

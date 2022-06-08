@@ -10,6 +10,9 @@ export class CreatePageComponent implements OnInit {
   showRightMenu: boolean = false;
   headerPopup: string = '';
   selectedWidget: any = {};
+  formValue: any = {
+    "container-size": "col-sm-12"
+  };
   dropdown: any = [
     {
       "value": "card",
@@ -18,7 +21,7 @@ export class CreatePageComponent implements OnInit {
       "radio": [{
         "value": "col-sm-1",
         "lable": "Twelve Column"
-      },{
+      }, {
         "value": "col-sm-2",
         "lable": "Six Column"
       }, {
@@ -57,7 +60,9 @@ export class CreatePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  allWidget() {
+    console.log(this.formValue);
+  }
   createWidget(value: string) {
 
     //Creation of Header 

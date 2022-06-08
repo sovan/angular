@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CreatePageComponent } from './create-page.component';
+import { FormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
     CreatePageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     CreatePageComponent
