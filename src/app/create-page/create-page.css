@@ -1,0 +1,17 @@
+.borderBox {
+    border: 2px solid #DEE2E6 !important;
+    padding: 3px;
+}
+
+.active {
+    border: 2px dotted #dc3545 !important;
+    background-color: #eee;
+}
+
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+.container {
+    padding: 0px !important;
+}

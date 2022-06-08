@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppService } from './app.service';
 import { ModalModule } from './modal/modal.module';
+import { CreatePageModule } from './create-page/create-page.module';
 
 const routes: Routes = [{
   path: "**", component: AppComponent
@@ -25,7 +26,7 @@ const routes: Routes = [{
     LayoutModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    
+    CreatePageModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
