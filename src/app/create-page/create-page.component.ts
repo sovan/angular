@@ -9,10 +9,22 @@ export class CreatePageComponent implements OnInit {
   menuTopLeftPosition = { x: '0', y: '0' }
   showRightMenu: boolean = false;
   headerPopup: string = '';
-  selectedWidget: any = {};
+  dragableWidget: any = '';
+  selectedWidget: any = '';
+  mouseMoveTargetID: any = '';
   formValue: any = {
     "container-size": "col-sm-12"
   };
+  layoutJSON: any = {
+    "json": {
+      "content": [{
+        "column": "12",
+        "body": []
+      }]
+    },
+    "index": ["content"]
+  }
+
   dropdown: any = [
     {
       "value": "card",
@@ -51,54 +63,88 @@ export class CreatePageComponent implements OnInit {
   // reference to the MatMenuTrigger in the DOM 
   constructor(private ElByClassName: ElementRef) { }
 
-  ngAfterViewInit() {
-
-    //btnElement.innerHTML = 'This is Button';
-  }
 
 
   ngOnInit(): void {
   }
 
-  allWidget() {
-    console.log(this.formValue);
-  }
-  createWidget(value: string) {
 
-    //Creation of Header 
-    var selectedWidget = this.dropdown.filter((items: any) => {
-      if (items['value'] == value) {
-        return items;
-      }
-    });
-    this.selectedWidget = selectedWidget[0];
-    this.headerPopup = selectedWidget[0]['headerText'];
-
-    //Other activity
-    this.showRightMenu = false;
-
+  getID(event: any) {
+    var id = event.id;
+    if (id == "") {
+      id = this.getID(event.parentNode);
+    }
+    return id;
   }
-  closeRightMenu() {
-    this.showRightMenu = false;
-  }
+
+
+
   mouseEvent(event: any) {
-    const boxes = document.querySelectorAll('.active');
-    boxes.forEach(box => {
-      box.classList.remove('active');
-    });
-    event.currentTarget.className += ' active';
-  }
+
+    switch (event['type']) {
 
 
-  onRightClick(event: MouseEvent, id: any) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.menuTopLeftPosition.x = event.clientX + 'px';
-    this.menuTopLeftPosition.y = event.clientY + 'px';
-    this.showRightMenu = true;
-    console.log(id)
-    setTimeout(() => {
-      //this.showRightMenu = false;
-    }, 3000);
+
+      case "mousemove": {
+        const boxes = document.querySelectorAll('.showSelectedSpace');
+        boxes.forEach(box => {
+          box.classList.remove('showSelectedSpace');
+        });
+        this.mouseMoveTargetID = this.getID(event.target);
+        if (this.mouseMoveTargetID != undefined && this.mouseMoveTargetID != null && this.mouseMoveTargetID != "") {
+          var targetID = this.mouseMoveTargetID.split('-');
+          if (targetID[0] == 'sidebar' || targetID[0] == 'body' || targetID[0] == 'fullbody' || targetID[0] == 'breadcrumb') {
+            document.getElementById(this.mouseMoveTargetID)?.classList.add('showSelectedSpace');
+          }
+        }
+        break;
+      }
+
+
+      case "mousedown": {
+        var targetID = this.mouseMoveTargetID.split('-');
+        if (targetID[0] == 'sidebar') {
+          this.dragableWidget = targetID[1];
+        } else if (targetID[0] == 'breadcrumb') {
+          this.selectedWidget = this.mouseMoveTargetID;
+          const boxes = document.querySelectorAll('.selectedWidget');
+          boxes.forEach(box => {
+            box.classList.remove('selectedWidget');
+          });
+          document.getElementById(this.selectedWidget)?.classList.add('selectedWidget');
+        } else {
+          console.log(targetID)
+        }
+        break;
+      }
+
+
+
+      case "mouseup": {
+        var targetID = event['target']['id'].split('-');
+        if (targetID[0] == 'body') {
+          switch (this.dragableWidget) {
+            case "card": {
+              break;
+            }
+            case "breadcumb": {
+              this.layoutJSON['json']['content'][0]['body'].push({ "tag": "breadcumb", "allLinks": [{ "redirectTo": "/home", "tag": "redirection", "text": "Home" }, { "tag": "text", "text": "Users" }] });
+              break;
+            }
+            default: {
+              console.log(this.dragableWidget + ' confifuration required ...')
+            }
+          }
+        }
+        this.dragableWidget = '';
+        break;
+      }
+
+
+
+      default: {
+        console.log(event['target']['id'], event['type'], this.dragableWidget);
+      }
+    }
   }
 }

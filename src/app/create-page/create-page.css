@@ -3,9 +3,8 @@
     padding: 3px;
 }
 
-.active {
+.showSelectedSpace {
     border: 2px dotted #dc3545 !important;
-    background-color: #eee;
 }
 
 .row {
@@ -14,4 +13,26 @@
 
 .container {
     padding: 0px !important;
+    width: 100% !important;
+}
+
+.fullHeight {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.body {
+    background-size: 5px 5px;
+   /* background-image:
+        linear-gradient(to right, #ddd 1px, transparent 1px),
+        linear-gradient(to bottom, #ddd 1px, transparent 1px);
+        */
+}
+
+#body {
+    height: 100vh;
+    overflow-x: hidden;
+}
+h2{
+    border:2px solid #fff;
 }

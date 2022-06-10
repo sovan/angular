@@ -146,8 +146,8 @@
                     <div *ngSwitchCase="'breadcumb'">
                         <!--Bread Cumb-->
                         <div class="breadcumbBG">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
+                            <nav aria-label="breadcrumb" [ngClass]="{'developmentClass': developmentMode}" id="breadcrumb-{{i}}-{{j}}">
+                                <ol class="breadcrumb" >
                                     <ng-container *ngFor="let eachLink of eachBody['allLinks']">
                                         <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
                                             <a href="javascript:void(0)" (click)="callParent(eachLink)">

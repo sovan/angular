@@ -1,0 +1,9 @@
+.showSelectedSpace {
+    border: 2px dotted #dc3545 !important;
+}
+.developmentClass{
+    border: 2px solid #ddd;
+}
+.selectedWidget{
+    border: 2px solid #dc3545 !important;
+}

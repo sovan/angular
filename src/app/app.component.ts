@@ -12,7 +12,7 @@ export class AppComponent {
 	title = 'expirement';
 	popupStructure: any = [];
 	popupFunction: any = [];
-
+	developmentMode: boolean = false;
 	pageStructure = {
 		"pageData": { 'content': [] },
 		"menuData": {}
@@ -21,7 +21,7 @@ export class AppComponent {
 	currentPageURL: string = '';
 	popupJSON: any = {};
 
-	constructor(private router: Router, private route1: ActivatedRoute, private appService: AppService) {
+	constructor(public router: Router, private route1: ActivatedRoute, private appService: AppService) {
 		this.appService.postData('/main/navbar').subscribe(jsonData => {
 			this.pageStructure['menuData'] = jsonData;
 		});
@@ -29,12 +29,18 @@ export class AppComponent {
 			filter(event => event instanceof NavigationEnd)
 		).subscribe(event => {
 			this.pageStructure['pageData'] = { 'content': [] };
-			this.appService.postData(this.router.url).subscribe(jsonData => {
-				this.currentPageURL = this.router.url;
-				this.pageStructure['pageData'] = jsonData;
-				sessionStorage.setItem('currentPage', JSON.stringify(jsonData));
-				//console.log(sessionStorage.getItem('currentPage'));
-			});
+			if (this.router.url == '/product') {
+				sessionStorage.setItem('developmentMode', "true");
+				this.developmentMode = true;
+			} else {
+				sessionStorage.setItem('developmentMode', "false");
+				this.developmentMode = false;
+				this.appService.postData(this.router.url).subscribe(jsonData => {
+					this.currentPageURL = this.router.url;
+					this.pageStructure['pageData'] = jsonData;
+					sessionStorage.setItem('currentPage', JSON.stringify(jsonData));
+				});
+			}
 		});
 	}
 

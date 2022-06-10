@@ -1,17 +1,17 @@
+<!--Navbar-->
 <S7Navbar [jsonData]="pageStructure['menuData']" (formChild)="callParent($event)"
-    *ngIf="(pageStructure['menuData'] | json) != '{}'"></S7Navbar>
+    *ngIf="(pageStructure['menuData'] | json) != '{}' && !developmentMode"></S7Navbar>
 
 
 
-<div class="container containerPlacing" *ngIf="(pageStructure['pageData'] | json) != '{}'">
+<div class="container containerPlacing"
+    *ngIf="(pageStructure['pageData'] | json) != '{}' && !developmentMode">
     <S7Layout [indexJSON]="{'json': pageStructure['pageData'], 'index':['content']}" (formChild)="callParent($event)">
     </S7Layout>
 </div>
 
-<div class="containerPlacing">
-    <S7CreatePage></S7CreatePage>
-</div>
+<S7CreatePage></S7CreatePage>
 
-<S7Footer></S7Footer>
+<S7Footer *ngIf="router.url!='/product'"></S7Footer>
 
-<S7Modal [indexJSON]="popupStructure[1]" (formChild)="callParent($event)" [action]="popupFunction[1]"></S7Modal>
+<S7Modal [indexJSON]="popupStructure[1]" (formChild)="callParent($event)" [action]="popupFunction[1]" *ngIf="!developmentMode"></S7Modal>

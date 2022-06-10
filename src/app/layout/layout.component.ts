@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'S7Layout',
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
 })
-export class LayoutComponent implements OnChanges {
+export class LayoutComponent implements OnChanges, OnInit {
   @Input() indexJSON: any;
   @Input() action: any;
   @Output() formChild = new EventEmitter<string>();
   jsonData: any = {};
-
+  developmentMode: boolean = false;
 
   hookToGrid: any = 'doNotFire';
 
@@ -29,6 +29,9 @@ export class LayoutComponent implements OnChanges {
     this.formChild.emit(sendJSON);
   }
 
+  ngOnInit(): void {
+    this.developmentMode = sessionStorage.getItem('developmentMode') == 'true' ? true : false;
+  }
   openModal(data: any) {
     this.callParent({ "tag": "button-popup", "index": data });
   }
