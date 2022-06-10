@@ -1,25 +1,26 @@
-<div (mousedown)="mouseEvent($event)" (mouseup)="mouseEvent($event)" (mousemove)="mouseEvent($event)" style="user-select: none;">
+<div (mousedown)="mouseEvent($event)" (mouseup)="mouseEvent($event)" (mousemove)="mouseEvent($event)"
+    style="user-select: none;">
     <div class="col-sm-12 ">
         <div>
             <div class="row">
-                <div class="col-sm-2 fullHeight">
+                <div class="col-sm-2 fullHeight" [attr.S7evenID]="'left-sidebar-container'">
                     <div class="row">
                         <div class="col-sm-12 borderBox fullHeight">
                             <h2>Widget</h2>
                             <ng-container *ngFor="let eachMenu of dropdown">
-                                <div class="col-sm-12 borderBox" id="sidebar-{{eachMenu['value']}}">{{eachMenu['text']}}
+                                <div class="col-sm-12 borderBox" id="sidebar-{{eachMenu['value']}}"
+                                    [attr.S7evenID]="'sidebar-' + eachMenu['value']">{{eachMenu['text']}}
                                 </div>
                             </ng-container>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8 fullHeight body" id="fullbody" >
-                    <div class="borderBox" id="body">
-                        <S7Layout [indexJSON]='layoutJSON'>
-                        </S7Layout>
+                <div class="col-sm-8 fullHeight body" id="fullbody" [attr.S7evenID]="'fullbody'">
+                    <div class="borderBox" id="body" [attr.S7evenID]="'body'">
+                        <S7Layout [indexJSON]='layoutJSON'></S7Layout>
                     </div>
                 </div>
-                <div class="col-sm-2 fullHeight body" >
+                <div class="col-sm-2 fullHeight" [attr.S7evenID]="'right-sidebar-container'">
                     <div class="borderBox" id="body">
                         s<br> s<br> s<br>
                     </div>

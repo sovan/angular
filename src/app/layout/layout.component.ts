@@ -13,7 +13,6 @@ export class LayoutComponent implements OnChanges, OnInit {
   developmentMode: boolean = false;
 
   hookToGrid: any = 'doNotFire';
-
   createIndex(index: any) {
     var returnIndex = [];
     for (var i = 0; i < this.indexJSON['index'].length; i++) {
@@ -41,6 +40,10 @@ export class LayoutComponent implements OnChanges, OnInit {
     this.callParent({ "tag": "form", "index": data });
   }
 
+
+  createDynamicID(currentIndex: any = []) {
+    return currentIndex.join('-')+'-'+this.indexJSON['index'].join('-');
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {

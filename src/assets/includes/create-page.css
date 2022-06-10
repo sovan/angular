@@ -2,8 +2,13 @@
     border: 2px dotted #dc3545 !important;
 }
 .developmentClass{
-    border: 2px solid #ddd;
+    border: 2px solid #eee;
 }
 .selectedWidget{
     border: 2px solid #dc3545 !important;
 }
+.borderBox {
+    border: 2px solid #DEE2E6;
+    padding: 3px;
+}
+

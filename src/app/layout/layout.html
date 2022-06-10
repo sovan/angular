@@ -10,34 +10,90 @@
 
                 <div [ngSwitch]="eachBody['tag']">
 
-                    <div *ngSwitchCase="'grid'">
+                    <div *ngSwitchCase="'grid'" id="{{createDynamicID(['grid', i, j])}}"
+                    [attr.S7evenID]="createDynamicID(['grid', i, j])" [ngClass]="{'developmentClass': developmentMode}">
                         <!--Grid-->
                         <S7Grid [jsonData]="eachBody" (formChild)="callParent($event)"></S7Grid>
                     </div>
 
-                    <div *ngSwitchCase="'accordion'">
-                        <div class="accordion" id="accordionExample{{eachBody['id']}}">
-                            <ng-container *ngFor="let eachRow of eachBody['content']; let k=index">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            [attr.data-bs-target]="'#accordion' + eachBody['id']+k" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                            {{eachRow['title']}}
-                                        </button>
-                                    </h2>
-                                    <div id="accordion{{eachBody['id']}}{{k}}" class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne"
-                                        [attr.data-bs-parent]="'#accordionExample' + eachBody['id']">
-                                        <div class="accordion-body">
-                                            <S7Layout (formChild)="callParent($event)"
-                                                [indexJSON]="{'json': indexJSON['json'], 'index': createIndex([i,'body',j,'content',k,'content'])}">
-                                            </S7Layout>
-                                        </div>
+                    <div *ngSwitchCase="'image-card'" id="{{createDynamicID(['imagecard', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['imagecard', i, j])" [ngClass]="{'developmentClass': developmentMode}">
+                        <!--Image Card-->
+
+                        <div class="card" style="margin-bottom: 20px;">
+                            <img src="{{jsonData[i]['body'][j]['image']}}" class="card-img-top">
+                            <div class="card-body">
+                                <S7Layout (formChild)="callParent($event)"
+                                    [indexJSON]="{'json':indexJSON['json'], 'index': createIndex([i,'body',j,'content'])}">
+                                </S7Layout>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div *ngSwitchCase="'accordion'" id="{{createDynamicID(['accordion', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['accordion', i, j])" class="accordion" [ngClass]="{'developmentClass': developmentMode}">
+                        <ng-container *ngFor="let eachRow of eachBody['content']; let k=index">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        [attr.data-bs-target]="'#' + createDynamicID(['accordion', i, j, k])"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        {{eachRow['title']}}
+                                    </button>
+                                </h2>
+                                <div id="{{createDynamicID(['accordion', i, j, k])}}"
+                                    class="accordion-collapse collapse"
+                                    [attr.data-bs-parent]="'#' + createDynamicID(['accordion', i, j])">
+                                    <div class="accordion-body">
+                                        <S7Layout (formChild)="callParent($event)"
+                                            [indexJSON]="{'json': indexJSON['json'], 'index': createIndex([i,'body',j,'content',k,'content'])}">
+                                        </S7Layout>
                                     </div>
                                 </div>
-                            </ng-container>
-                        </div>
+                            </div>
+                        </ng-container>
+                    </div>
+
+                    <div *ngSwitchCase="'breadcumb'" class="breadcumbBG" id="{{createDynamicID(['breadcrumb', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['breadcrumb', i, j])" [ngClass]="{'developmentClass': developmentMode}">
+                        <!--Bread Cumb-->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <ng-container *ngFor="let eachLink of eachBody['allLinks']">
+                                    <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
+                                        <a href="javascript:void(0)" (click)="callParent(eachLink)">
+                                            {{eachLink["text"]}}
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page"
+                                        *ngIf="eachLink['tag'] =='text'">
+                                        {{eachLink["text"]}}
+                                    </li>
+                                </ng-container>
+                            </ol>
+                        </nav>
+                    </div>
+
+
+                    <div *ngSwitchCase="'h3'" id="{{createDynamicID(['h3', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['h3', i, j])" [ngClass]="{'developmentClass': developmentMode}">
+                        <!--H3-->
+                        <h3>{{eachBody['content']}}</h3>
+                    </div>
+
+
+                    <div *ngSwitchCase="'p'" id="{{createDynamicID(['p', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['p', i, j])" [ngClass]="{'developmentClass': developmentMode}">
+                        <!--P-->
+                        <p>{{eachBody['content']}}</p>
+                    </div>
+
+
+                    <div *ngSwitchCase="'h5'" id="{{createDynamicID(['h5', i, j])}}"
+                        [attr.S7evenID]="createDynamicID(['h5', i, j])" [ngClass]="{'developmentClass': developmentMode}">
+                        <!--H5-->
+                        <h5>{{eachBody['content']}}</h5>
                     </div>
 
 
@@ -143,26 +199,6 @@
                         </nav>
                     </div>
 
-                    <div *ngSwitchCase="'breadcumb'">
-                        <!--Bread Cumb-->
-                        <div class="breadcumbBG">
-                            <nav aria-label="breadcrumb" [ngClass]="{'developmentClass': developmentMode}" id="breadcrumb-{{i}}-{{j}}">
-                                <ol class="breadcrumb" >
-                                    <ng-container *ngFor="let eachLink of eachBody['allLinks']">
-                                        <li class="breadcrumb-item" *ngIf="eachLink['tag'] =='redirection'">
-                                            <a href="javascript:void(0)" (click)="callParent(eachLink)">
-                                                {{eachLink["text"]}}
-                                            </a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page"
-                                            *ngIf="eachLink['tag'] =='text'">
-                                            {{eachLink["text"]}}
-                                        </li>
-                                    </ng-container>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
 
                     <div *ngSwitchCase="'tab-menu'">
                         <!--Tabmenu-->
@@ -171,7 +207,8 @@
                                 *ngFor="let eachRow of eachBody['content']; let k=index">
                                 <button class="nav-link" [ngClass]="{'active': k === 0}" id="home-tab"
                                     data-bs-toggle="tab" [attr.data-bs-target]="'#tabMenu' + eachBody['id']+k"
-                                    type="button" role="tab" aria-controls="home" aria-selected="true">{{eachRow['title']}}</button>
+                                    type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">{{eachRow['title']}}</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -188,22 +225,6 @@
 
 
 
-                    <div *ngSwitchCase="'h3'">
-                        <!--H3-->
-                        <h3>{{eachBody['content']}}</h3>
-                    </div>
-
-
-                    <div *ngSwitchCase="'p'">
-                        <!--P-->
-                        <p>{{eachBody['content']}}</p>
-                    </div>
-
-
-                    <div *ngSwitchCase="'h5'">
-                        <!--H5-->
-                        <h5>{{eachBody['content']}}</h5>
-                    </div>
 
                     <div *ngSwitchCase="'space'">
                         <!--Space-->
@@ -211,18 +232,6 @@
                     </div>
 
 
-                    <div *ngSwitchCase="'image-card'">
-                        <!--Image Card-->
-
-                        <div class="card" style="margin-bottom: 20px;">
-                            <img src="{{jsonData[i]['body'][j]['image']}}" class="card-img-top">
-                            <div class="card-body">
-                                <S7Layout (formChild)="callParent($event)"
-                                    [indexJSON]="{'json':indexJSON['json'], 'index': createIndex([i,'body',j,'content'])}">
-                                </S7Layout>
-                            </div>
-                        </div>
-                    </div>
 
                     <div *ngSwitchDefault>
                         <!--Default tag -->

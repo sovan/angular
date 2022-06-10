@@ -1,11 +1,4 @@
-.borderBox {
-    border: 2px solid #DEE2E6 !important;
-    padding: 3px;
-}
 
-.showSelectedSpace {
-    border: 2px dotted #dc3545 !important;
-}
 
 .row {
     --bs-gutter-x: 0 !important;
