@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'S7CreatePage',
@@ -12,8 +13,8 @@ export class CreatePageComponent implements OnInit {
   dragableWidget: any = '';
   selectedWidget: any = '';
   mouseMoveTargetID: any = '';
-  canBeSelected: any = ['body', 'breadcrumb', 'accordion', 'p', 'h3', 'h5', 'imagecard','grid'];
-  onMouseOverBorder: any = ['fullbody', 'body', 'sidebar', 'breadcrumb', 'accordion', 'p', 'h3', 'h5', 'imagecard','grid'];
+  canBeSelected: any = ['body', 'breadcumb', 'accordion', 'p', 'h3', 'h5', 'imagecard', 'grid', 'row'];
+  onMouseOverBorder: any = ['fullbody', 'body', 'sidebar', 'breadcumb', 'accordion', 'p', 'h3', 'h5', 'imagecard', 'grid', 'row'];
   formValue: any = {
     "container-size": "col-sm-12"
   };
@@ -121,6 +122,18 @@ export class CreatePageComponent implements OnInit {
           });
           //console.log(this.selectedWidget);
           document.getElementById(this.selectedWidget)?.classList.add('selectedWidget');
+
+          console.log(); //p-1-body-0-content_content-0-body-0-content-1-content
+          //p-content-0-body-0-content-1-content-1-body-0-content
+          //json-content-0
+          var data: any = this.layoutJSON["json"];
+          console.log(this.selectedWidget);
+          this.selectedWidget.split('-').map((key: any, index: any) => {
+            if (index !== 0 && key!==undefined && key!=="") {
+              data = data[key];
+            }
+          })
+          console.log(JSON.stringify(data));
         } else {
           console.log(targetID[0])
         }

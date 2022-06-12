@@ -41,8 +41,9 @@ export class LayoutComponent implements OnChanges, OnInit {
   }
 
 
-  createDynamicID(currentIndex: any = []) {
-    return currentIndex.join('-')+'-'+this.indexJSON['index'].join('-');
+  createDynamicCID(type: any = '', currentIndex: any = []) {
+    let url = type + "-" + this.indexJSON['index'].join('-') + '-' + currentIndex.join('-');
+    return url;
   }
 
   ngOnChanges(changes: SimpleChanges) {
