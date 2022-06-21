@@ -16,13 +16,13 @@
                     </div>
                 </div>
                 <div class="col-sm-8 fullHeight body" id="fullbody" [attr.S7evenID]="'fullbody'">
-                    <div class="borderBox" id="body" [attr.S7evenID]="'body'">
+                    <div class="borderBox bodyContainer" [attr.S7evenID]="'body-content-0-body'" id="body-content-0-body" >
                         <S7Layout [indexJSON]='layoutJSON'></S7Layout>
                     </div>
                 </div>
                 <div class="col-sm-2 fullHeight" [attr.S7evenID]="'right-sidebar-container'">
-                    <div class="borderBox" id="body">
-                        s<br> s<br> s<br>
+                    <div class="borderBox" >
+                        {{selectedJSON|json}}
                     </div>
                 </div>
             </div>

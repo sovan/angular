@@ -22,7 +22,8 @@
         */
 }
 
-#body {
+
+.bodyContainer {
     height: 100vh;
     overflow-x: hidden;
 }

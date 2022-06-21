@@ -13,15 +13,15 @@
 
 
 
-                    <div *ngSwitchCase="'p'" id="{{createDynamicCID('p', [i, 'body', j, 'content'])}}"
-                        [attr.S7evenID]="createDynamicCID('p', [i, 'body', j, 'content'])"
+                    <div *ngSwitchCase="'p'" id="{{createDynamicCID('p', [i, 'body'])}}"
+                        [attr.S7evenID]="createDynamicCID('p', [i, 'body'])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--P-->
                         <p>{{eachBody['content']}}</p>
                     </div>
 
-                    <div *ngSwitchCase="'h5'" id="{{createDynamicCID('h5', [i, 'body', j, 'content'])}}"
-                        [attr.S7evenID]="createDynamicCID('h5', [i, 'body', j, 'content'])"
+                    <div *ngSwitchCase="'h5'" id="{{createDynamicCID('h5', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('h5', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--H5-->
                         <h5>{{eachBody['content']}}</h5>
@@ -261,7 +261,7 @@
 
                     <div *ngSwitchDefault>
                         <!--Default tag -->
-                        <div style="background-color:#F00">------------Default tag {{eachBody['tag']}}------------</div>
+                        <div style="background-color:#F00">------------Default tag {{eachBody | json}}------------</div>
                     </div>
                 </div>
             </ng-container>
