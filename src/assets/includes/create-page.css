@@ -1,14 +1,16 @@
 .showSelectedSpace {
-    border: 2px dotted #dc3545 !important;
+    border: 2px dashed #dc3545 !important;
 }
+
 .developmentClass{
-    border: 2px solid #eee;
+    margin: 0px;
+    border: 2px dotted #000;
+    padding: 2px;
 }
 .selectedWidget{
     border: 2px solid #dc3545 !important;
 }
 .borderBox {
     border: 2px solid #DEE2E6;
-    padding: 3px;
 }
 

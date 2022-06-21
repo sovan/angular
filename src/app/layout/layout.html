@@ -2,7 +2,7 @@
     [ngClass]="{'developmentClass': developmentMode}">
 
 
-
+    
 
     <ng-container *ngFor="let eachBlock of jsonData; let i=index">
         <div class="col-sm-{{eachBlock['column']}}">
@@ -261,7 +261,9 @@
 
                     <div *ngSwitchDefault>
                         <!--Default tag -->
-                        <div style="background-color:#F00">------------Default tag {{eachBody | json}}------------</div>
+                        <div style="background-color:#F5F; text-align: center;" id="{{createDynamicCID('new', [i, 'body'])}}"
+                        [attr.S7evenID]="createDynamicCID('new', [i, 'body'])"
+                        [ngClass]="{'developmentClass': developmentMode}">Default tag {{eachBody['tag']}}</div>
                     </div>
                 </div>
             </ng-container>
