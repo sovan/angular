@@ -13,9 +13,9 @@ export class CreatePageComponent implements OnInit {
   dragableWidget: any = '';
   selectedWidget: any = '';
   mouseMoveTargetID: any = '';
-  canBeSelected: any = ["body", "breadcumb", "accordion", "p", "h3", "h5", "imagecard", "grid", "row", "new"];
-  onMouseOverBorder: any = ["fullbody", "body", "sidebar", "breadcumb", "accordion", "p", "h3", "h5", "imagecard", "grid", "row", "new"];
-  dragebleWidget: any = ["card", "breadcumb", "accordion", "grid", "new"];
+  canBeSelected: any = ["body", "breadcumb", "accordion", "p", "h3", "h5", "imagecard", "grid", "row", "new", "card"];
+  onMouseOverBorder: any = ["fullbody", "body", "sidebar", "breadcumb", "accordion", "p", "h3", "h5", "imagecard", "grid", "row", "new", "card"];
+  dragableWidgetArray: any = ["card", "breadcumb", "accordion", "grid", "new", "card"];
   theme: any = {
     "breadcumb": { "tag": "breadcumb", "allLinks": [{ "redirectTo": "/home", "tag": "redirection", "text": "Home" }, { "tag": "text", "text": "Users" }] },
     "accordion": { "tag": "accordion", "id": "2", "content": [{ "title": "Acc 1", "content": [{ "column": "6", "body": [{ "tag": "p", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." }] }, { "column": "6", "body": [{ "tag": "p", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." }] }] }, { "title": "Acc 22", "content": [{ "column": "3", "body": [{ "tag": "image-card", "image": "https://www.w3schools.com/howto/img_mountains_wide.jpg", "content": [{ "column": "12", "body": [{ "tag": "h5", "content": "Image Name" }] }, { "column": "12", "body": [{ "tag": "p", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry." }, { "tag": "button-popup", "id": "3", "headerText": "Popup from Slider22", "buttonText": "Simple Popup 4", "content": [{ "column": "12", "body": [{ "tag": "p", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy." }, { "tag": "p", "content": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." }] }] }] }] }] }, { "column": "9", "body": [{ "tag": "p", "content": "sssssssssLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." }] }] }] },
@@ -23,14 +23,11 @@ export class CreatePageComponent implements OnInit {
     "card": {
       "tag": "card", "content": [
         { "column": "4", "body": [{ "tag": "new" }] },
-        { "column": "4", "body": [{ "tag": "new" }] },
-        { "column": "4", "body": [{ "tag": "new" }] }
+        { "column": "8", "body": [{ "tag": "new" }] }
       ]
     }
   }
-  formValue: any = {
-    "container-size": "col-sm-12"
-  };
+
   layoutJSON: any = {
     "json": {
       "content": [{
@@ -81,6 +78,10 @@ export class CreatePageComponent implements OnInit {
       "headerText": "Add a Grid"
     }
   ];
+
+
+  widgetHeader: string = '';
+  formValue: any = {};
   // reference to the MatMenuTrigger in the DOM 
   constructor(private ElByClassName: ElementRef) { }
 
@@ -100,7 +101,22 @@ export class CreatePageComponent implements OnInit {
     return S7evenID;
   }
 
+  createLeftPanel() {
+    this.widgetHeader = !Array.isArray(this.selectedJSON) ? this.selectedJSON['tag'] : "";
 
+  }
+  createColumn() {
+    this.selectedJSON['content'].push({ "column": "6", "body": [{ "tag": "new" }] })
+  }
+  deleteColumn(columnIndex: number) {
+    this.selectedJSON['content'].splice(columnIndex, 1)
+  }
+  sortColumn(columnIndex: number, toColumnIndex: number){
+    console.log(columnIndex, toColumnIndex)
+    let data = this.selectedJSON['content'][toColumnIndex];
+    this.selectedJSON['content'][toColumnIndex] = this.selectedJSON['content'][columnIndex];
+    this.selectedJSON['content'][columnIndex] = data;
+  }
 
   mouseEvent(event: any) {
 
@@ -114,9 +130,8 @@ export class CreatePageComponent implements OnInit {
           box.classList.remove('showSelectedSpace');
         });
         this.mouseMoveTargetID = this.getS7evenID(event.target);
-        //console.log(this.mouseMoveTargetID)
+        var targetID = this.mouseMoveTargetID.split('-');
         if (this.mouseMoveTargetID != undefined && this.mouseMoveTargetID != null && this.mouseMoveTargetID != "") {
-          var targetID = this.mouseMoveTargetID.split('-');
           if (this.onMouseOverBorder.indexOf(targetID[0]) != -1) {
             document.getElementById(this.mouseMoveTargetID)?.classList.add('showSelectedSpace');
           }
@@ -125,27 +140,28 @@ export class CreatePageComponent implements OnInit {
       }
 
 
-      case "mousedown": {
+      case "mousedown": { //Keydown
         var targetID = this.mouseMoveTargetID.split('-');
+        this.dragableWidget = "";
         if (targetID[0] == 'sidebar') {
           this.dragableWidget = targetID[1];
         } else if (this.canBeSelected.indexOf(targetID[0]) != -1) {
-          console.log('ssssssssss');
           this.selectedWidget = this.mouseMoveTargetID;
           const boxes = document.querySelectorAll('.selectedWidget');
           boxes.forEach(box => {
             box.classList.remove('selectedWidget');
           });
           document.getElementById(this.selectedWidget)?.classList.add('selectedWidget');
+          //document.getElementById(this.selectedWidget)?.parentElement?.parentElement?.classList.add('selectedWidget');
+
           var data: any = this.layoutJSON["json"];
-          console.log(this.selectedWidget);
           this.selectedWidget.split('-').map((key: any, index: any) => {
             if (index !== 0 && key !== undefined && key !== "") {
               data = data[key];
             }
           })
           this.selectedJSON = data;
-          //console.log(JSON.stringify(data));
+          this.createLeftPanel();
         } else {
           console.log(targetID[0])
         }
@@ -154,20 +170,26 @@ export class CreatePageComponent implements OnInit {
 
 
 
-      case "mouseup": {
+      case "mouseup": { //Drop
         var targetID = this.mouseMoveTargetID.split('-');
         let newPageJSON = this.layoutJSON['json'];
+        if (targetID[targetID.length - 1] != 'body' && targetID[targetID.length - 1] != 'body') {
+          targetID.pop();
+        }
         targetID.map((key: any, index: any) => {
           if (index !== 0 && key !== undefined && key !== "") {
             newPageJSON = newPageJSON[key];
+            //console.log(newPageJSON)
           }
         });
-        var where = targetID[(targetID.length) - 1] !== "" ? targetID[(targetID.length) - 1] : targetID[(targetID.length) - 2];
+        //console.log(newPageJSON)
+        var where = targetID[(targetID.length) - 1];
+        //console.log(this.mouseMoveTargetID)
 
 
-        if (this.dragebleWidget.indexOf(this.dragableWidget) !== -1) {
+        if (this.dragableWidgetArray.indexOf(this.dragableWidget) !== -1) {
           if (where === 'body') {
-            if(newPageJSON.length>0 && newPageJSON['0']['tag']=='new'){
+            if (newPageJSON.length > 0 && newPageJSON['0']['tag'] == 'new') {
               newPageJSON.pop();
             }
             newPageJSON.push(JSON.parse(JSON.stringify(this.theme[this.dragableWidget])));
@@ -175,7 +197,7 @@ export class CreatePageComponent implements OnInit {
             newPageJSON.push({ "column": "12", "body": [JSON.parse(JSON.stringify(this.theme[this.dragableWidget]))] });
           }
         } else {
-          console.log(this.dragableWidget);
+          //console.log(this.dragableWidget);
           console.log(this.dragableWidget + ' confifuration required ...')
         }
 

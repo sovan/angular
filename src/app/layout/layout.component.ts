@@ -31,6 +31,7 @@ export class LayoutComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.developmentMode = sessionStorage.getItem('developmentMode') == 'true' ? true : false;
   }
+  
   openModal(data: any) {
     this.callParent({ "tag": "button-popup", "index": data });
   }
@@ -42,7 +43,10 @@ export class LayoutComponent implements OnChanges, OnInit {
 
 
   createDynamicCID(type: any = '', currentIndex: any = []) {
-    let url = type + "-" + this.indexJSON['index'].join('-') + '-' + currentIndex.join('-');
+    let url = type + "-" + this.indexJSON['index'].join('-') ;
+    if(currentIndex.length){
+      url +=  '-' + currentIndex.join('-')
+    }
     return url;
   }
 

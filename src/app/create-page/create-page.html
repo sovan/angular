@@ -1,10 +1,9 @@
-<div (mousedown)="mouseEvent($event)" (mouseup)="mouseEvent($event)" (mousemove)="mouseEvent($event)"
-    style="user-select: none;">
+<div (mousedown)="mouseEvent($event)" (mouseup)="mouseEvent($event)" (mousemove)="mouseEvent($event)">
     <div class="col-sm-12 ">
         <div>
             <div class="row">
                 <div class="col-sm-2 fullHeight" [attr.S7evenID]="'left-sidebar-container'">
-                    <div class="row">
+                    <div class="row" style="user-select: none;">
                         <div class="col-sm-12 borderBox fullHeight">
                             <h2>Widget</h2>
                             <ng-container *ngFor="let eachMenu of dropdown">
@@ -15,14 +14,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8 fullHeight body" id="fullbody" [attr.S7evenID]="'fullbody'">
-                    <div class="borderBox bodyContainer" [attr.S7evenID]="'body-content-0-body'" id="body-content-0-body" >
+                <div class="col-sm-8 fullHeight body" id="fullbody" [attr.S7evenID]="'fullbody'"
+                    style="user-select: none;">
+                    <div class="borderBox bodyContainer" [attr.S7evenID]="'body-content-0-body'"
+                        id="body-content-0-body">
                         <S7Layout [indexJSON]='layoutJSON'></S7Layout>
                     </div>
                 </div>
                 <div class="col-sm-2 fullHeight" [attr.S7evenID]="'right-sidebar-container'">
-                    <div class="borderBox" >
-                        {{selectedJSON|json}}
+                    <div class="borderBox">
+                        <h2>{{widgetHeader}}</h2>
+
+                        <ng-container *ngIf="widgetHeader!='' && widgetHeader=='card'">
+                            <table width="100%" cellpadding="5">
+                                <ng-container *ngFor="let eachBlock of selectedJSON['content'], let i=index">
+                                    <tr>
+                                        <td>
+                                            <select class="form-select"
+                                                [(ngModel)]="selectedJSON['content'][i]['column']" style="float:left">
+                                                <option *ngFor="let eachSize of [1,2,3,4,5,6,7,8,9,10,11,12]">
+                                                    {{eachSize}}</option>
+                                            </select>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <i class="fa fa-trash" aria-hidden="true" (click)="deleteColumn(i)"></i>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <ng-container *ngIf="i!=0 && i!=selectedJSON['content'].length-1">
+                                                <table>
+                                                    <tr>
+                                                        <td><i class="fa fa-sort-asc" aria-hidden="true"  (click)="sortColumn(i, i-1)"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fa fa-sort-desc" aria-hidden="true" (click)="sortColumn(i, i+1)"></i></td>
+                                                    </tr>
+                                                </table>
+                                            </ng-container>
+                                            <ng-container *ngIf="i==selectedJSON['content'].length-1 && selectedJSON['content'].length>1">
+                                                <i class="fa fa-sort-asc" aria-hidden="true" (click)="sortColumn(i, i-1)"></i>
+                                            </ng-container>
+                                            <ng-container *ngIf="i==0 && selectedJSON['content'].length>1">
+                                                <i class="fa fa-sort-desc" aria-hidden="true" (click)="sortColumn(i, i+1)"></i>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <tr>
+                                    <td colspan="2">
+                                        <button class="btn btn-danger" (click)="createColumn()">Create Column</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            {{selectedJSON | json}}
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

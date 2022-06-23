@@ -1,5 +1,4 @@
-<div class="row" id="{{createDynamicCID('row', [])}}" [attr.S7evenID]="createDynamicCID('row', [])"
-    [ngClass]="{'developmentClass': developmentMode}">
+<div class="row" >
 
 
     
@@ -102,8 +101,8 @@
                     </div>
 
 
-                    <div *ngSwitchCase="'card'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'card'" id="{{createDynamicCID('card', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('card', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--H3-->
                         <S7Layout (formChild)="callParent($event)"
@@ -114,16 +113,16 @@
 
 
 
-                    <div *ngSwitchCase="'h3'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'h3'" id="{{createDynamicCID('h3', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('h3', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--H3-->
                         <h3>{{eachBody['content']}}</h3>
                     </div>
 
 
-                    <div *ngSwitchCase="'button-popup'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'button-popup'" id="{{createDynamicCID('buttonpopup', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('buttonpopup', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--Modal Box call button -->
                         <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
@@ -133,8 +132,8 @@
                         </button>
                     </div>
 
-                    <div *ngSwitchCase="'button-form'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'button-form'" id="{{createDynamicCID('buttonform', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('buttonform', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--Modal Box call button -->
                         <button type="button" class="btn btn-primary" [attr.data-toggle]="'modal'"
@@ -146,16 +145,16 @@
 
 
 
-                    <div *ngSwitchCase="'form'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'form'" id="{{createDynamicCID('form', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('form', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <S7Form [record]="{}" [jsonData]="eachBody" (formChild)="callParent($event)" [action]="action">
                         </S7Form>
                     </div>
 
 
-                    <div *ngSwitchCase="'slider'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'slider'" id="{{createDynamicCID('slider', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('slider', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <div id="sliderID{{eachBody['id']}}" class="carousel slide" data-bs-ride="carousel">
                             <!--Lower section button -->
@@ -200,8 +199,8 @@
                         </div>
                     </div>
 
-                    <div *ngSwitchCase="'pagination'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'pagination'" id="{{createDynamicCID('pagination', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('pagination', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--Pagination-->
                         <nav>
@@ -226,9 +225,9 @@
                     </div>
 
 
-                    <div *ngSwitchCase="'tab-menu'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
-                        [ngClass]="{'developmentClass': developmentMode}">
+                    <div *ngSwitchCase="'tab-menu'" id="{{createDynamicCID('tabmenu', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('tabmenu', [i, 'body', j])"
+                        >
                         <!--Tabmenu-->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation"
@@ -250,8 +249,8 @@
                         </div>
                     </div>
 
-                    <div *ngSwitchCase="'space'" id="{{createDynamicCID('breadcumb', [i, 'body', j])}}"
-                        [attr.S7evenID]="createDynamicCID('breadcumb', [i, 'body', j])"
+                    <div *ngSwitchCase="'space'" id="{{createDynamicCID('space', [i, 'body', j])}}"
+                        [attr.S7evenID]="createDynamicCID('space', [i, 'body', j])"
                         [ngClass]="{'developmentClass': developmentMode}">
                         <!--Space-->
                         <div class="space"></div>
@@ -270,3 +269,4 @@
         </div>
     </ng-container>
 </div>
+
